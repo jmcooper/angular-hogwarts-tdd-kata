@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular Hogwarts TDD Kata</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <base href="file:///C:/dev/angular-hogwarts-tdd-kata/app/index.html"/>
+
+    <!--<script>document.write('<base href="' + document.location + '" />');</script>-->
+</head>
+<body ng-app="hogwartsApp">
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Hogwarts</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a  ui-sref="sorting">Sorting</a></li>
+                <li><a ui-sref="catalog">Catalog</a></li>
+                <li><a ui-sref="schedule">Schedule</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div>
+    <div ui-view></div>
+</div>
+
+<script src="lib/angularjs/angular.min.js"></script>
+<script src="lib/angularjs/angular-ui-router.min.js"></script>
+<script src="app.js"></script>
+<script src="routes.js"></script>
+<script src="wizard/sorting-hat-controller.js"></script>
+<script src="wizard/schedule-controller.js"></script>
+<script src="catalog/catalog-controller.js"></script>
+
+</body>
+</html>
