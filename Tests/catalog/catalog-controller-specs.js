@@ -10,7 +10,7 @@ describe('CatalogController', function () {
             scope = $rootScope.$new();
 
             mockCatalogRepository = sinon.stub(CatalogRepository);
-            mockCatalogRepository.getCatalog.returns({ $promise: deferredAccountInfo.promise });
+            mockCatalogRepository.getCatalog.returns({ });
 
             $controller("CatalogController", { $scope: scope, CatalogRepository: mockCatalogRepository  });
         });
