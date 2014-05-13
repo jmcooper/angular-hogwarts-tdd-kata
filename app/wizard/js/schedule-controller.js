@@ -2,5 +2,5 @@
 
 hogwartsApp
     .controller("ScheduleController", ['$scope', function ($scope) {
-        
+
     }]);
