@@ -2,5 +2,5 @@
 
 hogwartsApp
     .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
-        catalogRepository.getCatalog();
+        $scope.catalog = catalogRepository.getCatalog();
     }]);
