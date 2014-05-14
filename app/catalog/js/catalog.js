@@ -1,15 +1,4 @@
-[
-  // core
-  { "class": "Astronomy" },
-  { "class": "Charms" },
-  { "class": "Defence Against the Dark Arts" },
-  { "class": "Flying" },
-  { "class": "Herbology" },
-  { "class": "History of Magic" },
-  { "class": "Potions" },
-  { "class": "Transfiguration" },
-]
-
+var catalog = 
 [
 {
   "class": "Astronomy",
@@ -28,9 +17,9 @@
 {
   "class": "Defence Against the Dark Arts",
   "instructor": "",
-  "description": "Students learn how to magically defend themselves against Dark Creatures, Dark Arts and against the other Charms."
+  "description": "Students learn how to magically defend themselves against Dark Creatures, Dark Arts and against the other Charms.",
   "books": [
-    "The Dark Forces: A Guide to Self-Protection", "Break with a Banshee", "Gadding with Ghouls", "Holidays with Hags", "Travels with Trolls", "Voyages with Vampires", "Wanderings with Werewolves", "Year with a Yeti", "Defensive Magical Theory", "Dark Arts Defence: Basics for Beginners", "Confronting the Faceless", "The Standard Book of Spells" ]
+    "The Dark Forces: A Guide to Self-Protection", "Break with a Banshee", "Gadding with Ghouls", "Holidays with Hags", "Travels with Trolls", "Voyages with Vampires", "Wanderings with Werewolves", "Year with a Yeti", "Defensive Magical Theory", "Dark Arts Defence: Basics for Beginners", "Confronting the Faceless", "The Standard Book of Spells" ],
     "equipment": [ "Wand", "Books", "Parchment", "Quill" ]
 },
 
@@ -71,9 +60,9 @@
   "class": "Transfiguration",
   "instructor": "Minerva McGonagall",
   "description": "Students are taught the art of changing of the form and appearance of an object. There are limits to Transfiguration, which are governed by Gamp's Law of Elemental Transfiguration.",
-  "books": [ "A Beginner's Guide to Transfiguration by Emeric Switch", "Intermediate Transfiguration", "A Guide to Advanced Transfiguration" ]
+  "books": [ "A Beginner's Guide to Transfiguration by Emeric Switch", "Intermediate Transfiguration", "A Guide to Advanced Transfiguration" ],
   "equipment": ["Wand"],
-}
+},
 
 
   // electives after 3rd year
