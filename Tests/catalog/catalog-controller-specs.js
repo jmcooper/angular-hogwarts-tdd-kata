@@ -1,17 +1,19 @@
 "use strict";
 
 describe('CatalogController', function () {
-    var scope, mockCatalogRepository;
+    var scope, mockCatalogRepository, mockRegistrationService;
     var catalog = {foo: 'bar'};
 
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function ($rootScope, $controller, CatalogRepository) {
+        inject(function ($rootScope, $controller, CatalogRepository, RegistrationService) {
             scope = $rootScope.$new();
 
             mockCatalogRepository = sinon.stub(CatalogRepository);
             mockCatalogRepository.getCatalog.returns(catalog);
+
+            mockRegistrationService = sinon.stub(RegistrationService);
 
             $controller("CatalogController", { $scope: scope, CatalogRepository: mockCatalogRepository  });
         });
@@ -23,6 +25,18 @@ describe('CatalogController', function () {
         });
         it('should put the catalog on the scope', function() {
             expect(scope.catalog).toEqual(catalog)
+        });
+    });
+
+    describe('when registering for a class', function() {
+        var courseId = 'DDA302';
+
+        beforeEach(function() {
+            scope.register(courseId);
+        });
+
+        it('should add the class to the wizard\'s schedule', function() {
+            expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
     });
 });
