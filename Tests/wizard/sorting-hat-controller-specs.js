@@ -15,9 +15,15 @@ describe('SortingHatController', function () {
     });
 	
 	describe('when using the sorting hat', function(){
-		it('should sort the wizard', function(){
+		beforeEach(function(){
+			mockHouseAssignmentService.assignWizard.returns('houseOne');
 			scope.sort();
+		});
+		it('should sort the wizard', function(){			
 			expect(mockHouseAssignmentService.assignWizard.called).toBeTruthy();
+		});
+		it('should set the assigned house on scope', function(){
+			expect(scope.assignedHouse).toEqual('houseOne');
 		});
 	});
 });
