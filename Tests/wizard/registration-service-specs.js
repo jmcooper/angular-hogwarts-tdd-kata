@@ -42,7 +42,7 @@ describe('RegistrationService', function () {
         it('should return a success response', function () {
             expect(response.success).toBeTruthy();
         });
-        it('should an empty message', function() {
+        it('should return an empty message', function() {
             expect(response.message).toEqual('');
         });
         it ('should register the wizard for the class', function() {
