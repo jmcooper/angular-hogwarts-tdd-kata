@@ -42,7 +42,7 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
 
     function wizardIsRegisteredForAConflictingCourse(wizard, course) {
         for (var i = 0; i < wizard.classes.length; i++) {
-            if (wizard.classes[i].startTime === course.startTime) return true;
+            if (wizard.classes[i].startTime.getTime() === course.startTime.getTime()) return true;
         }
         return false;
     }

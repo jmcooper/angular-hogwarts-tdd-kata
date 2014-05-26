@@ -74,8 +74,8 @@ describe('RegistrationService', function () {
 
     describe('when registering a wizard for a course that conflicts with a course the wizard is already registered for', function() {
         var response;
-        var courseAlreadyRegisteredFor = {id: 'foo', startTime: 9};
-        var courseToRegisterFor = {id: 'bar', startTime: 9};
+        var courseAlreadyRegisteredFor = {id: 'foo', startTime: new Date(0,0,0,9)};
+        var courseToRegisterFor = {id: 'bar', startTime: new Date(0,0,0,9)};
 
         beforeEach(function() {
             var courseCatalog = [courseAlreadyRegisteredFor, courseToRegisterFor];
