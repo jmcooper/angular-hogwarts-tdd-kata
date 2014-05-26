@@ -24,5 +24,8 @@ describe('SortingHatController', function () {
         it('should put wizard on the scope', function() {
             expect(scope.wizard).toEqual(wizard)
         });
-    });	
+		it('should get the house options from the repository', function() {
+            expect(mockHouseRepository.get.called).toBeTruthy();
+        });
+    });
 });
