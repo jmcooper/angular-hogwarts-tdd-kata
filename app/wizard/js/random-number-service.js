@@ -2,8 +2,8 @@
 
 hogwartsApp.factory('RandomNumberService', [function() {
     return {
-        getInRange: function(minNumber, maxNumber){
-			return Math.floor((Math.random() * maxNumber) + minNumber);
+        getInRange: function(min, max){
+			return Math.floor(Math.random() * (max - min + 1)) + min;
 		}
     };
 }]);

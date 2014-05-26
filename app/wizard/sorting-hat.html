@@ -3,7 +3,9 @@
     <p>Welcome to the wonderful world of hogwarts.  Click the sorting hat to discover which house you will be assigned to.</p>
 </div>
 <div class="panel">
+ 
     <div class="panel-body clearfix">
+		<div ng-show="assignedHouse" class="alert alert-success">You are assigned to {{assignedHouse}}!</div>
         <div class="pull-left" style="padding-left: 10px" >
             <img src="wizard/img/sorting-hat.jpg" style="cursor: pointer;" ng-click="sort()">
         </div>
