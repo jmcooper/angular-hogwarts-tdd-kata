@@ -2,7 +2,7 @@
 
 describe('CatalogController', function () {
     var scope, mockCatalogRepository, mockRegistrationService;
-    var catalog = {foo: 'bar'};
+    var catalog = [{foo: 'bar'}];
 
     beforeEach(function () {
         module("hogwartsApp");
