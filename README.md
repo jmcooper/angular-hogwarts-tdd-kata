@@ -109,7 +109,7 @@ hogwartsApp
     }]);
 ```
 
-### Test 2
+### Test 2: Failing
 
 With your first test passing, are you done? **No we are not hooked up to the scope.**
 
@@ -117,7 +117,6 @@ With your first test passing, are you done? **No we are not hooked up to the sco
 // test/catalog/catalog-controller-specs.js
 
 ...
-
     describe('when the controller first loads', function () {
 
         ...
@@ -129,6 +128,7 @@ With your first test passing, are you done? **No we are not hooked up to the sco
         ...
 ```
 
+### Test 2: Passing
 
 ```js
 // catalog/js/catalog-controller.js
@@ -139,39 +139,30 @@ With your first test passing, are you done? **No we are not hooked up to the sco
     }]);
 ```
 
-        //$scope.catalog = 
-        $scope.register = function(courseId) {
-            $scope.response = registrationService.register(courseId);
-        };
+Are we finished with the story? **Before calling a story done it must be tested and deployed.**
+
+But you are doing a Kata. **Ok, I won't deploy it and I won't write an automated test for it. But I must inspect the web page and make sure we can see the course catalog.
 
 
-        it('should put the catalog on the scope', function() {
-            expect(scope.catalog).toEqual(catalog)
-        });
+Story: Register for Courses from Course Catalog
+-----------------------------------------------
 
+### UI for Registration
 
+You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, sure how about a link called register on the catalog page.**
+
+That works for me. **Here is the updated catalog.html**
+
+```html
+<!-- catalog/catalog.html -->
+
+...
+
+                <tr ng-repeat="course in catalog">
+                    ...
                     <td><a href="javascript:void(0);" ng-click="register(course.id)">Register</a></td>
+                </tr>
+```
 
-
-
-    var scope, mockCatalogRepository, mockRegistrationService;
-    var catalog = [{foo: 'bar'}];
-
-    beforeEach(function () {
-        module("hogwartsApp");
-
-        inject(function ($rootScope, $controller, CatalogRepository, RegistrationService) {
-            scope = $rootScope.$new();
-
-            mockCatalogRepository = sinon.stub(CatalogRepository);
-            mockCatalogRepository.getCatalog.returns(catalog);
-
-            mockRegistrationService = sinon.stub(RegistrationService);
-
-            $controller("CatalogController", { $scope: scope, CatalogRepository: mockCatalogRepository  });
-        });
-    });
-
-, RegistrationService
 
 # vim: set ff=unix:
