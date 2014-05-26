@@ -10,10 +10,16 @@
             <img src="wizard/img/sorting-hat.jpg" style="cursor: pointer;" ng-click="sort()">
         </div>
         <div class="well pull-left"  style="margin-left:50px; padding: 0 100px">
-            <img style="width:180px; margin-right:20px;" src="wizard/img/gryffindor.jpg"/>
-            <img style="width:150px; margin-right:20px;" src="wizard/img/slytherin.jpg"/>
-            <img style="width:170px; margin-right:20px;" src="wizard/img/ravenclaw.jpg"/>
-            <img style="width:150px; margin-right:20px;" src="wizard/img/hufflepuff.jpg"/>
+            <img style="width:180px; margin-right:20px;" ng-class="getClassForHouse('Gryffindor')" src="wizard/img/gryffindor.jpg"/>
+            <img style="width:150px; margin-right:20px;" ng-class="getClassForHouse('Slytherin');" src="wizard/img/slytherin.jpg"/>
+            <img style="width:170px; margin-right:20px;" ng-class="getClassForHouse('Ravenclaw');" src="wizard/img/ravenclaw.jpg"/>
+            <img style="width:150px; margin-right:20px;" ng-class="getClassForHouse('Hufflepuff');" src="wizard/img/hufflepuff.jpg"/>
         </div>
     </div>
 </div>
+
+<style>
+.selectedHouse{
+	border: 4px solid brown;	
+}
+</style>
