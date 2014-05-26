@@ -40,7 +40,7 @@ I see you are planning on having a ``catalog`` on the ``CatalogController`` scop
 
 How will you load it? **I will load it when the Controller loads.**
 
-### First Test: Erroring
+### Test 1: Erroring
 
 Can you write a test for this? **Yes!**
 
@@ -64,7 +64,7 @@ Will this pass? **No, it doesn't even fail it errors. It need some setup before 
 
 What do you see? **Error cannot read property 'getCatalog' of undefined. It means my mockCatalogRepository is not setup.**
 
-### First Test: Failing
+### Test 1: Failing
 
 ```js
 // test/catalog/catalog-controller-specs.js
@@ -73,6 +73,7 @@ What do you see? **Error cannot read property 'getCatalog' of undefined. It mean
 describe('CatalogController', function () {
 
     var mockCatalogRepository;
+    var catalog = ["catalog"];
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -81,7 +82,7 @@ describe('CatalogController', function () {
             scope = $rootScope.$new();
 
             mockCatalogRepository = sinon.stub(CatalogRepository);
-            mockCatalogRepository.getCatalog.returns(["catalog"]);
+            mockCatalogRepository.getCatalog.returns(catalog);
 
             $controller("CatalogController", { $scope: scope, CatalogRepository: mockCatalogRepository  });
         });
@@ -91,6 +92,8 @@ describe('CatalogController', function () {
 Does it pass now? **No, but we are making progress. We are seeing a failing test. Yeah!**
 
 Can you explain the setup? **We are creating a mock repository and a temporary scope. We are then initializing the CatalogControler with thoses mocks.**
+
+### Test 1: Passing
 
 How do you make it pass? **The test says we have to call getCatalog on the repository when CatalogController in initialized.**
 
@@ -104,8 +107,21 @@ hogwartsApp
     .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
         catalogRepository.getCatalog();
     }]);
-
 ```
+
+### Test 2
+
+With your first test passing, are you done? **No we are not hooked up to the scope.**
+
+```js
+// test/catalog/catalog-controller-specs.js
+
+
+        it('should put the catalog on the scope', function() {
+            expect(scope.catalog).toEqual(catalog)
+        });
+```
+
         //$scope.catalog = 
         $scope.register = function(courseId) {
             $scope.response = registrationService.register(courseId);
