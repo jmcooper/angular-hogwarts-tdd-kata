@@ -19,13 +19,14 @@ describe('HouseAssignmentService', function () {
 		var houseOptions = ['one', 'two', 'three', 'four'];	
 		var houseNumber = 1;
 		var selectedHouseOption = houseOptions[houseNumber];
+		var response;
 		
         beforeEach(function() {            
             mockWizardRepository.get.returns(wizard);
 			mockHouseRepository.get.returns(houseOptions);
 			mockRandomNumberService.getInRange.returns(houseNumber);
 			
-			houseAssignmentService.assignWizard();
+			response = houseAssignmentService.assignWizard();
         });
         it('should get the wizard from the repository', function () {
             expect(mockWizardRepository.get.called).toBeTruthy();
@@ -39,5 +40,8 @@ describe('HouseAssignmentService', function () {
 		it('should save the wizard', function(){
 			expect(mockWizardRepository.save.calledWith({house: selectedHouseOption})).toBeTruthy();
 		});
+		 it('should return the name of the house', function () {
+            expect(response).toEqual(selectedHouseOption);
+        });
     });    
 });
