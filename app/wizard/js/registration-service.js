@@ -1,20 +1,25 @@
 'use strict';
 
-hogwartsApp.factory('RegistrationService', ['CatalogRepository', function(catalogRepository) {
+hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardRepository', function(catalogRepository, wizardRepository) {
     return {
         register: function(courseId) {
-            if (!doesCourseExist(courseId))
+            var course = getCourse(courseId);
+            if (!course)
                 return {success: false, message: "Course does not exist"};
+
+            var wizard = wizardRepository.get();
+            wizard.classes.push(course);
+            wizardRepository.save(wizard);
+
             return {success: true, message: ''};
         }
     };
 
-    function doesCourseExist(courseId) {
+    function getCourse(courseId) {
         var catalog = catalogRepository.getCatalog();
         for (var i = 0; i<catalog.length; i++) {
-            if (catalog[i].id === courseId) return true;
+            if (catalog[i].id === courseId) return catalog[i];
         }
-        return false;
     }
 }]);
 
