@@ -30,13 +30,19 @@ describe('CatalogController', function () {
 
     describe('when registering for a class', function() {
         var courseId = 'DDA302';
+        var response = {success: true, message: ''};
 
         beforeEach(function() {
+            mockRegistrationService.register.returns(response);
             scope.register(courseId);
         });
 
         it('should add the class to the wizard\'s schedule', function() {
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
+        it('should add the registration response to the scope', function() {
+            expect(scope.response).toEqual(response);
+        });
     });
+
 });
