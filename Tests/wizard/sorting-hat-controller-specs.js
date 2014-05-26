@@ -26,4 +26,22 @@ describe('SortingHatController', function () {
 			expect(scope.assignedHouse).toEqual('houseOne');
 		});
 	});
+	
+	describe('when getting the class for a house', function(){
+		beforeEach(function(){
+			scope.assignedHouse = 'houseOne';	
+		});
+		describe('when the house is the assigned house', function(){						
+			it('should return selectedHouse', function(){				
+				var result = scope.getClassForHouse('houseOne');
+				expect(result).toEqual('selectedHouse');
+			});
+		});
+		describe('when the house is NOT the assigned house', function(){					
+			it('should return selectedHouse', function(){				
+				var result = scope.getClassForHouse('houseTwo');
+				expect(result).toEqual('');
+			});
+		});		
+	});
 });
