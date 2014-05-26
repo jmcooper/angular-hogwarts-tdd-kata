@@ -16,6 +16,7 @@ describe('SortingHatController', function () {
 	
 	describe('when using the sorting hat', function(){
 		it('should sort the wizard', function(){
+			scope.sort();
 			expect(mockHouseAssignmentService.assignWizard.called).toBeTruthy();
 		});
 	});
