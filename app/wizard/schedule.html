@@ -13,7 +13,12 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- INSERT CODE HERE -->
+                <tr ng-repeat="class in wizard.classes">
+                    <td>{{class.name}}</td>
+                    <td>{{class.startTime | date: 'h:mm a'}}</td>
+                    <td>{{class.professor}}</td>
+                    <td>{{class.credits}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
