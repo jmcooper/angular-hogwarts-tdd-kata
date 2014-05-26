@@ -1,6 +1,6 @@
 'use strict';
 
 hogwartsApp
-    .controller("ScheduleController", ['$scope', function ($scope) {
-
+    .controller("ScheduleController", ['$scope', 'WizardRepository', function ($scope, wizardRepository) {
+        $scope.wizard = wizardRepository.get();
     }]);
