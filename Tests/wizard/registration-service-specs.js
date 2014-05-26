@@ -1,14 +1,15 @@
 "use strict";
 
 describe('RegistrationService', function () {
-    var registrationService, mockCatalogRepository;
+    var registrationService, mockCatalogRepository, mockWizardRepository;
 
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function (RegistrationService, CatalogRepository) {
+        inject(function (RegistrationService, CatalogRepository, WizardRepository) {
             registrationService = RegistrationService;
             mockCatalogRepository = sinon.stub(CatalogRepository);
+            mockWizardRepository = sinon.stub(WizardRepository);
         });
     });
 
@@ -30,18 +31,22 @@ describe('RegistrationService', function () {
 
     describe('when successfully registering for a course', function () {
         var response;
+        var course = {id: 'foo'};
         beforeEach(function() {
-            var courseName = 'foo';
-            var courseCatalog = [{id: courseName}];
+            var courseCatalog = [course];
             mockCatalogRepository.getCatalog.returns(courseCatalog);
+            mockWizardRepository.get.returns({classes: []});
 
-            response = registrationService.register(courseName);
+            response = registrationService.register(course.id);
         });
         it('should return a success response', function () {
             expect(response.success).toBeTruthy();
         });
         it('should an empty message', function() {
             expect(response.message).toEqual('');
+        });
+        it ('should register the wizard for the class', function() {
+            expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
         });
     });
 });
