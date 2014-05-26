@@ -116,10 +116,27 @@ With your first test passing, are you done? **No we are not hooked up to the sco
 ```js
 // test/catalog/catalog-controller-specs.js
 
+...
+
+    describe('when the controller first loads', function () {
+
+        ...
 
         it('should put the catalog on the scope', function() {
             expect(scope.catalog).toEqual(catalog)
         });
+
+        ...
+```
+
+
+```js
+// catalog/js/catalog-controller.js
+
+...
+    .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
+        $scope.catalog = catalogRepository.getCatalog();
+    }]);
 ```
 
         //$scope.catalog = 
