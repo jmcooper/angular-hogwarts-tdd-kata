@@ -27,4 +27,21 @@ describe('RegistrationService', function () {
             expect(response.message).toEqual('Course does not exist');
         });
     });
+
+    describe('when successfully registering for a course', function () {
+        var response;
+        beforeEach(function() {
+            var courseName = 'foo';
+            var courseCatalog = [{id: courseName}];
+            mockCatalogRepository.getCatalog.returns(courseCatalog);
+
+            response = registrationService.register(courseName);
+        });
+        it('should return a success response', function () {
+            expect(response.success).toBeTruthy();
+        });
+        it('should an empty message', function() {
+            expect(response.message).toEqual('');
+        });
+    });
 });
