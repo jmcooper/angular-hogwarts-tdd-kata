@@ -18,6 +18,7 @@ describe('HouseAssignmentService', function () {
 		var wizard = {house:""};
 		var houseOptions = ['one', 'two', 'three', 'four'];	
 		var houseNumber = 1;
+		var selectedHouseOption = houseOptions[houseNumber];
 		
         beforeEach(function() {            
             mockWizardRepository.get.returns(wizard);
@@ -35,5 +36,8 @@ describe('HouseAssignmentService', function () {
 		it('should get a random number for house options', function() {
             expect(mockRandomNumberService.getInRange.calledWith(0, houseOptions.length - 1)).toBeTruthy();
         });			
+		it('should save the wizard', function(){
+			expect(mockWizardRepository.save.calledWith({house: selectedHouseOption})).toBeTruthy();
+		});
     });    
 });
