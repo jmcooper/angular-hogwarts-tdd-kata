@@ -5,6 +5,6 @@ hogwartsApp
         $scope.catalog = catalogRepository.getCatalog();
 
         $scope.register = function(courseId) {
-
+            registrationService.register(courseId);
         };
     }]);
