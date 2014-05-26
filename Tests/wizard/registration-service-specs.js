@@ -64,7 +64,7 @@ describe('RegistrationService', function () {
         it('should return a failure response', function () {
             expect(response.success).toBeFalsy();
         });
-        it('should an empty message', function() {
+        it('should an failure message indicating the wizard is already registered for the course', function() {
             expect(response.message).toEqual('You are already registered for that course');
         });
         it ('should NOT register the wizard for the class', function() {
