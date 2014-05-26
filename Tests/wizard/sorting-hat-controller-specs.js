@@ -31,5 +31,8 @@ describe('SortingHatController', function () {
 		it('should get the house options from the repository', function() {
             expect(mockHouseRepository.get.called).toBeTruthy();
         });
+		it('should put houses on the scope', function() {
+            expect(scope.houseOptions).toEqual(houseOptions);
+        });
     });
 });
