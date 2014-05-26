@@ -4,13 +4,15 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
     return {
         register: function(courseId) {
             var course = getCourse(courseId);
+            var wizard = wizardRepository.get();
+
             if (!course)
                 return {success: false, message: "Course does not exist"};
 
-            if (isWizardAlreadyRegisteredForCourse(courseId))
+            if (isWizardAlreadyRegisteredForCourse(wizard, courseId))
                 return {success: false, message: 'You are already registered for that course'};
 
-            registerWizardForCourse(course);
+            registerWizardForCourse(wizard, course);
 
             return {success: true, message: ''};
         }
@@ -23,14 +25,12 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
         }
     }
 
-    function registerWizardForCourse(course) {
-        var wizard = wizardRepository.get();
+    function registerWizardForCourse(wizard, course) {
         wizard.classes.push(course);
         wizardRepository.save(wizard);
     }
 
-    function isWizardAlreadyRegisteredForCourse(courseId) {
-        var wizard = wizardRepository.get();
+    function isWizardAlreadyRegisteredForCourse(wizard, courseId) {
         for (var i = 0; i < wizard.classes.length; i++) {
             if (wizard.classes[i].id === courseId) return true;
         }
