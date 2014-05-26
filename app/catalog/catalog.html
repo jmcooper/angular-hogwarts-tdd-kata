@@ -20,7 +20,7 @@
                     <td>{{course.startTime | date: 'h:mm a'}}</td>
                     <td>{{course.professor}}</td>
                     <td>{{course.credits}}</td>
-                    <td><a>Register</a></td>
+                    <td><a href="javascript:void(0);" ng-click="register(course.id)">Register</a></td>
                 </tr>
             </tbody>
         </table>
