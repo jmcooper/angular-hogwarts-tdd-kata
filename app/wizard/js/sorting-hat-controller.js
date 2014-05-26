@@ -1,6 +1,6 @@
 'use strict';
 
 hogwartsApp
-    .controller("SortingHatController", ['$scope', 'WizardRepository', function ($scope, wizardRepository) {
+    .controller("SortingHatController", ['$scope', 'WizardRepository', 'HouseRepository', function ($scope, wizardRepository, houseRepository) {
 		$scope.wizard = wizardRepository.get();
 	}]);

@@ -1,19 +1,23 @@
 "use strict";
 
 describe('SortingHatController', function () {
-    var scope, mockWizardRepository;
+    var scope, mockWizardRepository, mockHouseRepository;
     var wizard = {classes: [{id: 'foo'}]};
+	var houseOptions = ['one', 'two', 'three', 'four'];
 
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function ($rootScope, $controller, WizardRepository) {
+        inject(function ($rootScope, $controller, WizardRepository, HouseRepository) {
             scope = $rootScope.$new();
 
             mockWizardRepository = sinon.stub(WizardRepository);
             mockWizardRepository.get.returns(wizard);
+			
+			mockHouseRepository = sinon.stub(HouseRepository);
+			mockHouseRepository.get.returns(houseOptions);
 
-            $controller("SortingHatController", { $scope: scope, WizardRepository: mockWizardRepository });
+            $controller("SortingHatController", { $scope: scope, WizardRepository: mockWizardRepository, HouseRepository: mockHouseRepository });
         });
     });
 
