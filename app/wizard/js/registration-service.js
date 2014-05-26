@@ -7,9 +7,7 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
             if (!course)
                 return {success: false, message: "Course does not exist"};
 
-            var wizard = wizardRepository.get();
-            wizard.classes.push(course);
-            wizardRepository.save(wizard);
+            registerWizardForCourse(course);
 
             return {success: true, message: ''};
         }
@@ -20,6 +18,12 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
         for (var i = 0; i<catalog.length; i++) {
             if (catalog[i].id === courseId) return catalog[i];
         }
+    }
+
+    function registerWizardForCourse(course) {
+        var wizard = wizardRepository.get();
+        wizard.classes.push(course);
+        wizardRepository.save(wizard);
     }
 }]);
 
