@@ -49,4 +49,26 @@ describe('RegistrationService', function () {
             expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
         });
     });
+
+    describe('when registering a wizard for a course that the wizard is already registered for', function() {
+        var response;
+        var course = {id: 'foo'};
+
+        beforeEach(function() {
+            var courseCatalog = [course];
+            mockCatalogRepository.getCatalog.returns(courseCatalog);
+            mockWizardRepository.get.returns({classes: [course]});
+
+            response = registrationService.register(course.id);
+        });
+        it('should return a failure response', function () {
+            expect(response.success).toBeFalsy();
+        });
+        it('should an empty message', function() {
+            expect(response.message).toEqual('You are already registered for that course');
+        });
+        it ('should NOT register the wizard for the class', function() {
+            expect(mockWizardRepository.save.called).toBeFalsy();
+        });
+    });
 });
