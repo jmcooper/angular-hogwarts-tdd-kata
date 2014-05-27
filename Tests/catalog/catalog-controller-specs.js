@@ -2,8 +2,10 @@
 "use strict";
 
 describe('CatalogController', function () {
-    var scope, mockCatalogRepository, mockRegistrationService;
-    var catalog = [{foo: 'bar'}];
+    var scope, 
+        mockCatalogRepository, 
+        mockRegistrationService,
+        catalog = [{foo: 'bar'}];
 
     beforeEach(function () {
         module("hogwartsApp");
