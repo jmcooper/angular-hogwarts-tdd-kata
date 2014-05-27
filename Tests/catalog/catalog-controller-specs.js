@@ -43,6 +43,7 @@ describe('CatalogController', function () {
         it('adds the class to the wizard\'s schedule', function() {
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
+
         it('adds the registration response to the scope', function() {
             expect(scope.response).toEqual(response);
         });

@@ -26,6 +26,8 @@ How will you start? **First I will create the html to display the catalog inside
 ```html
 <!-- catalog/catalog.html -->
 
+...
+
                 <tr ng-repeat="course in catalog">
                     <td>{{course.name}}</td>
                     <td>{{course.startTime | date: 'h:mm a'}}</td>
@@ -236,17 +238,67 @@ The ``CatalogController`` will a new ``REgistrationService`` parameter and a fun
     }]);
 ```
 
+### Test 2
 
+Very good. Next we need to see the result of our registration attempt. **I will put the ``RegistrationService`` response on the scope**
+
+```js
+// test/catalog/catalog-controller-specs.js
+
+...
+
+    describe('when registering for a class', function() {
+
+        ...
+
+        it('adds the registration response to the scope', function() {
+            mockRegistrationService.register.returns(response);
+            scope.register(courseId);
+            expect(scope.response).toEqual(response);
+        });
+```
+
+### Test 2: Passing
+
+And to get it passing... **is as simple as adding ``$scope.register = ``**
+
+```js
+// catalog/js/catalog-controller.js
+
+...
+
+        $scope.register = function(courseId) {
+            $scope.response = registrationService.register(courseId);
+```
+
+### Test 2: Refactor
+I smell duplication. **Yes and I am willing to remove it with all my tests passing. I am adding a ``beforeEach`` and removing the duplication.
+
+
+```js
+// test/catalog/catalog-controller-specs.js
+
+...
+
+    describe('when registering for a class', function() {
+
+        ...
 
         beforeEach(function() {
             mockRegistrationService.register.returns(response);
             scope.register(courseId);
         });
 
+        it('adds the class to the wizard\'s schedule', function() {
+            expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
+        });
+
         it('adds the registration response to the scope', function() {
             expect(scope.response).toEqual(response);
         });
+    });
+```
 
 
-            $scope.response = registrationService.register(courseId);
-# vim: set ff=unix:
+
+<!--- vim: set ff=unix: -->
