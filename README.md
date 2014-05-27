@@ -6,9 +6,13 @@ Introduction
 
 Hogwarts has embraced Muggle Technology!
 
-Young Wizard, you have been hired to create Hogwarts online student registration. You have been assigned a professor to guide you on your journey.
+Professor Author Weasley has just invented the first steam powered computer that works at Hogwarts.
 
-Because discipline is required of a Wizard, you will be writing it test first.
+---
+
+Young Wizard, you will be creating Hogwarts online student registration. Professor Neville Longbottom will guide you.
+
+Because you are a highly discipline Wizard, you will be writing it test first.
 
 Setup
 -----
