@@ -6,9 +6,9 @@ Introduction
 
 Hogwarts has embraced Muggle Technology!
 
-You have been hired to create Hogwarts online student registration.
+Young Wizard, you have been hired to create Hogwarts online student registration. You have been assigned a professor to guide you on your journey.
 
-Because you have the discipline of a Wizard, you will be writing it test first.
+Because discipline is required of a Wizard, you will be writing it test first.
 
 Setup
 -----
@@ -18,7 +18,9 @@ Story: Show Course Catalog
 
 Acceptance: Students will be able to see a catalog of classes.
 
-How will you start? **First I will create the html to display the catalog inside the ``<tbody>`` tag.**
+---
+
+How will you start, my young wizard friend? **By creating the html to display the catalog inside the ``<tbody>`` tag.**
 
 
 ### UI For Course Catalog
@@ -36,13 +38,13 @@ How will you start? **First I will create the html to display the catalog inside
                 </tr>
 ```
 
-I see you are planning on having a ``catalog`` on the ``CatalogController`` scope. **Yes**
+I see you will have a ``catalog`` array on the ``CatalogController`` scope. **Yes**
 
-How will you load it? **I will load it when the Controller loads.**
+When will you load the catalog? **When the Controller is initialized.**
 
 ### Test 1: Erroring
 
-Can you write a test for this? **Yes!**
+Can you write it test first? **Yes! I am disiplined.**
 
 ```js
 // test/catalog/catalog-controller-specs.js
@@ -60,9 +62,11 @@ describe('CatalogController', function () {
 });
 ```
 
-Will this pass? **No, it doesn't even fail it errors. It need some setup before it can even fail. But I will load into my browser just to see the error. I will also open the developer tools to see any compiler errors.**
+Very nice, you wrote the description and the expectation first. Keeping the test simple will help your thinking.
 
-What do you see? **Error cannot read property 'getCatalog' of undefined. It means my mockCatalogRepository is not setup.**
+What happens if you run it? **It will generate errors. You can see them by running ``app/tests/HogwartsTests.hmtl`` with the dev tools open.
+
+See it says, Error cannot read property 'getCatalog' of undefined. It means my mockCatalogRepository is not setup.**
 
 ### Test 1: Failing
 
@@ -90,9 +94,11 @@ describe('CatalogController', function () {
     });
 ```
 
-Does it pass now? **No, but we are making progress. We are seeing a failing test. Yeah!**
+Does it pass now? **No, but we are making progress. We are seeing a failing test.**
 
-Can you explain the setup? **We are creating a mock repository and a temporary scope. We are then initializing the CatalogController with thoses mocks.**
+It is wise celebrate your failures, young wizard. **Yeah?!**
+
+What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then injuect thes mocks into the ``CatalogController``.**
 
 ### Test 1: Passing
 
@@ -149,6 +155,8 @@ Story: Register for Courses from Course Catalog
 -----------------------------------------------
 
 Acceptance: Students register in course catalog then view their courses in schedule.
+
+---
 
 ### UI for Registration
 
@@ -272,7 +280,7 @@ And to get it passing... **is as simple as adding ``$scope.register = ``**
 ```
 
 ### Test 2: Refactor
-I smell duplication. **Yes and I am willing to remove it with all my tests passing. I am adding a ``beforeEach`` and removing the duplication.
+I smell duplication. **Yes and I am willing to remove it with all my tests passing. I am adding a ``beforeEach`` and removing the duplication.**
 
 
 ```js
