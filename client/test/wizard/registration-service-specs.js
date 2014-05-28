@@ -29,26 +29,6 @@ describe('RegistrationService', function () {
         });
     });
 
-    describe('when successfully registering for a course', function () {
-        var response;
-        var course = {id: 'foo'};
-        beforeEach(function() {
-            var courseCatalog = [course];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
-            mockWizardRepository.get.returns({classes: []});
-
-            response = registrationService.register(course.id);
-        });
-        it('should return a success response', function () {
-            expect(response.success).toBeTruthy();
-        });
-        it('should return an empty message', function() {
-            expect(response.message).toEqual('');
-        });
-        it ('should register the wizard for the class', function() {
-            expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
-        });
-    });
 
     describe('when registering a wizard for a course that the wizard is already registered for', function() {
         var response;

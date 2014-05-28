@@ -312,5 +312,71 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
     });
 ```
 
+Are we finished with this story? **No. We are deligating to the ``RegistrationService`` which we haven't written yet.**
 
+### Test 3: RegistrationService.register: Happy Path
+
+```js
+// test/wizard/registration-service-spec.js
+
+describe('RegistrationService', function () {
+
+    describe('when registering for a course', function () {
+
+        it ('saves the course to the WizardRepository', function() {
+            registrationService.register(course.id);
+            expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
+        });
+
+    });
+```
+
+I see when registering you are saving it to the ``WizardRepository``. **Yes. I will add enought to make it fail.**
+
+### Test 3: Failing
+
+You need a ``mockWizardRepository`` and a ``course``. **I will initialize the ``mockWizardRepository`` for all the tests and set the expectations in a local ``beforeEach``.**
+
+```js
+// test/wizard/registration-service-spec.js
+
+describe('RegistrationService', function () {
+
+    var registrationService,
+        mockWizardRepository
+        ;
+
+    beforeEach(function () {
+        module("hogwartsApp");
+
+        inject(function (RegistrationService, WizardRepository) {
+            registrationService = RegistrationService;
+            mockWizardRepository = sinon.stub(WizardRepository);
+        });
+    });
+
+    describe('when registering for a course', function () {
+        var course = {id: 'foo'}
+        ;
+
+        beforeEach(function() {
+            mockWizardRepository.get.returns({classes: []});
+        });
+
+```
+
+
+        var response;
+
+            var courseCatalog = [course];
+            mockCatalogRepository.getCatalog.returns(courseCatalog);
+            response = registrationService.register(course.id);
+
+        it('should return a success response', function () {
+            expect(response.success).toBeTruthy();
+        });
+
+        it('should return an empty message', function() {
+            expect(response.message).toEqual('');
+        });
 

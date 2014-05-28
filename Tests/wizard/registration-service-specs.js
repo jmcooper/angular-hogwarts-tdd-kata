@@ -1,17 +1,8 @@
 "use strict";
 
 describe('RegistrationService', function () {
-    var registrationService, mockCatalogRepository, mockWizardRepository;
+    var mockCatalogRepository;
 
-    beforeEach(function () {
-        module("hogwartsApp");
-
-        inject(function (RegistrationService, CatalogRepository, WizardRepository) {
-            registrationService = RegistrationService;
-            mockCatalogRepository = sinon.stub(CatalogRepository);
-            mockWizardRepository = sinon.stub(WizardRepository);
-        });
-    });
 
     describe('when trying to register a non-existant course', function () {
         var response;
