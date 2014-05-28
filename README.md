@@ -230,7 +230,7 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the global level. You have mocked it inside a new ``describe`` block and written at test that says we are deligating the add class to the ``RegistrationService``. **Thank you.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are deligating the add class to the ``RegistrationService``. **Thank you.**
 
 ### Test 1: Passing
 
@@ -314,4 +314,3 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
 
 
 
-<!--- vim: set ff=unix: -->
