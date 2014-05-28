@@ -6,13 +6,13 @@ Introduction
 
 Hogwarts has embraced Muggle Technology!
 
-Professor Author Weasley has just invented the first steam powered computer that works at Hogwarts.
+Professor Author Weasley has just invented the first steam powered computer and it works at Hogwarts.
 
 ---
 
 Young Wizard, you will be creating Hogwarts online student registration. Professor Neville Longbottom will guide you.
 
-Because you are a highly discipline Wizard, you will be writing it test first.
+Because you are a highly discipline Wizard, you will be writing your code test first.
 
 Setup
 -----
@@ -34,6 +34,7 @@ How will you start, my young wizard friend? **By creating the html to display th
 
 ...
 
+            <tbody>
                 <tr ng-repeat="course in catalog">
                     <td>{{course.name}}</td>
                     <td>{{course.startTime | date: 'h:mm a'}}</td>
