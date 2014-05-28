@@ -6,6 +6,6 @@ hogwartsApp.factory('HouseRepository', function() {
     return {
         get: function() {
             return houses;
-        }       
+        }
     };
 });

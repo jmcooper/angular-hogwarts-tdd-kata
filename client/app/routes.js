@@ -19,5 +19,5 @@ hogwartsApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             url: "/schedule",
             templateUrl: "wizard/schedule.html",
             controller: 'ScheduleController'
-        })
+       })
 }]);
