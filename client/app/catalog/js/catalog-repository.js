@@ -88,7 +88,7 @@ var catalogData =
   { "class": "Xylomancy"},
   { "class": "Frog Choir"},
   { "class": "Hogwarts orchestra"},
-]
+];
 
 
    return {

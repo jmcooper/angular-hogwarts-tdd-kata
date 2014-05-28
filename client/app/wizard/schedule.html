@@ -1,0 +1,25 @@
+<div class="jumbotron">
+    <h1>Your Hogwarts schedule</h1>
+</div>
+<div>
+    <div class="panel panel-default" style="padding:0 20px;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Time</th>
+                    <th>Professor</th>
+                    <th>Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="class in wizard.classes">
+                    <td>{{class.name}}</td>
+                    <td>{{class.startTime | date: 'h:mm a'}}</td>
+                    <td>{{class.professor}}</td>
+                    <td>{{class.credits}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
