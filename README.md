@@ -335,7 +335,12 @@ I see when registering you are saving it to the ``WizardRepository``. **Yes. I w
 
 ### Test 3: Failing
 
-You need a ``mockWizardRepository`` and a ``course``. **I will initialize the ``mockWizardRepository`` for all the tests and set the expectations in a local ``beforeEach``.**
+Looking at your test, you obviously need a ``mockWizardRepository`` that has a save method. But how are you going to convert ``course.id into a ``course``?  **I am going to get all the course from the course respository and then iterate over them until I find the one I want.**
+
+That would have the code smell: **Inappropriate intimacy**. Can you think of another way?
+
+TODO I am right here. Stuck.
+
 
 ```js
 // test/wizard/registration-service-spec.js
@@ -363,8 +368,22 @@ describe('RegistrationService', function () {
             mockWizardRepository.get.returns({classes: []});
         });
 
+        ...
 ```
 
+### Test 3: Passing
+```js
+// wizard/js/registration-service.js
+
+...
+
+hogwartsApp
+.factory('RegistrationService', ['WizardRepository', function(wizardRepository) {
+    return {
+        register: function(courseId) {
+          wizard.classes.push(course);
+          wizardRepository.save(wizard);
+```
 
         var response;
 
