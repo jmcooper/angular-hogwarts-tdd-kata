@@ -1,0 +1,33 @@
+<!-- catalog/catalog.html -->
+
+<div class="jumbotron">
+    <h1>Hogwarts class catalog!</h1>
+    <p>Select your wizarding classes!</p>
+</div>
+<div>
+    <div class="panel panel-default" style="padding:0 20px;">
+        <div ng-show="response && response.success" class="alert alert-success">Successfully registered</div>
+        <div ng-show="response && !response.success" class="alert alert-danger">{{response.message}}</div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Time</th>
+                    <th>Professor</th>
+                    <th>Credits</th>
+                    <th>Register</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="course in catalog">
+                    <td>{{course.name}}</td>
+                    <td>{{course.startTime | date: 'h:mm a'}}</td>
+                    <td>{{course.professor}}</td>
+                    <td>{{course.credits}}</td>
+                    <td><a href="javascript:void(0);" ng-click="register(course.id)">Register</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
