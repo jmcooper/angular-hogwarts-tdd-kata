@@ -7,7 +7,7 @@ hogwartsApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
     $stateProvider
         .state('sorting', {
             url: "/sorting",
-            templateUrl: "wizard/sorting-hat.html",
+            templateUrl: "sorting/sorting-hat.html",
             controller: 'SortingHatController'
         })
         .state('catalog', {
