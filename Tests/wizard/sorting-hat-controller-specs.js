@@ -7,7 +7,7 @@ describe('SortingHatController', function () {
         module("hogwartsApp");
 
         inject(function ($rootScope, $controller, HouseAssignmentService) {
-            scope = $rootScope.$new();         
+            scope = $rootScope.$new();
 			mockHouseAssignmentService = sinon.stub(HouseAssignmentService);
 
             $controller("SortingHatController", { $scope: scope, HouseAssignmentService: mockHouseAssignmentService });
