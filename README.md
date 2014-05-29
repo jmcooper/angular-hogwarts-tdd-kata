@@ -49,7 +49,7 @@ When will you load the catalog? **When the Controller is initialized.**
 
 ### Test 1: Erroring
 
-Can you write it test first? **Yes! I am disiplined.**
+Can you write a test to show me what you mean? **Sure"
 
 ```js
 // test/catalog/catalog-controller-specs.js
@@ -58,7 +58,7 @@ describe('CatalogController', function () {
 
     describe('when the controller first loads', function () {
 
-        it('should retrieve the course catalog', function () {
+        it('the course catalog is retrieved', function () {
             expect(mockCatalogRepository.getCatalog.called).toBeTruthy();
         });
 
@@ -103,7 +103,7 @@ Does it pass now? **No, but we are making progress. We are seeing a failing test
 
 It is wise celebrate your failures, young wizard. **Yeah?!**
 
-What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then injuect thes mocks into the ``CatalogController``.**
+What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
 ### Test 1: Passing
 
@@ -156,8 +156,8 @@ Are we finished with the story? **Before calling a story done it must be tested 
 But you are doing a Kata. **Ok, I won't deploy it and I won't write an automated test for it. But I must inspect the web page and make sure we can see the course catalog.
 
 
-Story: Register for Courses from Course Catalog
------------------------------------------------
+Story: Register for Courses
+---------------------------
 
 Acceptance: Students register in course catalog then view their courses in schedule.
 
@@ -312,7 +312,7 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
     });
 ```
 
-Are we finished with this story? **No. We are deligating to the ``RegistrationService`` which we haven't written yet.**
+Are we finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet.**
 
 ### Test 3: RegistrationService.register: Happy Path
 
@@ -331,11 +331,11 @@ describe('RegistrationService', function () {
     });
 ```
 
-I see when registering you are saving it to the ``WizardRepository``. **Yes. I will add enought to make it fail.**
+I see when registering you are saving it to the ``WizardRepository``. **Yes. I will add enough to make it fail.**
 
 ### Test 3: Failing
 
-Looking at your test, you obviously need a ``mockWizardRepository`` that has a save method. But how are you going to convert ``course.id into a ``course``?  **I am going to get all the course from the course respository and then iterate over them until I find the one I want.**
+Looking at your test, you obviously need a ``mockWizardRepository`` that has a save method. But how are you going to convert ``course.id into a ``course``?  **I am going to get all the course from the course repository and then iterate over them until I find the one I want.**
 
 That would have the code smell: **Inappropriate intimacy**. Can you think of another way?
 
