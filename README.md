@@ -346,14 +346,15 @@ That would have the code smell: **Inappropriate intimacy**. Can you think of ano
 describe('RegistrationService', function () {
 
     var registrationService,
-        mockWizardRepository
-        ;
+        catalogRepository,
+        mockWizardRepository;
 
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function (RegistrationService, WizardRepository) {
+        inject(function (RegistrationService, CatalogRepository, WizardRepository) {
             registrationService = RegistrationService;
+            mockCatalogRepository = sinon.stub(CatalogRepository);
             mockWizardRepository = sinon.stub(WizardRepository);
         });
     });
@@ -363,6 +364,7 @@ describe('RegistrationService', function () {
         ;
 
         beforeEach(function() {
+            mockCatalogRepository.findCourseById.returns(course);
             mockWizardRepository.get.returns({classes: []});
         });
 
