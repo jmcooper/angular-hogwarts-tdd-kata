@@ -69,9 +69,9 @@ describe('CatalogController', function () {
 
 Very nice, you wrote the description and the expectation first. Keeping the test simple helps your thinking.
 
-What happens if you run it? **It will generate errors. You can see them by running ``app/tests/HogwartsTests.hmtl`` with the dev tools open.
+What happens if you run it? **It will generate errors. You can see them by running ``app/tests/HogwartsTests.hmtl`` with the dev tools open.**
 
-See it says, "Error cannot read property 'getCatalog' of undefined." It means my mockCatalogRepository is not setup.**
+What does the error, "Error cannot read property 'getCatalog' of undefined." mean? **It means my mockCatalogRepository is not setup.**
 
 ### Test 1: Failing
 
