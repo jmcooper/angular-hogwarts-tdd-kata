@@ -49,7 +49,7 @@ When will you load the catalog? **When the Controller is initialized.**
 
 ### Test 1: Erroring
 
-Can you write a test to show me what you mean? **Sure"
+Can you write a test to show me what you mean? **Sure**
 
 ```js
 // test/catalog/catalog-controller-specs.js
