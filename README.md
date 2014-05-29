@@ -101,7 +101,7 @@ describe('CatalogController', function () {
 
 Does it pass now? **No, but we are making progress. We are seeing a failing test.**
 
-It is wise celebrate your failures, young wizard. **Yeah?!**
+It is wise to celebrate your failures, young wizard. **Yeah?!**
 
 What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
@@ -335,11 +335,9 @@ I see when registering you are saving it to the ``WizardRepository``. **Yes. I w
 
 ### Test 3: Failing
 
-Looking at your test, you obviously need a ``mockWizardRepository`` that has a save method. But how are you going to convert ``course.id into a ``course``?  **I am going to get all the course from the course repository and then iterate over them until I find the one I want.**
+Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``CatalogRepository`` and then iterate over them until I find the one I want.**
 
-That would have the code smell: **Inappropriate intimacy**. Can you think of another way?
-
-TODO I am right here. Stuck.
+That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Ok, then lets assume the function ``getCourseById`` on ``CatalogRepository``.
 
 
 ```js
