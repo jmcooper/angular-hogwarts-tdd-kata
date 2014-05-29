@@ -7,21 +7,21 @@ describe('HouseAssignmentService', function () {
         module("hogwartsApp");
 
         inject(function (HouseAssignmentService, WizardRepository, HouseRepository, RandomNumberService) {
-            houseAssignmentService = HouseAssignmentService;            
-            mockWizardRepository = sinon.stub(WizardRepository); 
+            houseAssignmentService = HouseAssignmentService;
+            mockWizardRepository = sinon.stub(WizardRepository);
 			mockHouseRepository = sinon.stub(HouseRepository);	
 			mockRandomNumberService = sinon.stub(RandomNumberService);			
         });
     });
 
-    describe('when assigning a wizard to a house', function () { 
+    describe('when assigning a wizard to a house', function () {
 		var wizard = {house:""};
 		var houseOptions = ['one', 'two', 'three', 'four'];	
 		var houseNumber = 1;
 		var selectedHouseOption = houseOptions[houseNumber];
 		var response;
 		
-        beforeEach(function() {            
+        beforeEach(function() {
             mockWizardRepository.get.returns(wizard);
 			mockHouseRepository.get.returns(houseOptions);
 			mockRandomNumberService.getInRange.returns(houseNumber);
@@ -30,7 +30,7 @@ describe('HouseAssignmentService', function () {
         });
         it('should get the wizard from the repository', function () {
             expect(mockWizardRepository.get.called).toBeTruthy();
-        });     
+        });
 		it('should get the house options from the repository', function() {
             expect(mockHouseRepository.get.called).toBeTruthy();
         }); 	
@@ -43,5 +43,5 @@ describe('HouseAssignmentService', function () {
 		 it('should return the name of the house', function () {
             expect(response).toEqual(selectedHouseOption);
         });
-    });    
+    });
 });
