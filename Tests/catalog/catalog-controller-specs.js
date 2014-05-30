@@ -1,8 +1,11 @@
+// test/catalog/catalog-controller-specs.js
 "use strict";
 
 describe('CatalogController', function () {
-    var scope, mockCatalogRepository, mockRegistrationService;
-    var catalog = [{foo: 'bar'}];
+    var scope, 
+        mockCatalogRepository, 
+        mockRegistrationService,
+        catalog = [{foo: 'bar'}];
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -20,10 +23,10 @@ describe('CatalogController', function () {
     });
 
     describe('when the controller first loads', function () {
-        it('should retrieve the course catalog', function () {
+        it('retrieves the course catalog', function () {
             expect(mockCatalogRepository.getCatalog.called).toBeTruthy();
         });
-        it('should put the catalog on the scope', function() {
+        it('puts the catalog on the scope', function() {
             expect(scope.catalog).toEqual(catalog)
         });
     });
@@ -37,10 +40,11 @@ describe('CatalogController', function () {
             scope.register(courseId);
         });
 
-        it('should add the class to the wizard\'s schedule', function() {
+        it('adds the class to the wizard\'s schedule', function() {
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
-        it('should add the registration response to the scope', function() {
+
+        it('adds the registration response to the scope', function() {
             expect(scope.response).toEqual(response);
         });
     });

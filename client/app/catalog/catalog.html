@@ -1,8 +1,12 @@
 <div class="jumbotron">
-    <h1>Your Hogwarts schedule</h1>
+    <h1>Hogwarts class catalog!</h1>
+    <p>Select your wizarding classes!</p>
 </div>
 <div>
     <div class="panel panel-default" style="padding:0 20px;">
+        <div ng-show="response && response.success" class="alert alert-success">Successfully registered</div>
+        <div ng-show="response && !response.success" class="alert alert-danger">{{response.message}}</div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -13,12 +17,6 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="class in wizard.classes">
-                    <td>{{class.name}}</td>
-                    <td>{{class.startTime | date: 'h:mm a'}}</td>
-                    <td>{{class.professor}}</td>
-                    <td>{{class.credits}}</td>
-                </tr>
             </tbody>
         </table>
     </div>

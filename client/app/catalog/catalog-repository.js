@@ -1,4 +1,3 @@
-
 hogwartsApp.factory('CatalogRepository', function() {
 
 var catalogData =
@@ -114,4 +113,3 @@ var catalogData =
        }
    };
 });
-
