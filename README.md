@@ -337,7 +337,7 @@ I see when registering you are saving it to the ``WizardRepository``. **Yes. I w
 
 Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``CatalogRepository`` and then iterate over them until I find the one I want.**
 
-That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Ok, then lets assume the function ``getCourseById`` on ``CatalogRepository``.
+That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Thank you. I missed the method ``findById`` on the ``CatalogRepository``.
 
 
 ```js
