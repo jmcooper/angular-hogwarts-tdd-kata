@@ -6,12 +6,6 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
             var course = getCourse(courseId);
             var wizard = wizardRepository.get();
 
-            if (!course)
-                return {success: false, message: "Course does not exist"};
-
-            if (wizardIsAlreadyRegisteredForCourse(wizard, courseId))
-                return {success: false, message: 'You are already registered for that course'};
-
             if (wizardIsRegisteredForAConflictingCourse(wizard, course))
                 return {success: false, message: 'You are already registered for a course that starts at that time'};
 
@@ -29,22 +23,12 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
     }
 
     function registerWizardForCourse(wizard, course) {
-        wizard.classes.push(course);
+        wizard.classes[course.id] = course;
         wizardRepository.save(wizard);
     }
 
-    function wizardIsAlreadyRegisteredForCourse(wizard, courseId) {
-        for (var i = 0; i < wizard.classes.length; i++) {
-            if (wizard.classes[i].id === courseId) return true;
-        }
-        return false;
-    }
-
     function wizardIsRegisteredForAConflictingCourse(wizard, course) {
-        for (var i = 0; i < wizard.classes.length; i++) {
-            if (wizard.classes[i].startTime.getTime() === course.startTime.getTime()) return true;
-        }
-        return false;
+        return _.some(wizard.classes, function(course) { return course.id === course.id});
     }
 }]);
 

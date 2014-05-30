@@ -13,22 +13,6 @@ describe('RegistrationService', function () {
         });
     });
 
-    describe('when trying to register a non-existant course', function () {
-        var response;
-        beforeEach(function() {
-            var courseCatalog = [{id: 'foo'}];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
-
-            response = registrationService.register('bar');
-        });
-        it('should return a failure response', function () {
-            expect(response.success).toBeFalsy();
-        });
-        it('should return a failure message indicating the course does not exist', function() {
-            expect(response.message).toEqual('Course does not exist');
-        });
-    });
-
     describe('when successfully registering for a course', function () {
         var response;
         var course = {id: 'foo'};
@@ -46,29 +30,9 @@ describe('RegistrationService', function () {
             expect(response.message).toEqual('');
         });
         it ('should register the wizard for the class', function() {
-            expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
-        });
-    });
-
-    describe('when registering a wizard for a course that the wizard is already registered for', function() {
-        var response;
-        var course = {id: 'foo'};
-
-        beforeEach(function() {
-            var courseCatalog = [course];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
-            mockWizardRepository.get.returns({classes: [course]});
-
-            response = registrationService.register(course.id);
-        });
-        it('should return a failure response', function () {
-            expect(response.success).toBeFalsy();
-        });
-        it('should an failure message indicating the wizard is already registered for the course', function() {
-            expect(response.message).toEqual('You are already registered for that course');
-        });
-        it ('should NOT register the wizard for the class', function() {
-            expect(mockWizardRepository.save.called).toBeFalsy();
+            var expectedClassList = [];
+            expectedClassList[course.id] = course;
+            expect(mockWizardRepository.save.calledWith({classes: expectedClassList})).toBeTruthy();
         });
     });
 
