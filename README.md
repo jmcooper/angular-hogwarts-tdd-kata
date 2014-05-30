@@ -75,9 +75,8 @@ What is the meaning of: "Error cannot read property 'getCatalog' of undefined."?
 
 ### Test 1: Failing
 
+``test/catalog/catalog-controller-specs.js``
 ```js
-// test/catalog/catalog-controller-specs.js
-
 ...
 describe('CatalogController', function () {
 
@@ -110,8 +109,8 @@ What are you doing inside ``beforeEach``? **We are creating a mock repository an
 How do you make it pass? **The test says we have to call getCatalog on the repository when CatalogController in initialized.**
 
 
+``catalog/catalog-controller.js``
 ```js
-// catalog/catalog-controller.js
 
 'use strict';
 
@@ -125,8 +124,8 @@ hogwartsApp
 
 With your first test passing, are you done? **No we are not hooked up to the scope.**
 
+``test/catalog/catalog-controller-specs.js``
 ```js
-// test/catalog/catalog-controller-specs.js
 
 ...
     describe('when the controller first loads', function () {
@@ -142,8 +141,8 @@ With your first test passing, are you done? **No we are not hooked up to the sco
 
 ### Test 2: Passing
 
+``catalog/catalog-controller.js``
 ```js
-// catalog/catalog-controller.js
 
 ...
     .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
@@ -169,8 +168,8 @@ You have shown us how to test getting from a repository and displaying the resul
 
 That works for me. **Here is the updated catalog.html**
 
+``catalog/catalog.html``
 ```html
-<!-- catalog/catalog.html -->
 
 ...
 
@@ -195,8 +194,8 @@ OK. Where do you want to start? **In the course catalog controller of course.**
 ### Test 1: Failing
 Don't you mean the course catalog controller spec. **Yes this is a TDD Kata after all.**
 
+``test/catalog/catalog-controller-specs.js``
 ```js
-// test/catalog/catalog-controller-specs.js
 
 ...
 
@@ -236,8 +235,8 @@ You have done amazing work. You added a ``mockRegistrationService
 
 The ``CatalogController`` will a new ``REgistrationService`` parameter and a function added to the scope. **Yes, like this:**
 
+``catalog/catalog-controller.js``
 ```js
-// catalog/catalog-controller.js
 
 ...
 
@@ -255,8 +254,8 @@ The ``CatalogController`` will a new ``REgistrationService`` parameter and a fun
 
 Very good. Next we need to see the result of our registration attempt. **I will put the ``RegistrationService`` response on the scope**
 
+``test/catalog/catalog-controller-specs.js``
 ```js
-// test/catalog/catalog-controller-specs.js
 
 ...
 
@@ -275,8 +274,8 @@ Very good. Next we need to see the result of our registration attempt. **I will 
 
 And to get it passing... **is as simple as adding ``$scope.register = ``**
 
+``catalog/catalog-controller.js``
 ```js
-// catalog/catalog-controller.js
 
 ...
 
@@ -288,8 +287,8 @@ And to get it passing... **is as simple as adding ``$scope.register = ``**
 I smell duplication. **Yes and I am willing to remove it with all my tests passing. I am adding a ``beforeEach`` and removing the duplication.**
 
 
+``test/catalog/catalog-controller-specs.js``
 ```js
-// test/catalog/catalog-controller-specs.js
 
 ...
 
@@ -316,8 +315,8 @@ Are we finished with this story? **No. We are delegating to the ``RegistrationSe
 
 ### Test 3: RegistrationService.register: Happy Path
 
+``test/wizard/registration-service-spec.js``
 ```js
-// test/wizard/registration-service-spec.js
 
 describe('RegistrationService', function () {
 
@@ -340,8 +339,8 @@ Looking at your test, you obviously need a ``mockWizardRepository`` that has a `
 That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Thank you. I missed the method ``findById`` on the ``CatalogRepository``.
 
 
+``test/wizard/registration-service-spec.js``
 ```js
-// test/wizard/registration-service-spec.js
 
 describe('RegistrationService', function () {
 
@@ -372,8 +371,9 @@ describe('RegistrationService', function () {
 ```
 
 ### Test 3: Passing
+
+``wizard/registration-service.js``
 ```js
-// wizard/registration-service.js
 
 ...
 
