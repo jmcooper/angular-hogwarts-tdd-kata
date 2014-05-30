@@ -29,8 +29,8 @@ How will you start, my young wizard friend? **By creating the html to display th
 
 ### UI For Course Catalog
 
+``catalog/catalog.html``
 ```html
-<!-- catalog/catalog.html -->
 
 ...
 
@@ -51,8 +51,8 @@ When will you load the catalog? **When the Controller is initialized.**
 
 Can you write a test to show me what you mean? **Sure**
 
+``test/catalog/catalog-controller-specs.js``
 ```js
-// test/catalog/catalog-controller-specs.js
 
 describe('CatalogController', function () {
 
@@ -111,7 +111,7 @@ How do you make it pass? **The test says we have to call getCatalog on the repos
 
 
 ```js
-// catalog/js/catalog-controller.js
+// catalog/catalog-controller.js
 
 'use strict';
 
@@ -143,7 +143,7 @@ With your first test passing, are you done? **No we are not hooked up to the sco
 ### Test 2: Passing
 
 ```js
-// catalog/js/catalog-controller.js
+// catalog/catalog-controller.js
 
 ...
     .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
@@ -237,7 +237,7 @@ You have done amazing work. You added a ``mockRegistrationService
 The ``CatalogController`` will a new ``REgistrationService`` parameter and a function added to the scope. **Yes, like this:**
 
 ```js
-// catalog/js/catalog-controller.js
+// catalog/catalog-controller.js
 
 ...
 
@@ -276,7 +276,7 @@ Very good. Next we need to see the result of our registration attempt. **I will 
 And to get it passing... **is as simple as adding ``$scope.register = ``**
 
 ```js
-// catalog/js/catalog-controller.js
+// catalog/catalog-controller.js
 
 ...
 
@@ -373,7 +373,7 @@ describe('RegistrationService', function () {
 
 ### Test 3: Passing
 ```js
-// wizard/js/registration-service.js
+// wizard/registration-service.js
 
 ...
 
