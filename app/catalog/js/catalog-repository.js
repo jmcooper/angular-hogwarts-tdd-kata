@@ -23,7 +23,7 @@ var catalogData =
   description: "Students learn how to magically defend themselves against Dark Creatures, Dark Arts and against the other Charms.",
   books: [
     "The Dark Forces: A Guide to Self-Protection", "Break with a Banshee", "Gadding with Ghouls", "Holidays with Hags", "Travels with Trolls", "Voyages with Vampires", "Wanderings with Werewolves", "Year with a Yeti", "Defensive Magical Theory", "Dark Arts Defence: Basics for Beginners", "Confronting the Faceless", "The Standard Book of Spells" ],
-    equipment: [ "Wand", books, "Parchment", "Quill" ]
+    equipment: [ "Wand", "Parchment", "Quill" ]
 },
 
 {
