@@ -233,7 +233,7 @@ You have done amazing work. You added a ``mockRegistrationService
 
 ### Test 1: Passing
 
-The ``CatalogController`` will a new ``REgistrationService`` parameter and a function added to the scope. **Yes, like this:**
+The ``CatalogController`` will need a new ``RegistrationService`` parameter and a function added to the scope. **Yes, like this:**
 
 ``catalog/catalog-controller.js``
 ```js
