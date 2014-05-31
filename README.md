@@ -532,6 +532,7 @@ Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch
 Story: Hat Sorts Randomly
 -------------------------
 Clicking multiple times will result in all houses being selected.
+
 ---
 
 We have a disaster, a crisis of epic proportion, Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata. **What is the problem?**
