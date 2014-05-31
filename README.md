@@ -516,6 +516,15 @@ hogwartsApp
 }]);
 ```js
 
+### Test 5: End to End
+
+How are we going to end to end test it? **I will click the register and notice a message saying it was successful then got to schedule page and notice the course being in the schedule.**
+
+Are we finished with this story? **It depends do we have a story to handle to eliminate the use of the Time-Turner to register for multiple classes?**
+
+Yes we have another story. **The software works as expected. The code is clean. Yes, I would say this story is done.**
+
+Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
 
 ---
             return {success: true, message: ''};
