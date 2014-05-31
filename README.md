@@ -79,7 +79,7 @@ describe('CatalogController', function () {
 
 Very nice, you wrote the description and the expectation first. Keeping the test simple helps your thinking.
 
-What happens if you run it? **It will generate errors. You can see them by running ``test/HogwartsTests.hmtl`` with the dev tools open.**
+What happens if you run it? **It will generate errors. You can see them by running ``test/HogwartsTests.hmtl`` with development tools open.**
 
 What is the meaning of: "Error cannot read property 'getCatalog' of undefined."? **It means my mockCatalogRepository is not setup.**
 
@@ -431,6 +431,7 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
     }
 
 ...
+```
 
 ### Test 4: Red
 
@@ -531,13 +532,13 @@ Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch
 
 ---
 
-TODO 
+TODO
  - Add message to registration response
  - Story about not allowing double time w/o time-turner
  - Make shorting hat random story (currently it is sorting everyone into Hufflepuff)
 
 
-Obvsersations on Kay's run through
+Observations on Kay's run through
 
 Putting code into wrong class
 
@@ -551,4 +552,4 @@ putting test code in wrong file
 
 Test 5 test vs code feels icky
 
-finished in 1 hour with all bugs fixing.
+Finished in 1 hour with all bugs fixing.
