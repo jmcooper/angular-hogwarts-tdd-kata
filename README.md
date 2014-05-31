@@ -471,9 +471,9 @@ Exactly!
 ```
 
 ### Test 5
-How will the student know if they are really registered? **They will look at their schedule on the schedule page.**
+How will the student know if they are really registered? **They will see their courses on the schedule page.**
 
-**I am writing both test because the code to pass them is simple.**
+**I am writing both tests because the code to pass them is one line.**
 
 ``test/wizard/schedule-controller-spec.js``
 ```js
@@ -509,7 +509,7 @@ describe('ScheduleController', function () {
 
 ### Test 5: Green
 
-**And to get passing is simple:**
+**And less painful than drinking a Polyjuice Potion:**
 
 ``app/wizard/schedule-controller.js``
 ```js
@@ -521,11 +521,11 @@ hogwartsApp
 
 ### Test 5: End to End
 
-How are we going to end to end test it? **I will click the register and notice a message saying it was successful then got to schedule page and notice the course being in the schedule.**
+How are we going to end to end test it? **I will click the register and notice a message saying it was successful. Followed by looking at the schedule page and noticing the list of courses..**
 
-Are we finished with this story? **It depends do we have a story to handle to eliminate the use of the Time-Turner to register for multiple courses?**
+Are we finished with this story? **It depends, do we have a story disallowing scheduling mutiple course at the same time (with the exception of students using a Time-Turner)?**
 
-Yes we have another story. **The software works as expected. The code is clean. Yes, I would say this story is done.**
+Yes that is another story. **The software works as expected. The code is clean. Yes, I would say this story is done.**
 
 Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
 
