@@ -385,23 +385,98 @@ describe('RegistrationService', function () {
         ...
 ```
 
+### Test 3: Pass
 
+``app/wizard/registration-service.js``
+```js
+hogwartsApp
+.factory('RegistrationService', ['CatalogRepository', 'WizardRepository', function(catalogRepository, wizardRepository) {
+    return {
+        register: function(courseId) {
+            var course = catalogRepository.getCourse(courseId);
+            var wizard = wizardRepository.get();
 
-### Test 3: Passing
+            wizard.classes[course.id] = course;
+            wizardRepository.save(wizard);
+        }
+    };
 
-``wizard/registration-service.js``
+    ...
+...
+
+### Test 3: Refactor
+
+What does the last two lines register? **It registers the wizard for the course.**
+
+Can you clairify it in code? **You mean extract the last 2 lines into a method.** Yes.
+
+``app/wizard/registration-service.js``
 ```js
 
 ...
 
-hogwartsApp
-.factory('RegistrationService', ['WizardRepository', function(wizardRepository) {
+        register: function(courseId) {
+            var course = catalogRepository.getCourse(courseId);
+            var wizard = wizardRepository.get();
+
+            registerWizardForCourse(wizard, course);
+        }
+    };
+
+    function registerWizardForCourse(wizard, course) {
+        wizard.classes[course.id] = course;
+        wizardRepository.save(wizard);
+    }
+
+...
+
+### Test 4: Red
+
+A service should always return a response. **You mean something like this?**
+
+``test/wizard/registration-service-spec.js``
+
+```js
+
+describe('RegistrationService', function () {
+
+
+    describe('when registering for a course', function () {
+
+        ...
+
+        it('should return a success response', function () {
+            var response = registrationService.register(course.id);
+            expect(response.success).toBeTruthy();
+        });
+
+    ...
+```js
+
+Exactly!
+
+### Test 4: Green
+``app/wizard/registration-service.js``
+```js
     return {
         register: function(courseId) {
-          wizard.classes.push(course);
-          wizardRepository.save(wizard);
+
+            ...
+
+            return {success: true};
+        }
+    ...
 ```
 
+            return {success: true, message: ''};
+
+    function wizardIsRegisteredForAConflictingCourse(wizard, course) {
+        return _.some(wizard.classes, function(course) { return course.id === course.id});
+    }
+
+
+
+---
         var response;
 
             var courseCatalog = [course];
