@@ -34,6 +34,7 @@ How will you start, my young wizard friend? **By creating the html to display th
 
 ...
 
+TODO Indentation correct?
             <tbody>
                 <tr ng-repeat="course in catalog">
                     <td>{{course.name}}</td>
@@ -75,7 +76,7 @@ What is the meaning of: "Error cannot read property 'getCatalog' of undefined."?
 
 ### Test 1: Make it Fail
 
-You are setup the 
+TODO fix this
 
 Refresh your test page to rerun the tests.
 
@@ -102,7 +103,7 @@ describe('CatalogController', function () {
     });
 ```
 
-Does it pass now? **No, but we are making progress. We are seeing a failing test.**
+Does it pass now? **No, but we are making progress. We are seeing a failing test (false is not truthy).**
 
 It is wise to celebrate your failures, young wizard. **Yeah?!**
 
@@ -228,8 +229,8 @@ describe('CatalogController', function () {
     ...
 
     describe('when registering for a class', function() {
-        var courseId = 'courseId';
-        var response = {success: true, message: ''};
+        var courseId = 'courseId',
+            response = {success: true, message: ''};
 
         it('adds the class to the wizard\'s schedule', function() {
             mockRegistrationService.register.returns(response);
@@ -334,11 +335,11 @@ Are you finished with this story? **No. We are delegating to the ``RegistrationS
 
 describe('RegistrationService', function () {
 
-    describe('when successfully registering for a course', function () {
+    describe('when registering for a course', function () {
 
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
+            expect(mockWizardRepository.save.calledWith({classes: {course}})).toBeTruthy();
         });
 
     });
@@ -354,14 +355,13 @@ That would have the code smell: **Inappropriate intimacy**. Can you think of ano
 
 
 ``test/wizard/registration-service-spec.js``
-
 ```js
 
 describe('RegistrationService', function () {
 
     var registrationService,
-        catalogRepository,
-        mockWizardRepository,
+        mockCatalogRepository,
+        mockWizardRepository;
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -374,11 +374,11 @@ describe('RegistrationService', function () {
     });
 
     describe('when registering for a course', function () {
-        var course = {id: 'Potions"}
+        var course = {id: 'Potions'}
         ;
 
         beforeEach(function() {
-            mockCatalogRepository.findCourseById.returns(course);
+            mockCatalogRepository.getCourse(course);
             mockWizardRepository.get.returns({classes: []});
         });
 
@@ -393,8 +393,8 @@ hogwartsApp
 .factory('RegistrationService', ['CatalogRepository', 'WizardRepository', function(catalogRepository, wizardRepository) {
     return {
         register: function(courseId) {
-            var course = catalogRepository.getCourse(courseId);
-            var wizard = wizardRepository.get();
+            var course = catalogRepository.getCourse(courseId),
+                wizard = wizardRepository.get();
 
             wizard.classes[course.id] = course;
             wizardRepository.save(wizard);
@@ -402,13 +402,13 @@ hogwartsApp
     };
 
     ...
-...
+```
 
 ### Test 3: Refactor
 
 What does the last two lines register? **It registers the wizard for the course.**
 
-Can you clairify it in code? **You mean extract the last 2 lines into a method.** Yes.
+Can you clarify it in code? **You mean extract the last 2 lines into a method.** Yes.
 
 ``app/wizard/registration-service.js``
 ```js
@@ -416,8 +416,8 @@ Can you clairify it in code? **You mean extract the last 2 lines into a method.*
 ...
 
         register: function(courseId) {
-            var course = catalogRepository.getCourse(courseId);
-            var wizard = wizardRepository.get();
+            var course = catalogRepository.getCourse(courseId),
+                wizard = wizardRepository.get();
 
             registerWizardForCourse(wizard, course);
         }
@@ -476,8 +476,8 @@ How will the student know if they are really registered? **They will look at the
 ```js
 
 describe('ScheduleController', function () {
-    var scope, mockWizardRepository;
-    var wizard = {classes: [{id: 'foo'}]};
+    var scope, mockWizardRepository,
+        wizard = {classes: [{id: 'foo'}]};
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -533,3 +533,29 @@ TODO
  - Add message to registration response
  - Story about not allowing double time w/o time-turner
  - Make shorting hat random story (currently it is sorting everyone into Hufflepuff)
+
+
+Obversations
+
+single page app (click on catalog)
+index.html was missed
+
+remove th register in catalog.html
+
+putting into wrong class
+
+can't mock something that doesn't exist
+
+fit everything
+
+Stuck at 3rd test
+
+putting test code in wrong file
+
+TODO copy RegistrationService to setup
+
+Still haven't finished map to hash
+
+Test 5 test vs code feels icky
+
+finished in 1 hour with all bugs fixing.
