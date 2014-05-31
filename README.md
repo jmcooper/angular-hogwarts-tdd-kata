@@ -435,7 +435,6 @@ Can you clairify it in code? **You mean extract the last 2 lines into a method.*
 A service should always return a response. **You mean something like this?**
 
 ``test/wizard/registration-service-spec.js``
-
 ```js
 
 describe('RegistrationService', function () {
@@ -468,6 +467,57 @@ Exactly!
     ...
 ```
 
+### Test 5
+How will the student know if they are really registered? **They will look at their schedule on the schedule page.**
+
+**I am writing both test because the code to pass them is simple.**
+
+``test/wizard/schedule-controller-spec.js``
+```js
+
+describe('ScheduleController', function () {
+    var scope, mockWizardRepository;
+    var wizard = {classes: [{id: 'foo'}]};
+
+    beforeEach(function () {
+        module("hogwartsApp");
+
+        inject(function ($rootScope, $controller, WizardRepository) {
+            scope = $rootScope.$new();
+
+            mockWizardRepository = sinon.stub(WizardRepository);
+            mockWizardRepository.get.returns(wizard);
+
+            $controller("ScheduleController", { $scope: scope, WizardRepository: mockWizardRepository });
+        });
+    });
+
+    describe('when the controller first loads', function () {
+        it('gets the wizard from the repository', function () {
+            expect(mockWizardRepository.get.called).toBeTruthy();
+        });
+
+        it('puts wizard on the scope', function() {
+            expect(scope.wizard).toEqual(wizard)
+        });
+    });
+});
+
+```
+
+### Test 5: Green
+
+**And to get passing is simple:**
+
+``app/wizard/schedule-controller.js``
+hogwartsApp
+.controller("ScheduleController", ['$scope', 'WizardRepository', function ($scope, wizardRepository) {
+    $scope.wizard = wizardRepository.get();
+}]);
+```js
+
+
+---
             return {success: true, message: ''};
 
     function wizardIsRegisteredForAConflictingCourse(wizard, course) {
