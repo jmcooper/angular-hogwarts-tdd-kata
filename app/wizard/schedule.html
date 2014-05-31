@@ -6,18 +6,18 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Class</th>
+                    <th>Course</th>
                     <th>Time</th>
                     <th>Professor</th>
                     <th>Credits</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="(id, class) in wizard.classes">
-                    <td>{{class.name}}</td>
-                    <td>{{class.startTime | date: 'h:mm a'}}</td>
-                    <td>{{class.professor}}</td>
-                    <td>{{class.credits}}</td>
+                <tr ng-repeat="(id, course) in wizard.courses">
+                    <td>{{courses.name}}</td>
+                    <td>{{courses.startTime | date: 'h:mm a'}}</td>
+                    <td>{{courses.professor}}</td>
+                    <td>{{courses.credits}}</td>
                 </tr>
             </tbody>
         </table>

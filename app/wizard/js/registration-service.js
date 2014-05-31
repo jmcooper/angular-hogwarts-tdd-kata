@@ -16,12 +16,12 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
     };
 
     function registerWizardForCourse(wizard, course) {
-        wizard.classes[course.id] = course;
+        wizard.courses[course.id] = course;
         wizardRepository.save(wizard);
     }
 
     function wizardIsRegisteredForAConflictingCourse(wizard, course) {
-        return _.some(wizard.classes, function(course) { return course.id === course.id});
+        return _.some(wizard.courses, function(course) { return course.id === course.id});
     }
 }]);
 

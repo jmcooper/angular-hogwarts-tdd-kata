@@ -46,7 +46,7 @@ var catalogDataDetails =
 {
   name: "History of Magic",
   professor: "Cuthbert Binns",
-  description: "The class is a study of magical history.",
+  description: "The course is a study of magical history.",
   books: [ "A History of Magic" ],
   equipment: [],
 },
