@@ -184,13 +184,6 @@ That works for now. **Here is the updated catalog.html**
 ```html
 
 ...
-
-            <thead>
-                <tr>
-                    ...
-                    <th>Register</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr ng-repeat="course in catalog">
                     ...
