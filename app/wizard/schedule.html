@@ -14,10 +14,10 @@
             </thead>
             <tbody>
                 <tr ng-repeat="(id, course) in wizard.courses">
-                    <td>{{courses.name}}</td>
-                    <td>{{courses.startTime | date: 'h:mm a'}}</td>
-                    <td>{{courses.professor}}</td>
-                    <td>{{courses.credits}}</td>
+                    <td>{{course.name}}</td>
+                    <td>{{course.startTime | date: 'h:mm a'}}</td>
+                    <td>{{course.professor}}</td>
+                    <td>{{course.credits}}</td>
                 </tr>
             </tbody>
         </table>
