@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="class in wizard.classes">
+                <tr ng-repeat="(id, class) in wizard.classes">
                     <td>{{class.name}}</td>
                     <td>{{class.startTime | date: 'h:mm a'}}</td>
                     <td>{{class.professor}}</td>
