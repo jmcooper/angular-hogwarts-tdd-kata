@@ -17,8 +17,7 @@ describe('RegistrationService', function () {
         var response;
         var course = {id: 'foo'};
         beforeEach(function() {
-            var courseCatalog = [course];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
+            mockCatalogRepository.getCourse.returns(course);
             mockWizardRepository.get.returns({classes: []});
 
             response = registrationService.register(course.id);
