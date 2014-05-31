@@ -529,6 +529,22 @@ Yes that is another story. **The software works as expected. The code is clean. 
 
 Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
 
+Story: Hat Sorts Randomly
+-------------------------
+Clicking multiple times will result in all houses being selected.
+---
+
+We have a disaster, a crisis of epic proportion, Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata. **What is the problem?**
+
+Everyone is being sorted into Hufflepuff! **Oh, I alway though I should have been in Gryffindor! What can we do?**
+
+We must change the Kata to sort randomly.  **I am on it. Here is the starting test:**
+
+### Test 1
+
+(Amy, you are up :-) )
+
+
 ---
 
 TODO
