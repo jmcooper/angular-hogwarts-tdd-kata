@@ -332,7 +332,7 @@ describe('RegistrationService', function () {
 
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            expect(mockWizardRepository.save.calledWith({courses: [course]})).toBeTruthy();
+            expect(mockWizardRepository.save.calledWith({courses: {course}})).toBeTruthy();
         });
 
     });
@@ -372,7 +372,7 @@ describe('RegistrationService', function () {
 
         beforeEach(function() {
             mockCatalogRepository.findCourseById.returns(course);
-            mockWizardRepository.get.returns({courses: []});
+            mockWizardRepository.get.returns({courses: {}});
         });
 
         ...
@@ -470,7 +470,7 @@ How will the student know if they are really registered? **They will look at the
 
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
-    var wizard = {courses: [{id: 'foo'}]};
+    var wizard = {courses: {{id: 'foo'}}};
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -528,12 +528,11 @@ TODO
  - Make shorting hat random story (currently it is sorting everyone into Hufflepuff)
 
 
-Obversations
+Obvsersations on Kay's run through
 
 single page app (click on catalog)
-index.html was missed
 
-remove th register in catalog.html
+index.html was missed
 
 putting into wrong class
 
@@ -544,8 +543,6 @@ fit everything
 Stuck at 3rd test
 
 putting test code in wrong file
-
-TODO copy RegistrationService to setup
 
 Still haven't finished map to hash
 
