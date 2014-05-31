@@ -17,6 +17,13 @@ Because you are a highly discipline Wizard, you will be writing your code test f
 Setup
 -----
 
+You will have two file loaded into Firefox:
+
+``file://.../app/index.html``
+``file://.../ test/HogwartsTests.hmtl``
+
+You will not edit either of these files.
+
 Story: Show Course Catalog
 --------------------------
 
@@ -24,7 +31,9 @@ Acceptance: Students will be able to see a catalog of courses.
 
 ---
 
-How will you start, my young wizard friend? **By creating the html to display the catalog inside the ``<tbody>`` tag.**
+How will you start, my young wizard friend? **By adding an ``ng-repeat`` over the course catalog inside ``app/catalog/catalog.html``.**
+
+How will you view it? **I will load ``app/index.html`` and click on the Catalog tab.``
 
 
 ### UI For Course Catalog
@@ -530,11 +539,7 @@ TODO
 
 Obvsersations on Kay's run through
 
-single page app (click on catalog)
-
-index.html was missed
-
-putting into wrong class
+Putting code into wrong class
 
 can't mock something that doesn't exist
 
@@ -543,8 +548,6 @@ fit everything
 Stuck at 3rd test
 
 putting test code in wrong file
-
-Still haven't finished map to hash
 
 Test 5 test vs code feels icky
 
