@@ -510,11 +510,12 @@ describe('ScheduleController', function () {
 **And to get passing is simple:**
 
 ``app/wizard/schedule-controller.js``
+```js
 hogwartsApp
 .controller("ScheduleController", ['$scope', 'WizardRepository', function ($scope, wizardRepository) {
     $scope.wizard = wizardRepository.get();
 }]);
-```js
+```
 
 ### Test 5: End to End
 
@@ -527,55 +528,8 @@ Yes we have another story. **The software works as expected. The code is clean. 
 Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
 
 ---
-            return {success: true, message: ''};
 
-    function wizardIsRegisteredForAConflictingCourse(wizard, course) {
-        return _.some(wizard.classes, function(course) { return course.id === course.id});
-    }
-
-
-
----
-        var response;
-
-            var courseCatalog = [course];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
-            response = registrationService.register(course.id);
-
-        it('should return a success response', function () {
-            expect(response.success).toBeTruthy();
-        });
-
-        it('should return an empty message', function() {
-            expect(response.message).toEqual('');
-        });
-
-
-
-
-
-    describe('when successfully registering for a course', function () {
-        var response;
-        var course = {id: 'foo'};
-        beforeEach(function() {
-            mockCatalogRepository.getCourse.returns(course);
-            mockWizardRepository.get.returns({classes: []});
-
-            response = registrationService.register(course.id);
-        });
-
-        it ('should register the wizard for the class', function() {
-            var expectedClassList = [];
-            expectedClassList[course.id] = course;
-            expect(mockWizardRepository.save.calledWith({classes: expectedClassList})).toBeTruthy();
-        });
-
-        it('should return a success response', function () {
-            expect(response.success).toBeTruthy();
-        });
-        it('should return an empty message', function() {
-            expect(response.message).toEqual('');
-        });
-    });
-
-
+TODO 
+ - Add message to registration response
+ - Story about not allowing double time w/o time-turner
+ - Make shorting hat random story (currently it is sorting everyone into Hufflepuff)
