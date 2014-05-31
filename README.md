@@ -334,7 +334,7 @@ Are you finished with this story? **No. We are delegating to the ``RegistrationS
 
 describe('RegistrationService', function () {
 
-    describe('when registering for a course', function () {
+    describe('when successfully registering for a course', function () {
 
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
@@ -344,23 +344,24 @@ describe('RegistrationService', function () {
     });
 ```
 
-I see when registering you are saving it to the ``WizardRepository``. **Yes. I will add enough to make it fail.**
+You have a test that clearly states your intent: registering leads to a new class in the ``WizardRepository``.
 
 ### Test 3: Failing
 
 Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``CatalogRepository`` and then iterate over them until I find the one I want.**
 
-That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Thank you. I missed the method ``findById`` on the ``CatalogRepository``.
+That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Oops, I just missed the method ``getCourse(courseId)`` on the ``CatalogRepository``. I will call that one instead.**
 
 
 ``test/wizard/registration-service-spec.js``
+
 ```js
 
 describe('RegistrationService', function () {
 
     var registrationService,
         catalogRepository,
-        mockWizardRepository;
+        mockWizardRepository,
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -373,7 +374,7 @@ describe('RegistrationService', function () {
     });
 
     describe('when registering for a course', function () {
-        var course = {id: 'foo'}
+        var course = {id: 'Potions"}
         ;
 
         beforeEach(function() {
@@ -383,6 +384,8 @@ describe('RegistrationService', function () {
 
         ...
 ```
+
+
 
 ### Test 3: Passing
 
@@ -412,4 +415,33 @@ hogwartsApp
         it('should return an empty message', function() {
             expect(response.message).toEqual('');
         });
+
+
+
+
+
+    describe('when successfully registering for a course', function () {
+        var response;
+        var course = {id: 'foo'};
+        beforeEach(function() {
+            mockCatalogRepository.getCourse.returns(course);
+            mockWizardRepository.get.returns({classes: []});
+
+            response = registrationService.register(course.id);
+        });
+
+        it ('should register the wizard for the class', function() {
+            var expectedClassList = [];
+            expectedClassList[course.id] = course;
+            expect(mockWizardRepository.save.calledWith({classes: expectedClassList})).toBeTruthy();
+        });
+
+        it('should return a success response', function () {
+            expect(response.success).toBeTruthy();
+        });
+        it('should return an empty message', function() {
+            expect(response.message).toEqual('');
+        });
+    });
+
 
