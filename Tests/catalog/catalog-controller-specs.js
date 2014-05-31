@@ -31,7 +31,7 @@ describe('CatalogController', function () {
         });
     });
 
-    describe('when registering for a class', function() {
+    describe('when registering for a course', function() {
         var courseId = 'DDA302';
         var response = {success: true, message: ''};
 
@@ -40,7 +40,7 @@ describe('CatalogController', function () {
             scope.register(courseId);
         });
 
-        it('adds the class to the wizard\'s schedule', function() {
+        it('adds the course to the wizard\'s schedule', function() {
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
 

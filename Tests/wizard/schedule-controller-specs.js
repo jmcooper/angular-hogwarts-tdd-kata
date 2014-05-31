@@ -2,7 +2,7 @@
 
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
-    var wizard = {classes: [{id: 'foo'}]};
+    var wizard = {courses: [{id: 'foo'}]};
 
     beforeEach(function () {
         module("hogwartsApp");

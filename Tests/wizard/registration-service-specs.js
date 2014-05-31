@@ -18,7 +18,7 @@ describe('RegistrationService', function () {
         var course = {id: 'foo'};
         beforeEach(function() {
             mockCatalogRepository.getCourse.returns(course);
-            mockWizardRepository.get.returns({classes: []});
+            mockWizardRepository.get.returns({courses: []});
 
             response = registrationService.register(course.id);
         });
@@ -28,10 +28,10 @@ describe('RegistrationService', function () {
         it('should return an empty message', function() {
             expect(response.message).toEqual('');
         });
-        it ('should register the wizard for the class', function() {
-            var expectedClassList = [];
-            expectedClassList[course.id] = course;
-            expect(mockWizardRepository.save.calledWith({classes: expectedClassList})).toBeTruthy();
+        it ('should register the wizard for the course', function() {
+            var expectedCourseList = [];
+            expectedCourseList[course.id] = course;
+            expect(mockWizardRepository.save.calledWith({courses: expectedCourseList})).toBeTruthy();
         });
     });
 
@@ -41,9 +41,11 @@ describe('RegistrationService', function () {
         var courseToRegisterFor = {id: 'bar', startTime: new Date(0,0,0,9)};
 
         beforeEach(function() {
-            var courseCatalog = [courseAlreadyRegisteredFor, courseToRegisterFor];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
-            mockWizardRepository.get.returns({classes: [courseAlreadyRegisteredFor]});
+            var currentlyRegisteredCourses = [];
+            currentlyRegisteredCourses[courseAlreadyRegisteredFor.id] = courseAlreadyRegisteredFor;
+
+            mockCatalogRepository.getCourse.returns(courseToRegisterFor);
+            mockWizardRepository.get.returns({courses: currentlyRegisteredCourses});
 
             response = registrationService.register(courseToRegisterFor.id);
         });
@@ -51,10 +53,10 @@ describe('RegistrationService', function () {
         it('should return a failure response', function () {
             expect(response.success).toBeFalsy();
         });
-        it('should an empty message', function() {
+        it('should return an error message', function() {
             expect(response.message).toEqual('You are already registered for a course that starts at that time');
         });
-        it ('should NOT register the wizard for the class', function() {
+        it ('should NOT register the wizard for the courses', function() {
             expect(mockWizardRepository.save.called).toBeFalsy();
         });
     });
