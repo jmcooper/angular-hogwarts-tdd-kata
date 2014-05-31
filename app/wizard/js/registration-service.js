@@ -3,7 +3,7 @@
 hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardRepository', function(catalogRepository, wizardRepository) {
     return {
         register: function(courseId) {
-            var course = getCourse(courseId);
+            var course = catalogRepository.getCourse(courseId);
             var wizard = wizardRepository.get();
 
             if (wizardIsRegisteredForAConflictingCourse(wizard, course))
@@ -14,13 +14,6 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
             return {success: true, message: ''};
         }
     };
-
-    function getCourse(courseId) {
-        var catalog = catalogRepository.getCatalog();
-        for (var i = 0; i<catalog.length; i++) {
-            if (catalog[i].id === courseId) return catalog[i];
-        }
-    }
 
     function registerWizardForCourse(wizard, course) {
         wizard.classes[course.id] = course;
