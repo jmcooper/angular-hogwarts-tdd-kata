@@ -20,7 +20,7 @@ Setup
 Story: Show Course Catalog
 --------------------------
 
-Acceptance: Students will be able to see a catalog of classes.
+Acceptance: Students will be able to see a catalog of courses.
 
 ---
 
@@ -227,11 +227,11 @@ describe('CatalogController', function () {
 
     ...
 
-    describe('when registering for a class', function() {
+    describe('when registering for a course', function() {
         var courseId = 'courseId';
         var response = {success: true, message: ''};
 
-        it('adds the class to the wizard\'s schedule', function() {
+        it('adds the course to the wizard\'s schedule', function() {
             mockRegistrationService.register.returns(response);
             scope.register(courseId);
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
@@ -241,7 +241,7 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add class to the ``RegistrationService``. **Thank you. I am running the tests again.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. I am running the tests again.**
 
 ### Test 1: Passing
 
@@ -271,7 +271,7 @@ Very good you remembered to run the tests again. Next we need to see the result 
 
 ...
 
-    describe('when registering for a class', function() {
+    describe('when registering for a course', function() {
 
         ...
 
@@ -304,7 +304,7 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
 
 ...
 
-    describe('when registering for a class', function() {
+    describe('when registering for a course', function() {
 
         ...
 
@@ -313,7 +313,7 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
             scope.register(courseId);
         });
 
-        it('adds the class to the wizard\'s schedule', function() {
+        it('adds the course to the wizard\'s schedule', function() {
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
 
@@ -338,13 +338,13 @@ describe('RegistrationService', function () {
 
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            expect(mockWizardRepository.save.calledWith({classes: [course]})).toBeTruthy();
+            expect(mockWizardRepository.save.calledWith({courses: [course]})).toBeTruthy();
         });
 
     });
 ```
 
-You have a test that clearly states your intent: registering leads to a new class in the ``WizardRepository``.
+You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``.
 
 ### Test 3: Failing
 
@@ -379,7 +379,7 @@ describe('RegistrationService', function () {
 
         beforeEach(function() {
             mockCatalogRepository.findCourseById.returns(course);
-            mockWizardRepository.get.returns({classes: []});
+            mockWizardRepository.get.returns({courses: []});
         });
 
         ...
@@ -396,7 +396,7 @@ hogwartsApp
             var course = catalogRepository.getCourse(courseId);
             var wizard = wizardRepository.get();
 
-            wizard.classes[course.id] = course;
+            wizard.courses[course.id] = course;
             wizardRepository.save(wizard);
         }
     };
@@ -424,7 +424,7 @@ Can you clairify it in code? **You mean extract the last 2 lines into a method.*
     };
 
     function registerWizardForCourse(wizard, course) {
-        wizard.classes[course.id] = course;
+        wizard.courses[course.id] = course;
         wizardRepository.save(wizard);
     }
 
@@ -477,7 +477,7 @@ How will the student know if they are really registered? **They will look at the
 
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
-    var wizard = {classes: [{id: 'foo'}]};
+    var wizard = {courses: [{id: 'foo'}]};
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -521,7 +521,7 @@ hogwartsApp
 
 How are we going to end to end test it? **I will click the register and notice a message saying it was successful then got to schedule page and notice the course being in the schedule.**
 
-Are we finished with this story? **It depends do we have a story to handle to eliminate the use of the Time-Turner to register for multiple classes?**
+Are we finished with this story? **It depends do we have a story to handle to eliminate the use of the Time-Turner to register for multiple courses?**
 
 Yes we have another story. **The software works as expected. The code is clean. Yes, I would say this story is done.**
 
