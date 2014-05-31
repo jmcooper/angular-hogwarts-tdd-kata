@@ -41,9 +41,11 @@ describe('RegistrationService', function () {
         var courseToRegisterFor = {id: 'bar', startTime: new Date(0,0,0,9)};
 
         beforeEach(function() {
-            var courseCatalog = [courseAlreadyRegisteredFor, courseToRegisterFor];
-            mockCatalogRepository.getCatalog.returns(courseCatalog);
-            mockWizardRepository.get.returns({courses: [courseAlreadyRegisteredFor]});
+            var currentlyRegisteredCourses = [];
+            currentlyRegisteredCourses[courseAlreadyRegisteredFor.id] = courseAlreadyRegisteredFor;
+
+            mockCatalogRepository.getCourse.returns(courseToRegisterFor);
+            mockWizardRepository.get.returns({courses: currentlyRegisteredCourses});
 
             response = registrationService.register(courseToRegisterFor.id);
         });
