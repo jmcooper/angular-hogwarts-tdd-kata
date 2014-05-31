@@ -453,7 +453,7 @@ describe('RegistrationService', function () {
         });
 
     ...
-```js
+```
 
 Exactly!
 
@@ -477,7 +477,6 @@ How will the student know if they are really registered? **They will look at the
 
 ``test/wizard/schedule-controller-spec.js``
 ```js
-
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
     var wizard = {courses: {{id: 'foo'}}};
