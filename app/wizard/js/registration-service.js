@@ -21,7 +21,8 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
     }
 
     function wizardIsRegisteredForAConflictingCourse(wizard, course) {
-        return _.some(wizard.courses, function(course) { return course.id === course.id});
+        var courses = _.values(wizard.courses);
+        return _.some(courses, function(existingCourse) { return course.startTime.getTime() === existingCourse.startTime.getTime()});
     }
 }]);
 
