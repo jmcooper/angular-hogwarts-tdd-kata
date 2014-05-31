@@ -29,7 +29,7 @@ How will you start, my young wizard friend? **By creating the html to display th
 
 ### UI For Course Catalog
 
-``catalog/catalog.html``
+``app/catalog/catalog.html``
 ```html
 
 ...
@@ -43,11 +43,11 @@ How will you start, my young wizard friend? **By creating the html to display th
                 </tr>
 ```
 
-I see you will have a ``catalog`` array on the ``CatalogController`` scope. **Yes**
+I see you will have a ``catalog`` array on the ``CatalogController`` scope. **Yes, you will.**
 
 When will you load the catalog? **When the Controller is initialized.**
 
-### Test 1: Erroring
+### Test 1: Make it Error
 
 Can you write a test to show me what you mean? **Sure**
 
@@ -69,11 +69,15 @@ describe('CatalogController', function () {
 
 Very nice, you wrote the description and the expectation first. Keeping the test simple helps your thinking.
 
-What happens if you run it? **It will generate errors. You can see them by running ``app/tests/HogwartsTests.hmtl`` with the dev tools open.**
+What happens if you run it? **It will generate errors. You can see them by running ``test/HogwartsTests.hmtl`` with the dev tools open.**
 
 What is the meaning of: "Error cannot read property 'getCatalog' of undefined."? **It means my mockCatalogRepository is not setup.**
 
-### Test 1: Failing
+### Test 1: Make it Fail
+
+You are setup the 
+
+Refresh your test page to rerun the tests.
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -104,12 +108,12 @@ It is wise to celebrate your failures, young wizard. **Yeah?!**
 
 What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
-### Test 1: Passing
+### Test 1: Make it Pass
 
 How do you make it pass? **The test says we have to call getCatalog on the repository when CatalogController in initialized.**
 
 
-``catalog/catalog-controller.js``
+``app/catalog/catalog-controller.js``
 ```js
 
 'use strict';
@@ -120,9 +124,13 @@ hogwartsApp
     }]);
 ```
 
+### Test 1: Refactor it
+
+Whenever your tests are passing, you might consider refactoring. **I don't see anything that needs refactoring.**
+
 ### Test 2: Failing
 
-With your first test passing, are you done? **No we are not hooked up to the scope.**
+You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog will not show on the web page. I will hooked up to the scope now.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -150,10 +158,13 @@ With your first test passing, are you done? **No we are not hooked up to the sco
     }]);
 ```
 
-Are we finished with the story? **Before calling a story done it must be tested and deployed.**
+Are we finished with the story? **Before calling a story done, it must be tested and deployed.**
 
-But you are doing a Kata. **Ok, I won't deploy it and I won't write an automated test for it. But I must inspect the web page and make sure we can see the course catalog.
+But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).
 
+You can see it by loading ``app/index.html`` into your browser. **I am seeing the page now.**
+
+Sweet, you have finished your story. Another point for Hufflepuff. **Thank you, I like the write the test, see it fail, write code to make it pass, and then refactor rhythm. I also like seeing what the end user sees.
 
 Story: Register for Courses
 ---------------------------
@@ -166,9 +177,9 @@ Acceptance: Students register in course catalog then view their courses in sched
 
 You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, sure how about a link called register on the catalog page.**
 
-That works for me. **Here is the updated catalog.html**
+That works for now. **Here is the updated catalog.html**
 
-``catalog/catalog.html``
+``app/catalog/catalog.html``
 ```html
 
 ...
@@ -183,6 +194,7 @@ That works for me. **Here is the updated catalog.html**
                 <tr ng-repeat="course in catalog">
                     ...
                     <td><a href="javascript:void(0);" ng-click="register(course.id)">Register</a></td>
+                </tr>
 ```
 
 We need a place to see the registered courses. **I am putting the UI for registered courses in ``wizard/schedule.html``
@@ -229,13 +241,13 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are deligating the add class to the ``RegistrationService``. **Thank you.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add class to the ``RegistrationService``. **Thank you. I am running the tests again.**
 
 ### Test 1: Passing
 
 The ``CatalogController`` will need a new ``RegistrationService`` parameter and a function added to the scope. **Yes, like this:**
 
-``catalog/catalog-controller.js``
+``app/catalog/catalog-controller.js``
 ```js
 
 ...
@@ -252,7 +264,7 @@ The ``CatalogController`` will need a new ``RegistrationService`` parameter and 
 
 ### Test 2
 
-Very good. Next we need to see the result of our registration attempt. **I will put the ``RegistrationService`` response on the scope**
+Very good you remembered to run the tests again. Next we need to see the result of our registration attempt. **I will put the ``RegistrationService`` response on the scope**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -272,9 +284,9 @@ Very good. Next we need to see the result of our registration attempt. **I will 
 
 ### Test 2: Passing
 
-And to get it passing... **is as simple as adding ``$scope.register = ``**
+And to get it passing... **is as simple as adding ``$scope.response = ``**
 
-``catalog/catalog-controller.js``
+``app/catalog/catalog-controller.js``
 ```js
 
 ...
@@ -311,7 +323,9 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
     });
 ```
 
-Are we finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet.**
+Are your test still passing? **Yes.**
+
+Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet.**
 
 ### Test 3: RegistrationService.register: Happy Path
 
