@@ -104,7 +104,9 @@ describe('CatalogController', function () {
             mockCatalogRepository = sinon.stub(CatalogRepository);
             mockCatalogRepository.getCatalog.returns(catalog);
 
-            $controller("CatalogController", { $scope: scope, CatalogRepository: mockCatalogRepository  });
+            $controller("CatalogController", { 
+                  $scope: scope,
+                  CatalogRepository: mockCatalogRepository });
         });
     });
 ```
@@ -126,7 +128,9 @@ How do you make it pass? **The test says we have to call getCatalog on the repos
 'use strict';
 
 hogwartsApp
-    .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
+.controller("CatalogController", [ '$scope',
+                                    'CatalogRepository',
+                                    function ($scope, catalogRepository) {
         catalogRepository.getCatalog();
     }]);
 ```
@@ -160,9 +164,11 @@ You have completed your first test. One point for Hufflepuff. Is the story compl
 ```js
 
 ...
-    .controller("CatalogController", ['$scope', 'CatalogRepository', function ($scope, catalogRepository) {
-        $scope.catalog = catalogRepository.getCatalog();
-    }]);
+.controller("CatalogController", ['$scope',
+                                  'CatalogRepository', 
+                                  function ($scope, catalogRepository) {
+    $scope.catalog = catalogRepository.getCatalog();
+}]);
 ```
 
 Are we finished with the story? **Before calling a story done, it must be tested and deployed.**
@@ -193,7 +199,11 @@ That works for now. **Here is the updated catalog.html**
             <tbody>
                 <tr ng-repeat="course in catalog">
                     ...
-                    <td><a href="javascript:void(0);" ng-click="register(course.id)">Register</a></td>
+                    <td>
+                        <a href="javascript:void(0);" ng-click="register(course.id)">
+                            Register
+                        </a>
+                    </td>
                 </tr>
 ```
 
@@ -234,6 +244,7 @@ describe('CatalogController', function () {
         it('adds the course to the wizard\'s schedule', function() {
             mockRegistrationService.register.returns(response);
             scope.register(courseId);
+            // sinon.assert.calledWith(mockRegistrationService.register, courseId);
             expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
         });
 
@@ -389,7 +400,9 @@ describe('RegistrationService', function () {
 ``app/wizard/registration-service.js``
 ```js
 hogwartsApp
-.factory('RegistrationService', ['CatalogRepository', 'WizardRepository', function(catalogRepository, wizardRepository) {
+.factory('RegistrationService', [ 'CatalogRepository',
+                                  'WizardRepository', 
+                                  function(catalogRepository, wizardRepository) {
     return {
         register: function(courseId) {
             var course = catalogRepository.getCourse(courseId),
@@ -487,7 +500,10 @@ describe('ScheduleController', function () {
             mockWizardRepository = sinon.stub(WizardRepository);
             mockWizardRepository.get.returns(wizard);
 
-            $controller("ScheduleController", { $scope: scope, WizardRepository: mockWizardRepository });
+            $controller("ScheduleController", {
+                $scope: scope,
+                WizardRepository: mockWizardRepository
+            });
         });
     });
 
@@ -511,7 +527,9 @@ describe('ScheduleController', function () {
 ``app/wizard/schedule-controller.js``
 ```js
 hogwartsApp
-.controller("ScheduleController", ['$scope', 'WizardRepository', function ($scope, wizardRepository) {
+.controller("ScheduleController", [ '$scope',
+                                    'WizardRepository',
+                                    function ($scope, wizardRepository) {
     $scope.wizard = wizardRepository.get();
 }]);
 ```
