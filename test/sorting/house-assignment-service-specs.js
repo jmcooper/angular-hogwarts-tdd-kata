@@ -20,7 +20,7 @@ describe('HouseAssignmentService', function () {
     describe('when assigning a wizard to a house', function () {
         var wizard = {house:""};
         var houseOptions = ['one', 'two', 'three', 'four'];	
-        var houseNumber = 1;
+        var houseNumber = 3;
         var selectedHouseOption = houseOptions[houseNumber];
         var response;
 
@@ -32,23 +32,23 @@ describe('HouseAssignmentService', function () {
             response = houseAssignmentService.assignWizard();
         });
 
-        it('should get the wizard from the repository', function () {
+        it('gets the wizard from the repository', function () {
             expect(mockWizardRepository.get.called).toBeTruthy();
         });
 
-        it('should get the house options from the repository', function() {
+        it('gets the house options from the repository', function() {
             expect(mockHouseRepository.get.called).toBeTruthy();
         });	
 
-        it('should get a random number for house options', function() {
-            expect(mockRandomNumberService.getInRange.calledWith(0, houseOptions.length - 1)).toBeTruthy();
+        it('gets a random number for house options', function() {
+            sinon.assert.calledWith(mockRandomNumberService.getInRange, 0, houseOptions.length - 1);
         });
 
-        it('should save the wizard', function(){
+        it('saves the wizard', function(){
           expect(mockWizardRepository.save.calledWith({house: selectedHouseOption})).toBeTruthy();
         });
 
-        it('should return the name of the house', function () {
+        it('returns the name of the house', function () {
           expect(response).toEqual(selectedHouseOption);
         });
     });
