@@ -13,7 +13,7 @@ describe('HouseAssignmentService', function () {
             houseAssignmentService = HouseAssignmentService;
             mockWizardRepository = sinon.stub(WizardRepository);
             mockHouseRepository = sinon.stub(HouseRepository);	
-            mockRandomNumberService = sinon.stub(RandomNumberService);			
+            mockRandomNumberService = sinon.stub(RandomNumberService);
         });
     });
 
@@ -23,12 +23,12 @@ describe('HouseAssignmentService', function () {
         var houseNumber = 1;
         var selectedHouseOption = houseOptions[houseNumber];
         var response;
-		
+
         beforeEach(function() {
             mockWizardRepository.get.returns(wizard);
             mockHouseRepository.get.returns(houseOptions);
             mockRandomNumberService.getInRange.returns(houseNumber);
-			
+
             response = houseAssignmentService.assignWizard();
         });
 
@@ -42,7 +42,7 @@ describe('HouseAssignmentService', function () {
 
         it('should get a random number for house options', function() {
             expect(mockRandomNumberService.getInRange.calledWith(0, houseOptions.length - 1)).toBeTruthy();
-        });			
+        });
 
         it('should save the wizard', function(){
           expect(mockWizardRepository.save.calledWith({house: selectedHouseOption})).toBeTruthy();
