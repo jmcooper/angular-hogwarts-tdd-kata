@@ -540,11 +540,85 @@ We have a disaster, a crisis of epic proportion, Sorting Hat is on an extended v
 
 Everyone is being sorted into _Hufflepuff_! **Oh, I alway though I should have been in Gryffindor! What can we do?**
 
-We must change the Kata to sort randomly.  **I am on it. Here is the starting test:**
+We must change the Kata to sort randomly.  **I am on it.**
 
-### Test 1
+### Debugging
 
-(Amy, you are up :-) )
+How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a break point inside ``sorting-hat-controller.js`` on ``$scope.sort`` and follow it down until I find the bug.**
+
+You have tests, why not use them to help locate the bug? **I am not sure how.**
+
+Take a look in the directories, ``app/sorting/`` and ``test/sorting/``. **Oh, I see we have no corrisponding test file for ``random-number-service.js`` that is probably the bug location.**
+
+Sometime, you might have a test file but the test is missing. Code coverage will tell you lines that are missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``
+
+You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).
+
+### Test Random
+
+**I will create the file ``test/sorting/random-number-service-spec.js`` with the following test in it.
+
+``test/sorting/random-number-service-spec.js``
+```js
+describe('RandomNumberService', function () {
+    var randomNumberService;
+    var stubMath;
+
+    beforeEach(function () {
+        module("hogwartsApp");
+        stubMath = sinon.stub(Math, 'random');
+        inject(function (RandomNumberService) {
+            randomNumberService = RandomNumberService;
+        });
+    });
+
+    afterEach(function () {
+        stubMath.restore();
+    });
+
+    describe('when generating a random number in range 0 - 3', function () {
+
+        it ('returns 0 for random range 0.0 - 0.249', function() {
+            stubMath.returns(0.249);
+            expect(randomNumberService.getInRange(0, 3)).toEqual(0);
+        });
+
+        it ('returns 1 for random range 0.25 - 0.49', function() {
+            stubMath.returns(0.49);
+            expect(randomNumberService.getInRange(0, 3)).toEqual(1);
+        });
+
+        it ('returns 2 for random range 0.5 - 0.749', function() {
+            stubMath.returns(0.749);
+            expect(randomNumberService.getInRange(0, 3)).toEqual(2);
+        });
+
+        it ('returns 3 for random range 0.75 - 1', function() {
+            stubMath.returns(0.99);
+            expect(randomNumberService.getInRange(0, 3)).toEqual(3);
+        });
+
+    });
+
+});
+```
+
+Nice work with the testa coverage.
+
+### Test Passing
+
+**To get it to pass, I replace the ``return`` section with the correct algorithm (straight from Arithmancy class).**
+
+``app/sorting/random-number-service-specs.js``
+```js
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+```
+
+### End to End Testing
+
+Have you looked at the website? **Yes students are now being sorted into different houses.**
+
+Execelent! Two points for Hufflepuff.
 
 Correct random generator in a range inclusive:
 Math.floor(Math.random() * (max - min + 1)) + min;
@@ -553,8 +627,7 @@ Math.floor(Math.random() * (max - min + 1)) + min;
 
 TODO
  - Add message to registration response
- - Story about not allowing double time w/o time-turner
- - Make shorting hat random story (currently it is sorting everyone into Hufflepuff)
+ - Story about not allowing overlapping courses w/o time-turner
 
 
 Observations on Kay's run through
@@ -563,7 +636,7 @@ Putting code into wrong class
 
 can't mock something that doesn't exist
 
-fit everything
+fit everything (no sideways scrolling)
 
 Stuck at 3rd test
 
