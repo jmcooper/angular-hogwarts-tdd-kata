@@ -546,6 +546,8 @@ We must change the Kata to sort randomly.  **I am on it. Here is the starting te
 
 (Amy, you are up :-) )
 
+Correct random generator in a range inclusive:
+Math.floor(Math.random() * (max - min + 1)) + min;
 
 ---
 
