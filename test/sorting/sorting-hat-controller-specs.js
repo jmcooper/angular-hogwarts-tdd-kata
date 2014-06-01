@@ -19,29 +19,35 @@ describe('SortingHatController', function () {
             mockHouseAssignmentService.assignWizard.returns('houseOne');
             scope.sort();
         });
-        it('should sort the wizard', function(){
+
+        it('sorts the wizard', function(){
             expect(mockHouseAssignmentService.assignWizard.called).toBeTruthy();
         });
-        it('should set the assigned house on scope', function(){
+
+        it('sets the assigned house on scope', function(){
             expect(scope.assignedHouse).toEqual('houseOne');
         });
+
     });
 
     describe('when getting the class for a house', function(){
         beforeEach(function(){
             scope.assignedHouse = 'houseOne';
         });
+
         describe('when the house is the assigned house', function(){
-            it('should return selectedHouse', function(){
+            it('returns selectedHouse', function(){
                 var result = scope.getClassForHouse('houseOne');
                 expect(result).toEqual('selectedHouse');
             });
         });
+
         describe('when the house is NOT the assigned house', function(){
-            it('should return selectedHouse', function(){
+            it('returns selectedHouse', function(){
                 var result = scope.getClassForHouse('houseTwo');
                 expect(result).toEqual('');
             });
         });
+
     });
 });
