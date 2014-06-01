@@ -40,10 +40,7 @@ How will you view it? **I will load ``app/index.html`` and click on the Catalog 
 
 ``app/catalog/catalog.html``
 ```html
-
 ...
-
-TODO Indentation correct?
             <tbody>
                 <tr ng-repeat="course in catalog">
                     <td>{{course.name}}</td>
@@ -51,6 +48,7 @@ TODO Indentation correct?
                     <td>{{course.professor}}</td>
                     <td>{{course.credits}}</td>
                 </tr>
+
 ```
 
 I see you will have a ``catalog`` array on the ``CatalogController`` scope. **Yes, you will.**
@@ -59,7 +57,7 @@ When will you load the catalog? **When the Controller is initialized.**
 
 ### Test 1: Make it Error
 
-Can you write a test to show me what you mean? **Sure**
+Can you write a test to show me what you mean? **Sure. It won't have all the extra confusing configuration needed for it to run.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -85,9 +83,8 @@ What is the meaning of: "Error cannot read property 'getCatalog' of undefined."?
 
 ### Test 1: Make it Fail
 
-TODO fix this
+TODO mocking requires existance. I am not sure what to do.
 
-Refresh your test page to rerun the tests.
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -538,9 +535,9 @@ Clicking multiple times will result in all houses being selected.
 
 We have a disaster, a crisis of epic proportion, Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
 
-Everyone is being sorted into _Hufflepuff_! **Oh, I alway though I should have been in Gryffindor! What can we do?**
+Everyone is being sorted into _Hufflepuff_! **Oh, Oh!, I could have been in Gryffindor! What can we do?**
 
-We must change the Kata to sort randomly.  **I am on it.**
+We must change the Kata immediately to sort randomly.  **I am on it.**
 
 ### Debugging
 
