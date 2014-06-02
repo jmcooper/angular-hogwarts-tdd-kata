@@ -21,7 +21,7 @@ describe('SortingHatController', function () {
         });
 
         it('sorts the wizard', function(){
-            expect(mockHouseAssignmentService.assignWizard.called).toBeTruthy();
+            sinon.assert.called(mockHouseAssignmentService.assignWizard);
         });
 
         it('sets the assigned house on scope', function(){
