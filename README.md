@@ -87,7 +87,7 @@ What's the first step? **Declare the mockCatalogRepository.**
 
 Yes, and then? **I'm not sure.** 
 
-You need to use the Angular magic spell. You can inject the dependencies into the object under test. **I suppose I would make sure that happens before the test is run.**
+You need to use the Angular magic spell. **I remember now.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -118,15 +118,15 @@ describe('CatalogController', function () {
 ...    
 ```
 
-Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (false is not truthy).**
+Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (expected getCatalog to be called once but was called 0 times).**
 
-It is wise to celebrate your failures, young wizard. **Yeah?!**
+You are on the path to enlightenment. It is wise to celebrate your failures, young wizard. **Yeah!???**
 
 What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
 ### Test 1: Make it Pass
 
-How do you make it pass? **The test says we have to call getCatalog on the repository when CatalogController in initialized.**
+How do you make it pass? **The test says the CatalogController needs to call getCatalog on the repository when CatalogController is initialized.**
 
 
 ``app/catalog/catalog-controller.js``
@@ -138,8 +138,8 @@ hogwartsApp
 .controller("CatalogController", [ '$scope',
                                     'CatalogRepository',
                                     function ($scope, catalogRepository) {
-        catalogRepository.getCatalog();
-    }]);
+    catalogRepository.getCatalog();
+}]);
 ```
 
 Is it passing? **Yes!**
@@ -152,7 +152,7 @@ Whenever your tests are passing, you might consider refactoring. **I don't see a
 
 You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The catalog.html UI expects an object called catalog on the scope. I can do that!**
 
-You can write a test for that? **Oh, yes, that's what I meant.**
+Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -182,13 +182,13 @@ You can write a test for that? **Oh, yes, that's what I meant.**
 }]);
 ```
 
-Are we finished with the story? **Before calling a story done, it must be tested and deployed.**
+Are we finished with the story? **No, Professor Longbottom. Before calling a story done, it must be tested and deployed.**
 
-But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).
+But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).**
 
-You can see it by loading ``app/index.html`` into your browser. **I am seeing the page now.**
+You can see it by loading ``app/index.html`` into your browser and clicking on Catalog (at the top). **I am seeing the page now.**
 
-Sweet, you have finished your story. Another point for Hufflepuff. **Thank you, I like the write the test, see it fail, write code to make it pass, and then refactor rhythm. I also like seeing what the end user sees.
+Well done, young Wizard. You have finished your story. Another point for Hufflepuff. **Thank you, I like the write the test, see it fail, write code to make it pass, and then refactor rhythm. I also like seeing what the end user sees.**
 
 Story: Register for Courses
 ---------------------------
@@ -199,7 +199,7 @@ Acceptance: Students register in course catalog then view their courses in sched
 
 ### UI for Registration
 
-You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, sure how about a link called register on the catalog page.**
+You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, how about a link called register on the catalog page.**
 
 That works for now. **Here is the updated catalog.html**
 
@@ -218,14 +218,14 @@ That works for now. **Here is the updated catalog.html**
                 </tr>
 ```
 
-We need a place to see the registered courses. **I am putting the UI for registered courses in ``wizard/schedule.html``
+We need a place to see the registered courses. **I am putting the UI for registered courses in ``wizard/schedule.html``**
 
 I am seeing duplication between the course catalog and the schedule. **Yes and I will take care of that later.**
 
 OK. Where do you want to start? **In the course catalog controller of course.**
 
 ### Test 1: Failing
-Don't you mean the course catalog controller spec. **Yes this is a TDD Kata after all.**
+Don't you mean the course catalog controller spec. **Yes, Professor; this is a TDD Kata, after all.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
