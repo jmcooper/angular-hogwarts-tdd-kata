@@ -87,7 +87,7 @@ What's the first step? **Declare the mockCatalogRepository.**
 
 Yes, and then? **I'm not sure.** 
 
-You need to use the Angular magic spell. You can inject the dependencies into the object under test. **I suppose I would make sure that happens before the test is run.**
+Do you remember how to cast the Dependency Injection spell? **I remember now.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -118,15 +118,15 @@ describe('CatalogController', function () {
 ...    
 ```
 
-Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (false is not truthy).**
+Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (expected getCatalog to be called once but was called 0 times).**
 
-It is wise to celebrate your failures, young wizard. **Yeah?!**
+You are on the path to enlightenment. It is wise to celebrate your failures, young wizard. **Yeah!???**
 
 What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
 ### Test 1: Make it Pass
 
-How do you make it pass? **The test says we have to call getCatalog on the repository when CatalogController in initialized.**
+How do you make it pass? **The test says the CatalogController needs to call getCatalog on the repository when CatalogController is initialized.**
 
 
 ``app/catalog/catalog-controller.js``
@@ -138,8 +138,8 @@ hogwartsApp
 .controller("CatalogController", [ '$scope',
                                     'CatalogRepository',
                                     function ($scope, catalogRepository) {
-        catalogRepository.getCatalog();
-    }]);
+    catalogRepository.getCatalog();
+}]);
 ```
 
 Is it passing? **Yes!**
@@ -152,7 +152,7 @@ Whenever your tests are passing, you might consider refactoring. **I don't see a
 
 You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The catalog.html UI expects an object called catalog on the scope. I can do that!**
 
-You can write a test for that? **Oh, yes, that's what I meant.**
+Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -182,13 +182,13 @@ You can write a test for that? **Oh, yes, that's what I meant.**
 }]);
 ```
 
-Are we finished with the story? **Before calling a story done, it must be tested and deployed.**
+Are we finished with the story? **No, Professor Longbottom. Before calling a story done, it must be tested and deployed.**
 
-But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).
+But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).**
 
-You can see it by loading ``app/index.html`` into your browser. **I am seeing the page now.**
+You can see it by loading ``app/index.html`` into your browser and clicking on Catalog (at the top). **I am seeing the page now.**
 
-Sweet, you have finished your story. Another point for Hufflepuff. **Thank you, I like the write the test, see it fail, write code to make it pass, and then refactor rhythm. I also like seeing what the end user sees.
+Well done, young Wizard. You have finished your story. Another point for Hufflepuff. **Thank you, I like the write the test, see it fail, write code to make it pass, and then refactor rhythm. I also like seeing what the end user sees.**
 
 Story: Register for Courses
 ---------------------------
@@ -199,7 +199,7 @@ Acceptance: Students register in course catalog then view their courses in sched
 
 ### UI for Registration
 
-You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, sure how about a link called register on the catalog page.**
+You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, how about a link called register on the catalog page.**
 
 That works for now. **Here is the updated catalog.html**
 
@@ -218,14 +218,14 @@ That works for now. **Here is the updated catalog.html**
                 </tr>
 ```
 
-We need a place to see the registered courses. **I am putting the UI for registered courses in ``wizard/schedule.html``
+We need a place to see the registered courses. **I am putting the UI for registered courses in ``wizard/schedule.html``**
 
 I am seeing duplication between the course catalog and the schedule. **Yes and I will take care of that later.**
 
 OK. Where do you want to start? **In the course catalog controller of course.**
 
 ### Test 1: Failing
-Don't you mean the course catalog controller spec. **Yes this is a TDD Kata after all.**
+Don't you mean the course catalog controller spec. **Yes, Professor; this is a TDD Kata, after all.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -262,11 +262,29 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. I am running the tests again.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error "Cannot read property 'returns' of undefined".**
+
+Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the register method so the mocking framework knows how to stub it.**
+
+``app/wizard/registration-service.js``
+```js
+hogwartsApp
+.factory('RegistrationService', [ function() {
+    return {
+        register: function(courseId) {
+        }
+    };
+}]);
+
+```
+
+Very good, you're almost there. **My error now says "undefined is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
+
+Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Profressor.**
 
 ### Test 1: Passing
 
-The ``CatalogController`` will need a new ``RegistrationService`` parameter and a function added to the scope. **Yes, like this:**
+In order to do that you will need to? **Um... I need to inject the ``RegistrationService`` into the the ``CatalogController`` so that I can call it.**
 
 ``app/catalog/catalog-controller.js``
 ```js
@@ -285,7 +303,9 @@ The ``CatalogController`` will need a new ``RegistrationService`` parameter and 
 
 ### Test 2
 
-Very good you remembered to run the tests again. Next we need to see the result of our registration attempt. **I will put the ``RegistrationService`` response on the scope**
+Very good, you remembered to run the tests again. **Yes, it worked!**
+
+Next we need to show the student the result of their registration attempt. **I will put the ``RegistrationService`` response on the scope so the UI can access it.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -305,7 +325,7 @@ Very good you remembered to run the tests again. Next we need to see the result 
 
 ### Test 2: Passing
 
-And to get it passing... **is as simple as adding ``$scope.response = ``**
+And to get it passing... **That is as simple as adding ``$scope.response = ``**
 
 ``app/catalog/catalog-controller.js``
 ```js
@@ -317,7 +337,7 @@ And to get it passing... **is as simple as adding ``$scope.response = ``**
 ```
 
 ### Test 2: Refactor
-I smell duplication. **Yes and I am willing to remove it with all my tests passing. I am adding a ``beforeEach`` and removing the duplication.**
+I smell duplication. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -344,28 +364,29 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
     });
 ```
 
-Are your test still passing? **Yes.**
+Are your tests still passing? **Yes.**
 
-Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet.**
+Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet! Of course, I will write a test for ``RegistrationService`` first.**
 
 ### Test 3: RegistrationService.register: Happy Path
 
-``test/wizard/registration-service-spec.js``
+``test/wizard/registration-service-specs.js``
 ```js
 
 describe('RegistrationService', function () {
 
     describe('when registering for a course', function () {
-
+        var course = {id: 'Potions'};
+        
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            sinon.assert.calledWith(mockWizardRepository.save, {courses: {course}});
+            sinon.assert.calledWith(mockWizardRepository.save, {courses: {'Potions' : course}});
         });
 
     });
 ```
 
-You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``.
+You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
 
 ### Test 3: Failing
 
@@ -394,11 +415,10 @@ describe('RegistrationService', function () {
     });
 
     describe('when registering for a course', function () {
-        var course = {id: 'Potions'}
-        ;
+        var course = {id: 'Potions'}        ;
 
         beforeEach(function() {
-            mockCatalogRepository.findCourseById.returns(course);
+            mockCatalogRepository.getCourse.returns(course);
             mockWizardRepository.get.returns({courses: {}});
         });
 
@@ -439,7 +459,7 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 
         register: function(courseId) {
             var course = catalogRepository.getCourse(courseId),
-                wizard = wizardRepository.get();
+            wizard = wizardRepository.get();
 
             registerWizardForCourse(wizard, course);
         }
@@ -493,13 +513,15 @@ Exactly!
 ### Test 5
 How will the student know if they are really registered? **They will see their courses on the schedule page.**
 
-**I am writing both tests because the code to pass them is one line.**
+How will they see their courses on the schedule page? **Hmm, let's see. The schedule.html is already written. It looks like it expects a wizard object on the scope. The ``wizard`` has ``courses``.**
+
+You are indeed a very promising young wizard. **I will write tests for the schedule controller. I'm writing both tests because the code to pass them is one line.**
 
 ``test/wizard/schedule-controller-spec.js``
 ```js
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
-    var wizard = {courses: {{id: 'foo'}}};
+    var wizard = {courses: {'foo': {id: 'foo'}}};
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -532,7 +554,7 @@ describe('ScheduleController', function () {
 
 ### Test 5: Green
 
-**And less painful than drinking a Polyjuice Potion:**
+You can make the tests pass? **Yes, this is less painful than drinking a Polyjuice Potion:**
 
 ``app/wizard/schedule-controller.js``
 ```js
@@ -546,24 +568,24 @@ hogwartsApp
 
 ### Test 5: End to End
 
-How are we going to end to end test it? **I will click the register and notice a message saying it was successful. Followed by looking at the schedule page and noticing the list of courses..**
+How are we going to end to end test it? **I will click the register link and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
 Are we finished with this story? **It depends, do we have a story disallowing scheduling mutiple course at the same time (with the exception of students using a Time-Turner)?**
 
-Yes that is another story. **The software works as expected. The code is clean. Yes, I would say this story is done.**
+Yes that is another story. **Then, the software works as expected. The code is clean. Yes, I would say this story is done.**
 
 Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
 
 Story: Hat Sorts Randomly
 -------------------------
 
-Clicking multiple times will result in all houses being selected.
+Acceptance: Clicking multiple times will result in all houses being selected.
 
 ---
 
-We have a disaster, a crisis of epic proportion, Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
+We have a disaster, a crisis of epic proportion! Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
 
-Everyone is being sorted into _Hufflepuff_! **Oh, Oh!, I could have been in Gryffindor! What can we do?**
+Everyone is being sorted into _Hufflepuff_! **Oh, no!, I could have been in Gryffindor! What can we do?**
 
 We must change the Kata immediately to sort randomly.  **I am on it.**
 
@@ -573,17 +595,17 @@ How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a
 
 You have tests, why not use them to help locate the bug? **I am not sure how.**
 
-Take a look in the directories, ``app/sorting/`` and ``test/sorting/``. **Oh, I see we have no corrisponding test file for ``random-number-service.js`` that is probably the bug location.**
+Take a look in the directories, ``app/sorting/`` and ``test/sorting/``. **Oh, I see we have no corresponding test file for ``random-number-service.js`` that is probably the bug location.**
 
-Sometime, you might have a test file but the test is missing. Code coverage will tell you lines that are missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``
+Sometime, you might have a test file but the test is missing. Code coverage will tell you lines that are missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``**
 
-You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).
+You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).**
 
 ### Test Random
 
-**I will create the file ``test/sorting/random-number-service-spec.js`` with the following test in it.
+**I will create the file ``test/sorting/random-number-service-specs.js`` with the following test in it.**
 
-``test/sorting/random-number-service-spec.js``
+``test/sorting/random-number-service-specs.js``
 ```js
 describe('RandomNumberService', function () {
     var randomNumberService;
@@ -628,7 +650,7 @@ describe('RandomNumberService', function () {
 });
 ```
 
-Nice work with the testa coverage.
+Nice work with the test coverage. **Thank you, Professor.**
 
 ### Test Passing
 
@@ -643,7 +665,7 @@ Nice work with the testa coverage.
 
 Have you looked at the website? **Yes students are now being sorted into different houses.**
 
-Execelent! Two points for Hufflepuff.
+Execelent! Three points for Hufflepuff.
 
 Correct random generator in a range inclusive:
 Math.floor(Math.random() * (max - min + 1)) + min;
