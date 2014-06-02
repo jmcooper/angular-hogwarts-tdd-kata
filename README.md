@@ -87,7 +87,7 @@ What's the first step? **Declare the mockCatalogRepository.**
 
 Yes, and then? **I'm not sure.** 
 
-You need to use the Angular magic spell. **I remember now.**
+Do you remember how to cast the Dependency Injection spell? **I remember now.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -262,11 +262,29 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. I am running the tests again.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error "Cannot read property 'returns' of undefined".**
+
+Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the register method so the mocking framework knows how to stub it.**
+
+``app/wizard/registration-service.js``
+```js
+hogwartsApp
+.factory('RegistrationService', [ function() {
+    return {
+        register: function(courseId) {
+        }
+    };
+}]);
+
+```
+
+Very good, you're almost there. **My error now says "undefined is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
+
+Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Profressor.**
 
 ### Test 1: Passing
 
-The ``CatalogController`` will need a new ``RegistrationService`` parameter and a function added to the scope. **Yes, like this:**
+In order to do that you will need to? **Um... I need to inject the ``RegistrationService`` into the the ``CatalogController`` so that I can call it.**
 
 ``app/catalog/catalog-controller.js``
 ```js
@@ -285,7 +303,9 @@ The ``CatalogController`` will need a new ``RegistrationService`` parameter and 
 
 ### Test 2
 
-Very good you remembered to run the tests again. Next we need to see the result of our registration attempt. **I will put the ``RegistrationService`` response on the scope**
+Very good, you remembered to run the tests again. **Yes, it worked!**
+
+Next we need to show the student the result of their registration attempt. **I will put the ``RegistrationService`` response on the scope so the UI can access it.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -305,7 +325,7 @@ Very good you remembered to run the tests again. Next we need to see the result 
 
 ### Test 2: Passing
 
-And to get it passing... **is as simple as adding ``$scope.response = ``**
+And to get it passing... **That is as simple as adding ``$scope.response = ``**
 
 ``app/catalog/catalog-controller.js``
 ```js
@@ -317,7 +337,7 @@ And to get it passing... **is as simple as adding ``$scope.response = ``**
 ```
 
 ### Test 2: Refactor
-I smell duplication. **Yes and I am willing to remove it with all my tests passing. I am adding a ``beforeEach`` and removing the duplication.**
+I smell duplication. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -344,28 +364,29 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
     });
 ```
 
-Are your test still passing? **Yes.**
+Are your tests still passing? **Yes.**
 
-Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet.**
+Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet! Of course, I will write a test for ``RegistrationService`` first.**
 
 ### Test 3: RegistrationService.register: Happy Path
 
-``test/wizard/registration-service-spec.js``
+``test/wizard/registration-service-specs.js``
 ```js
 
 describe('RegistrationService', function () {
 
     describe('when registering for a course', function () {
-
+        var course = {id: 'Potions'};
+        
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            sinon.assert.calledWith(mockWizardRepository.save, {courses: {course}});
+            sinon.assert.calledWith(mockWizardRepository.save, {courses: {'Potions' : course}});
         });
 
     });
 ```
 
-You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``.
+You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
 
 ### Test 3: Failing
 
@@ -394,11 +415,10 @@ describe('RegistrationService', function () {
     });
 
     describe('when registering for a course', function () {
-        var course = {id: 'Potions'}
-        ;
+        var course = {id: 'Potions'}        ;
 
         beforeEach(function() {
-            mockCatalogRepository.findCourseById.returns(course);
+            mockCatalogRepository.getCourse.returns(course);
             mockWizardRepository.get.returns({courses: {}});
         });
 
@@ -439,7 +459,7 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 
         register: function(courseId) {
             var course = catalogRepository.getCourse(courseId),
-                wizard = wizardRepository.get();
+            wizard = wizardRepository.get();
 
             registerWizardForCourse(wizard, course);
         }
@@ -493,13 +513,15 @@ Exactly!
 ### Test 5
 How will the student know if they are really registered? **They will see their courses on the schedule page.**
 
-**I am writing both tests because the code to pass them is one line.**
+How will they see their courses on the schedule page? **Hmm, let's see. The schedule.html is already written. It looks like it expects a wizard object on the scope. The ``wizard`` has ``courses``.**
+
+You are indeed a very promising young wizard. **I will write tests for the schedule controller. I'm writing both tests because the code to pass them is one line.**
 
 ``test/wizard/schedule-controller-spec.js``
 ```js
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
-    var wizard = {courses: {{id: 'foo'}}};
+    var wizard = {courses: {'foo': {id: 'foo'}}};
 
     beforeEach(function () {
         module("hogwartsApp");
@@ -532,7 +554,7 @@ describe('ScheduleController', function () {
 
 ### Test 5: Green
 
-**And less painful than drinking a Polyjuice Potion:**
+You can make the tests pass? **Yes, this is less painful than drinking a Polyjuice Potion:**
 
 ``app/wizard/schedule-controller.js``
 ```js
@@ -546,11 +568,11 @@ hogwartsApp
 
 ### Test 5: End to End
 
-How are we going to end to end test it? **I will click the register and notice a message saying it was successful. Followed by looking at the schedule page and noticing the list of courses..**
+How are we going to end to end test it? **I will click the register link and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
 Are we finished with this story? **It depends, do we have a story disallowing scheduling mutiple course at the same time (with the exception of students using a Time-Turner)?**
 
-Yes that is another story. **The software works as expected. The code is clean. Yes, I would say this story is done.**
+Yes that is another story. **Then, the software works as expected. The code is clean. Yes, I would say this story is done.**
 
 Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
 
