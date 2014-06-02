@@ -87,9 +87,7 @@ What's the first step? **Declare the mockCatalogRepository.**
 
 Yes, and then? **I'm not sure.** 
 
-You need to use the Angular magic spell. You can inject the dependencies into the object under test. **It is still erroring**
-
-Yes, Harry had to show me the details of this spell. You can probably figure out what to do. **I see, I need to define the method before I stub it, so the mocking framework will know it exists**
+You need to use the Angular magic spell. You can inject the dependencies into the object under test. **I suppose I would make sure that happens before the test is run.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -115,9 +113,12 @@ describe('CatalogController', function () {
                   CatalogRepository: mockCatalogRepository });
         });
     });
+    
+    describe('when the controller first loads', function () {
+...    
 ```
 
-Does it pass now? **No, but we are making progress. We are seeing a failing test (false is not truthy).**
+Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (false is not truthy).**
 
 It is wise to celebrate your failures, young wizard. **Yeah?!**
 
@@ -141,13 +142,17 @@ hogwartsApp
     }]);
 ```
 
+Is it passing? **Yes!**
+
 ### Test 1: Refactor it
 
 Whenever your tests are passing, you might consider refactoring. **I don't see anything that needs refactoring.**
 
 ### Test 2: Failing
 
-You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog will not show on the web page. I will hooked up to the scope now.**
+You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The catalog.html UI expects an object called catalog on the scope. I can do that!**
+
+You can write a test for that? **Oh, yes, that's what I meant.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
