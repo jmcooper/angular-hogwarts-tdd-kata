@@ -67,7 +67,7 @@ describe('CatalogController', function () {
     describe('when the controller first loads', function () {
 
         it('the course catalog is retrieved', function () {
-            expect(mockCatalogRepository.getCatalog.called).toBeTruthy();
+            sinon.assert.calledOnce(mockCatalogRepository.getCatalog);
         });
 
     });
@@ -244,8 +244,7 @@ describe('CatalogController', function () {
         it('adds the course to the wizard\'s schedule', function() {
             mockRegistrationService.register.returns(response);
             scope.register(courseId);
-            // sinon.assert.calledWith(mockRegistrationService.register, courseId);
-            expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
+            sinon.assert.calledWith(mockRegistrationService.register, courseId);
         });
 
     });
@@ -325,7 +324,7 @@ I smell duplication. **Yes and I am willing to remove it with all my tests passi
         });
 
         it('adds the course to the wizard\'s schedule', function() {
-            expect(mockRegistrationService.register.calledWith(courseId)).toBeTruthy();
+            sinon.assert.calledWith(mockRegistrationService.register, courseId);
         });
 
         it('adds the registration response to the scope', function() {
@@ -349,7 +348,7 @@ describe('RegistrationService', function () {
 
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            expect(mockWizardRepository.save.calledWith({courses: {course}})).toBeTruthy();
+            sinon.assert.calledWith(mockWizardRepository.save, {courses: {course}});
         });
 
     });
@@ -509,7 +508,7 @@ describe('ScheduleController', function () {
 
     describe('when the controller first loads', function () {
         it('gets the wizard from the repository', function () {
-            expect(mockWizardRepository.get.called).toBeTruthy();
+            sinon.assert.calledOnce(mockWizardRepository.get);
         });
 
         it('puts wizard on the scope', function() {

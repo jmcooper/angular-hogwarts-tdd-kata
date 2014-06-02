@@ -33,11 +33,11 @@ describe('HouseAssignmentService', function () {
         });
 
         it('gets the wizard from the repository', function () {
-            expect(mockWizardRepository.get.called).toBeTruthy();
+            sinon.assert.calledOnce(mockWizardRepository.get);
         });
 
         it('gets the house options from the repository', function() {
-            expect(mockHouseRepository.get.called).toBeTruthy();
+            sinon.assert.calledOnce(mockHouseRepository.get);
         });	
 
         it('gets a random number for house options', function() {
@@ -45,7 +45,7 @@ describe('HouseAssignmentService', function () {
         });
 
         it('saves the wizard', function(){
-          expect(mockWizardRepository.save.calledWith({house: selectedHouseOption})).toBeTruthy();
+          sinon.assert.calledWith(mockWizardRepository.save, {house: selectedHouseOption});
         });
 
         it('returns the name of the house', function () {
