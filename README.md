@@ -83,7 +83,13 @@ What is the meaning of: "mockCatalogRepository is not defined"? **It means my mo
 
 ### Test 1: Make it Fail
 
-TODO mocking requires existance. I am not sure what to do.
+What's the first step? **Declare the mockCatalogRepository.** 
+
+Yes, and then? **I'm not sure.** 
+
+You need to use the Angular magic spell. You can inject the dependencies into the object under test. **It is still erroring**
+
+Yes, Harry had to show me the details of this spell. You can probably figure out what to do. **I see, I need to define the method before I stub it, so the mocking framework will know it exists**
 
 
 ``test/catalog/catalog-controller-specs.js``
