@@ -13,11 +13,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="class in wizard.classes">
-                    <td>{{class.name}}</td>
-                    <td>{{class.startTime | date: 'h:mm a'}}</td>
-                    <td>{{class.professor}}</td>
-                    <td>{{class.credits}}</td>
+                <tr ng-repeat="course in wizard.courses">
+                    <td>{{course.name}}</td>
+                    <td>{{course.startTime | date: 'h:mm a'}}</td>
+                    <td>{{course.professor}}</td>
+                    <td>{{course.credits}}</td>
                 </tr>
             </tbody>
         </table>
