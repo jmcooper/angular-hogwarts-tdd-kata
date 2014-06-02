@@ -79,7 +79,7 @@ Very nice, you wrote the description and the expectation first. Keeping the test
 
 What happens if you run it? **It will generate errors. You can see them by running ``test/HogwartsTests.hmtl`` with development tools open.**
 
-What is the meaning of: "Error cannot read property 'getCatalog' of undefined."? **It means my mockCatalogRepository is not setup.**
+What is the meaning of: "mockCatalogRepository is not defined"? **It means my mockCatalogRepository is not setup.**
 
 ### Test 1: Make it Fail
 
