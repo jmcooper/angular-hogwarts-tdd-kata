@@ -6,13 +6,13 @@ Introduction
 
 Hogwarts has embraced Muggle Technology!
 
-Professor Author Weasley has just invented the first steam powered computer and it works at Hogwarts.
+Professor Arthur Weasley has just invented the first steam powered computer and it works at Hogwarts.
 
 ---
 
 Young Wizard, you will be creating Hogwarts online student registration. Professor Neville Longbottom will guide you.
 
-Because you are a highly discipline Wizard, you will be writing your code test first.
+Because you are a highly disciplined Wizard, you will be writing your code test first.
 
 Setup
 -----
@@ -57,7 +57,7 @@ When will you load the catalog? **When the Controller is initialized.**
 
 ### Test 1: Make it Error
 
-Can you write a test to show me what you mean? **Sure. It won't have all the extra confusing configuration needed for it to run.**
+Can you write a test to show me what you mean? **Sure.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -79,11 +79,15 @@ Very nice, you wrote the description and the expectation first. Keeping the test
 
 What happens if you run it? **It will generate errors. You can see them by running ``test/HogwartsTests.hmtl`` with development tools open.**
 
-What is the meaning of: "Error cannot read property 'getCatalog' of undefined."? **It means my mockCatalogRepository is not setup.**
+What is the meaning of: "mockCatalogRepository is not defined"? **It means my mockCatalogRepository is not setup.**
 
 ### Test 1: Make it Fail
 
-TODO mocking requires existance. I am not sure what to do.
+What's the first step? **Declare the mockCatalogRepository.** 
+
+Yes, and then? **I'm not sure.** 
+
+You need to use the Angular magic spell. You can inject the dependencies into the object under test. **I suppose I would make sure that happens before the test is run.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -109,9 +113,12 @@ describe('CatalogController', function () {
                   CatalogRepository: mockCatalogRepository });
         });
     });
+    
+    describe('when the controller first loads', function () {
+...    
 ```
 
-Does it pass now? **No, but we are making progress. We are seeing a failing test (false is not truthy).**
+Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (false is not truthy).**
 
 It is wise to celebrate your failures, young wizard. **Yeah?!**
 
@@ -135,13 +142,17 @@ hogwartsApp
     }]);
 ```
 
+Is it passing? **Yes!**
+
 ### Test 1: Refactor it
 
 Whenever your tests are passing, you might consider refactoring. **I don't see anything that needs refactoring.**
 
 ### Test 2: Failing
 
-You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog will not show on the web page. I will hooked up to the scope now.**
+You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The catalog.html UI expects an object called catalog on the scope. I can do that!**
+
+You can write a test for that? **Oh, yes, that's what I meant.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
