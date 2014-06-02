@@ -579,13 +579,13 @@ Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch
 Story: Hat Sorts Randomly
 -------------------------
 
-Clicking multiple times will result in all houses being selected.
+Acceptance: Clicking multiple times will result in all houses being selected.
 
 ---
 
-We have a disaster, a crisis of epic proportion, Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
+We have a disaster, a crisis of epic proportion! Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
 
-Everyone is being sorted into _Hufflepuff_! **Oh, Oh!, I could have been in Gryffindor! What can we do?**
+Everyone is being sorted into _Hufflepuff_! **Oh, no!, I could have been in Gryffindor! What can we do?**
 
 We must change the Kata immediately to sort randomly.  **I am on it.**
 
@@ -595,17 +595,17 @@ How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a
 
 You have tests, why not use them to help locate the bug? **I am not sure how.**
 
-Take a look in the directories, ``app/sorting/`` and ``test/sorting/``. **Oh, I see we have no corrisponding test file for ``random-number-service.js`` that is probably the bug location.**
+Take a look in the directories, ``app/sorting/`` and ``test/sorting/``. **Oh, I see we have no corresponding test file for ``random-number-service.js`` that is probably the bug location.**
 
-Sometime, you might have a test file but the test is missing. Code coverage will tell you lines that are missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``
+Sometime, you might have a test file but the test is missing. Code coverage will tell you lines that are missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``**
 
-You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).
+You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).**
 
 ### Test Random
 
-**I will create the file ``test/sorting/random-number-service-spec.js`` with the following test in it.
+**I will create the file ``test/sorting/random-number-service-specs.js`` with the following test in it.**
 
-``test/sorting/random-number-service-spec.js``
+``test/sorting/random-number-service-specs.js``
 ```js
 describe('RandomNumberService', function () {
     var randomNumberService;
@@ -650,7 +650,7 @@ describe('RandomNumberService', function () {
 });
 ```
 
-Nice work with the testa coverage.
+Nice work with the test coverage. **Thank you, Professor.**
 
 ### Test Passing
 
@@ -665,7 +665,7 @@ Nice work with the testa coverage.
 
 Have you looked at the website? **Yes students are now being sorted into different houses.**
 
-Execelent! Two points for Hufflepuff.
+Execelent! Three points for Hufflepuff.
 
 Correct random generator in a range inclusive:
 Math.floor(Math.random() * (max - min + 1)) + min;
