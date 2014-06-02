@@ -57,7 +57,7 @@ When will you load the catalog? **When the Controller is initialized.**
 
 ### Test 1: Make it Error
 
-Can you write a test to show me what you mean? **Sure. It won't have all the extra confusing configuration needed for it to run.**
+Can you write a test to show me what you mean? **Sure.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
