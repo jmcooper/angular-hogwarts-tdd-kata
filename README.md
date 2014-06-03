@@ -10,14 +10,14 @@ Professor Arthur Weasley has just invented the first steam powered computer and 
 
 ---
 
-Young Wizard, you will be creating Hogwarts online student registration. Professor Neville Longbottom will guide you.
+Young Wizard, you will be creating Hogwart's online student registration. Professor Neville Longbottom will guide you.
 
 Because you are a highly disciplined Wizard, you will be writing your code test first.
 
 Setup
 -----
 
-You will have two file loaded into Firefox:
+You will have two files loaded into Firefox:
 
 ``file://.../app/index.html``
 ``file://.../ test/HogwartsTests.hmtl``
@@ -77,9 +77,9 @@ describe('CatalogController', function () {
 
 Very nice, you wrote the description and the expectation first. Keeping the test simple helps your thinking.
 
-What happens if you run it? **It will generate errors. You can see them by running ``test/HogwartsTests.hmtl`` with development tools open.**
+What happens if you run it? **It will generate errors. You can see them by browsing to ``test/HogwartsTests.hmtl``.**
 
-What is the meaning of: "mockCatalogRepository is not defined"? **It means my mockCatalogRepository is not setup.**
+What is the meaning of: "mockCatalogRepository is not defined"? **It means my mockCatalogRepository is not setup -- I'm referencing it in my test before I even declare it.**
 
 ### Test 1: Make it Fail
 
@@ -246,8 +246,11 @@ describe('CatalogController', function () {
 
             mockRegistrationService = sinon.stub(RegistrationService);
 
-    ...
-
+        ...
+    }
+	
+	...
+	
     describe('when registering for a course', function() {
         var courseId = 'courseId';
         var response = {success: true, message: ''};
@@ -262,7 +265,7 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error "Cannot read property 'returns' of undefined".**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error "mockRegistrationService.register is undefined".**
 
 Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the register method so the mocking framework knows how to stub it.**
 
@@ -278,7 +281,7 @@ hogwartsApp
 
 ```
 
-Very good, you're almost there. **My error now says "undefined is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
+Very good, you're almost there. **My error now says "scope.register is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
 
 Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Profressor.**
 
@@ -656,7 +659,7 @@ Nice work with the test coverage. **Thank you, Professor.**
 
 **To get it to pass, I replace the ``return`` section with the correct algorithm (straight from Arithmancy class).**
 
-``app/sorting/random-number-service-specs.js``
+``app/sorting/random-number-service.js``
 ```js
             return Math.floor(Math.random() * (max - min + 1)) + min;
 ```
