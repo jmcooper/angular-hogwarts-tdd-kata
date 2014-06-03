@@ -234,6 +234,7 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 
 describe('CatalogController', function () {
 
+    <span style="color:#CCC">
     var mockCatalogRepository,
         mockRegistrationService,
         ...
@@ -241,7 +242,7 @@ describe('CatalogController', function () {
     beforeEach(function () {
         ...
 
-        inject(function (... RegistrationService) {
+        inject(function (... </span>RegistrationService) {
             ...
 
             mockRegistrationService = sinon.stub(RegistrationService);
