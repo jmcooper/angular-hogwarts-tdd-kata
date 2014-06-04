@@ -33,7 +33,7 @@ Acceptance: Students will be able to see a catalog of courses.
 
 How will you start, my young wizard friend? **By adding an ``ng-repeat`` over the course catalog inside ``app/catalog/catalog.html``.**
 
-How will you view it? **I will load ``app/index.html`` and click on the Catalog tab.``
+How will you view it? **I will load ``app/index.html`` and click on the Catalog tab.**
 
 
 ### UI For Course Catalog
@@ -245,7 +245,14 @@ describe('CatalogController', function () {
             ...
 
             mockRegistrationService = sinon.stub(RegistrationService);
-
+            
+            ...
+         
+            $controller("CatalogController", { 
+                  $scope: scope,
+                  CatalogRepository: mockCatalogRepository,
+                  RegistrationService: mockRegistrationService});
+      
         ...
     }
 	
@@ -283,7 +290,7 @@ hogwartsApp
 
 Very good, you're almost there. **My error now says "scope.register is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
 
-Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Profressor.**
+Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Professor.**
 
 ### Test 1: Passing
 
