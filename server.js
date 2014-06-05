@@ -17,4 +17,8 @@ app.use(errorHandler({
   showStack: true
 }));
 
-app.listen(port);
+app.listen(port, function(err) {
+  console.log('Server listening on %d', port);
+  console.log('The app is at http://localhost:%d/app', port);
+  console.log('The test runner is at http://localhost:%d/test/HogwartsTests.html', port);
+});
