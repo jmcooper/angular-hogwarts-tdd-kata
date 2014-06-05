@@ -5,8 +5,8 @@ var express = require("express"),
     methodOverride = require('method-override'),
     port = parseInt(process.env.PORT, 10) || 4567;
 
-app.get("/", function (req, res) {
-  res.redirect("/index.html");
+app.get('/test', function (req, res) {
+  res.redirect('/test/HogwartsTests.html');
 });
 
 app.use(methodOverride());
@@ -20,5 +20,5 @@ app.use(errorHandler({
 app.listen(port, function(err) {
   console.log('Server listening on %d', port);
   console.log('The app is at http://localhost:%d/app', port);
-  console.log('The test runner is at http://localhost:%d/test/HogwartsTests.html', port);
+  console.log('The test runner is at http://localhost:%d/test', port);
 });
