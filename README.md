@@ -112,9 +112,9 @@ What is the meaning of: "mockCatalogRepository is not defined"? **It means my mo
 
 ### Test 1: Make it Fail
 
-What's the first step? **Declare the mockCatalogRepository.** 
+What's the first step? **Declare the mockCatalogRepository.**
 
-Yes, and then? **I'm not sure.** 
+Yes, and then? **I'm not sure.**
 
 Do you remember how to cast the Dependency Injection spell? **I remember now.**
 
@@ -137,14 +137,14 @@ describe('CatalogController', function () {
             mockCatalogRepository = sinon.stub(CatalogRepository);
             mockCatalogRepository.getCatalog.returns(catalog);
 
-            $controller("CatalogController", { 
+            $controller("CatalogController", {
                   $scope: scope,
                   CatalogRepository: mockCatalogRepository });
         });
     });
-    
+
     describe('when the controller first loads', function () {
-...    
+...
 ```
 
 Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (expected getCatalog to be called once but was called 0 times).**
@@ -205,7 +205,7 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
 ...
 .controller("CatalogController", ['$scope',
-                                  'CatalogRepository', 
+                                  'CatalogRepository',
                                   function ($scope, catalogRepository) {
     $scope.catalog = catalogRepository.getCatalog();
 }]);
@@ -274,14 +274,14 @@ describe('CatalogController', function () {
             ...
 
             mockRegistrationService = sinon.stub(RegistrationService);
-            
+
             ...
-         
-            $controller("CatalogController", { 
+
+            $controller("CatalogController", {
                   $scope: scope,
                   CatalogRepository: mockCatalogRepository,
                   RegistrationService: mockRegistrationService});
-      
+
         ...
     }
 	
@@ -416,7 +416,7 @@ describe('RegistrationService', function () {
 
     describe('when registering for a course', function () {
         var course = {id: 'Potions'};
-        
+
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
             sinon.assert.calledWith(mockWizardRepository.save, {courses: {'Potions' : course}});
@@ -470,7 +470,7 @@ describe('RegistrationService', function () {
 ```js
 hogwartsApp
 .factory('RegistrationService', [ 'CatalogRepository',
-                                  'WizardRepository', 
+                                  'WizardRepository',
                                   function(catalogRepository, wizardRepository) {
     return {
         register: function(courseId) {
@@ -706,9 +706,6 @@ Have you looked at the website? **Yes students are now being sorted into differe
 
 Execelent! Three points for Hufflepuff.
 
-Correct random generator in a range inclusive:
-Math.floor(Math.random() * (max - min + 1)) + min;
-
 ---
 
 TODO
@@ -731,3 +728,28 @@ putting test code in wrong file
 Test 5 test vs code feels icky
 
 Finished in 1 hour with all bugs fixing.
+
+---
+
+Jeff Obversations
+
+Need readme loaded up if offline
+
+What is ng-repeat?
+
+loaded in browser html rather than editing it.
+
+couldn't find directory
+
+be consistent with beginning and endings
+
+editing in wrong file
+
+
+karma takes a long time to pass
+
+catalog.html was loaded instead of index.html
+
+fix formating between tests
+
+45 min 2 test passing (not refactoring)
