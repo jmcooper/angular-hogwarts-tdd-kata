@@ -17,15 +17,16 @@ Because you are a highly disciplined Wizard, you will be writing your code test 
 Setup
 -----
 
-You have two ways of running through this kata: 1) Using the Express.js webserver and the Karma test runner inside ``Chrome`` 2) Using plain files inside Firefox.
+You have two ways of running through this kata:
+1) Using the Express.js webserver and the Karma test runner inside ``Chrome`` 2) Using plain files inside Firefox.
 
 ### Karma, Express.js inside Chrome (preferred)
 
-You will have (node)[http://nodejs.org/] installed. To install ``express.js`` and ``karma`` from the command line run
+You will have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line run
 
 ``npm install``
 
-(or just copy the node_modules directory and run ``npm rebuild``)
+(or just copy the ``node_modules`` directory and run ``npm rebuild``)
 
 To run the server call
 
@@ -33,11 +34,11 @@ To run the server call
 
 You will see the app page here
 
-(http://localhost:4567/app)[http://localhost:4567/app]
+[http://localhost:4567/app](http://localhost:4567/app)
 
 and the tests here
 
-(http://localhost:4567/test)[http://localhost:4567/test]
+[http://localhost:4567/test](http://localhost:4567/test)
 
 Finally to have you tests automatically run every time you make a change, use the following command:
 
@@ -48,8 +49,9 @@ Finally to have you tests automatically run every time you make a change, use th
 
 You will have two files loaded into Firefox:
 
-``file://.../app/index.html``
-``file://.../ test/HogwartsTests.hmtl``
+  ``file://.../app/index.html``
+
+  ``file://.../ test/HogwartsTests.hmtl``
 
 You will not edit either of these files.
 
