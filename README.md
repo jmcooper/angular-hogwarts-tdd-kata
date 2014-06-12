@@ -18,7 +18,9 @@ Setup
 -----
 
 You have two ways of running through this kata:
-1) Using the Express.js webserver and the Karma test runner inside ``Chrome`` 2) Using plain files inside Firefox.
+  1. Using the Express.js webserver and the Karma test runner inside ``Chrome``
+  2. Using plain files inside Firefox.
+
 
 ### Karma, Express.js inside Chrome (preferred)
 
@@ -32,13 +34,13 @@ To run the server call
 
 ``node server.js``
 
-You will see the app page here
+You will load the app and test page with the following:
 
-[http://localhost:4567/app](http://localhost:4567/app)
+ - [http://localhost:4567/app](http://localhost:4567/app)
+ - [http://localhost:4567/test](http://localhost:4567/test)
 
 and the tests here
 
-[http://localhost:4567/test](http://localhost:4567/test)
 
 Finally to have you tests automatically run every time you make a change, use the following command:
 
