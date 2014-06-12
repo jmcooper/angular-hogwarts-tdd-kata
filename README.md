@@ -39,10 +39,8 @@ You will load the app and test page with the following:
  - [http://localhost:4567/app](http://localhost:4567/app)
  - [http://localhost:4567/test](http://localhost:4567/test)
 
-and the tests here
 
-
-Finally to have you tests automatically run every time you make a change, use the following command:
+Finally, if you like your tests automatically running every time you make a change, use the following command:
 
 ``./node_modules/karma/bin/karma start``
 
@@ -64,9 +62,9 @@ Acceptance: Students will be able to see a catalog of courses.
 
 ---
 
-How will you start, my young wizard friend? **By adding an ``ng-repeat`` over the course catalog inside ``app/catalog/catalog.html``.**
+How will you start, my young wizard friend? **By making changes to catalog UI inside file ``app/catalog/catalog.html``.**
 
-How will you view it? **I will load ``app/index.html`` and click on the Catalog tab.**
+How will you view it? **I will refresh ``app/index.html`` and click on the Catalog tab.**
 
 
 ### UI For Course Catalog
@@ -84,7 +82,7 @@ How will you view it? **I will load ``app/index.html`` and click on the Catalog 
 
 ```
 
-I see you will have a ``catalog`` array on the ``CatalogController`` scope. **Yes, you will.**
+I see you expect to have a ``catalog`` array on the ``CatalogController`` scope. **Yes.**
 
 When will you load the catalog? **When the Controller is initialized.**
 
