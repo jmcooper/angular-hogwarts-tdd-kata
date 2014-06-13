@@ -17,6 +17,10 @@ Because you are a highly disciplined Wizard, you will be writing your code test 
 Setup
 -----
 
+``git clone https://github.com/jmcooper/angular-hogwarts-tdd-kata.git``
+
+``cd angular-hogwarts-tdd-kata``
+
 You have two ways of running through this kata:
   1. Using the Express.js webserver and the Karma test runner inside ``Chrome``
   2. Using plain files inside Firefox.
@@ -24,7 +28,7 @@ You have two ways of running through this kata:
 
 ### Karma, Express.js inside Chrome (preferred)
 
-You will have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line run
+You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line run
 
 ``npm install``
 
@@ -84,11 +88,13 @@ How will you view it? **I will refresh ``app/index.html`` and click on the Catal
 
 I see you expect to have a ``catalog`` array on the ``CatalogController`` scope. **Yes.**
 
-When will you load the catalog? **When the Controller is initialized.**
+I reloaded ``app/index.html`` and clicked on menu item catalog and I don't see anything. **It is because we haven't hooked it up.**
+
+How will you hook it up? **By loading the ``scope`` with all the courses when the Controller is initialized.**
 
 ### Test 1: Make it Error
 
-Can you write a test to show me what you mean? **Sure.**
+Can you show me what you mean? **Sure. Here is the core of the test.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -249,9 +255,9 @@ That works for now. **Here is the updated catalog.html**
                 </tr>
 ```
 
-We need a place to see the registered courses. **I am putting the UI for registered courses in ``wizard/schedule.html``**
+We need a place to see the registered courses. **It is already inside ``wizard/schedule.html``**
 
-I am seeing duplication between the course catalog and the schedule. **Yes and I will take care of that later.**
+Hmm, I am seeing duplication between the course catalog and the schedule. **Yes and I will take care of that later (outside of this Kata with an ``ng-include``).**
 
 OK. Where do you want to start? **In the course catalog controller of course.**
 
@@ -269,10 +275,9 @@ describe('CatalogController', function () {
         mockRegistrationService,
         ...
 
-    beforeEach(function () {
-        ...
+      ...
 
-        inject(function (..., RegistrationService) {
+        inject(function ( ... , RegistrationService) {
             ...
 
             mockRegistrationService = sinon.stub(RegistrationService);
@@ -303,7 +308,7 @@ describe('CatalogController', function () {
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error "mockRegistrationService.register is undefined".**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error about ``RegistrationService``**
 
 Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the register method so the mocking framework knows how to stub it.**
 
@@ -332,14 +337,17 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
 
 ...
 
-    .controller("CatalogController", [... 'RegistrationService', function (... registrationService) {
+.controller("CatalogController", [ ...
+                                   'RegistrationService',
+                                   function ( ... , registrationService) {
 
-        ...
+    ...
 
-        $scope.register = function(courseId) {
-            registrationService.register(courseId);
-        };
-    }]);
+    $scope.register = function(courseId) {
+        registrationService.register(courseId);
+    };
+
+}]);
 ```
 
 ### Test 2
@@ -362,6 +370,9 @@ Next we need to show the student the result of their registration attempt. **I w
             scope.register(courseId);
             expect(scope.response).toEqual(response);
         });
+
+    ...
+
 ```
 
 ### Test 2: Passing
@@ -409,7 +420,7 @@ Are your tests still passing? **Yes.**
 
 Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet! Of course, I will write a test for ``RegistrationService`` first.**
 
-### Test 3: RegistrationService.register: Happy Path
+### Test 3: RegistrationService.register
 
 ``test/wizard/registration-service-specs.js``
 ```js
@@ -425,6 +436,8 @@ describe('RegistrationService', function () {
         });
 
     });
+
+    ...
 ```
 
 You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
@@ -456,7 +469,7 @@ describe('RegistrationService', function () {
     });
 
     describe('when registering for a course', function () {
-        var course = {id: 'Potions'}        ;
+        ...
 
         beforeEach(function() {
             mockCatalogRepository.getCourse.returns(course);
@@ -484,7 +497,8 @@ hogwartsApp
         }
     };
 
-    ...
+}]);
+
 ```
 
 ### Test 3: Refactor
@@ -541,14 +555,22 @@ Exactly!
 ### Test 4: Green
 ``app/wizard/registration-service.js``
 ```js
-    return {
-        register: function(courseId) {
+...
 
+        register: function(courseId) {
             ...
 
-            return {success: true};
-        }
+            return registerWizardForCourse(wizard, course);
+
     ...
+
+    function registerWizardForCourse(wizard, course) {
+        ...
+
+        return {success: true};
+    }
+
+...
 ```
 
 ### Test 5
@@ -699,7 +721,11 @@ Nice work with the test coverage. **Thank you, Professor.**
 
 ``app/sorting/random-number-service.js``
 ```js
+...
+
             return Math.floor(Math.random() * (max - min + 1)) + min;
+
+...
 ```
 
 ### End to End Testing
@@ -756,3 +782,9 @@ catalog.html was loaded instead of index.html
 fix formating between tests
 
 45 min 2 test passing (not refactoring)
+
+---
+
+Zhon's first time through after a week
+
+Took 1 1/2 hours to complete with many fixups
