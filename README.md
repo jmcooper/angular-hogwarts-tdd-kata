@@ -734,61 +734,52 @@ Have you looked at the website? **Yes students are now being sorted into differe
 
 Execelent! Three points for Hufflepuff.
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">angular-hogwarts-tdd-kata</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Zhon Johansen, Jim Cooper, Amy Dredge</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jmcooper/angular-hogwarts-tdd-kata" rel="dct:source">https://github.com/jmcooper/angular-hogwarts-tdd-kata</a>.
----
+O.W.L.s and N.E.W.T.s
+=====================
 
-TODO
- - Add message to registration response
- - Story about not allowing overlapping courses w/o time-turner
+The Kata is officially over. If you are here with working code, you will be awarded an _Acceptable_ OWL. If you want a NEWT or a higher grade, complete some or all of the following stories/tasks.
 
+Disallow Registering for Multiple Simultaneous Classes
+---------------------------------------------
 
-Observations on Kay's run through
+Acceptance: Students attempting to register for multiple classes at the same time will be shown a message saying this is not allowed and the second class will not be added to their schedule.
 
-Putting code into wrong class
+Allow Registering for Multiple Simultaneous Classes with Time-Turner
+---------------------------------------------
 
-can't mock something that doesn't exist
+Acceptance: Students with a time-turner will be allowed to register for multiple classes at the same time.
 
-putting test code in wrong file
+Refactor out the duplicated UI in Schedule and Catalog
+-----------------------------------------------------
 
-Test 5 test vs code feels icky
+Using ``ng-include`` remove duplication between
 
-Finished in 1 hour with all bugs fixing.
+``wizard/schedule.html`` and ``catalog/catalog.html``
 
----
+Modify this Kata to Use a Todo List
+----------------------------------
 
-Jeff Obversations
+TDD give you
+ - a know starting point (what is the test for that?)
+ - the ability to focus on a small piece of a bigger problem
+ - feedback that your changes haven't broken something
 
-Need readme loaded up if offline
+As you work confidently on you little solutions, you need a place to store your alternative solution, other problems and things you are going to do later to eliminate being distracted by them.
 
-What is ng-repeat?
+This is usually a journal with a Todo list.
 
-loaded in browser html rather than editing it.
+Add the use off the Todo list into this kata.
 
-couldn't find directory
+Add Automated Acceptance Tests
+------------------------------
 
-be consistent with beginning and endings
+When you favor a mockist style of TDD, you need automated Acceptance Tests to make sure you don't have bugs between the interactions. We like ``Fitness`` as our ATs.
 
-editing in wrong file
-
-
-karma takes a long time to pass
-
-catalog.html was loaded instead of index.html
-
-fix formating between tests
-
-45 min 2 test passing (not refactoring)
+Write at lease on Fitness test for each story you implement.
 
 ---
 
-Zhon's first time through after a week
+Thank you!
 
-Took 1 1/2 hours to complete with many fixups
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
 
----
-
-TODO
-
-sinon.assert.calledWith -> assert(stub.calledWith)
-
-Make code fit
