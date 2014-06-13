@@ -114,7 +114,7 @@ describe('CatalogController', function () {
 
 Very nice, you wrote the description and the expectation first. Keeping the test simple helps your thinking.
 
-What happens if you run it? **It will generate errors. You can see them by browsing to ``test/HogwartsTests.hmtl``.**
+What happens if you run it? **It will generate errors. You can see them by reloading your tests (``test/HogwartsTests.hmtl`` in browser or looking at your CLI karma results).**
 
 What is the meaning of: "mockCatalogRepository is not defined"? **It means my mockCatalogRepository is not setup -- I'm referencing it in my test before I even declare it.**
 
@@ -146,8 +146,9 @@ describe('CatalogController', function () {
             mockCatalogRepository.getCatalog.returns(catalog);
 
             $controller("CatalogController", {
-                  $scope: scope,
-                  CatalogRepository: mockCatalogRepository });
+                $scope: scope,
+                CatalogRepository: mockCatalogRepository
+            });
         });
     });
 
@@ -187,7 +188,7 @@ Whenever your tests are passing, you might consider refactoring. **I don't see a
 
 ### Test 2: Failing
 
-You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The catalog.html UI expects an object called catalog on the scope. I can do that!**
+You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The ``catalog.html`` UI expects an property called ``catalog`` on the scope. I can do that!**
 
 Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
@@ -244,9 +245,9 @@ That works for now. **Here is the updated catalog.html**
 ```html
 
 ...
-            <tbody>
                 <tr ng-repeat="course in catalog">
                     ...
+
                     <td>
                         <a href="javascript:void(0);" ng-click="register(course.id)">
                             Register
@@ -255,9 +256,9 @@ That works for now. **Here is the updated catalog.html**
                 </tr>
 ```
 
-We need a place to see the registered courses. **It is already inside ``wizard/schedule.html``**
+We need a place to see the registered courses. **Someone else already put it inside ``wizard/schedule.html``**
 
-Hmm, I am seeing duplication between the course catalog and the schedule. **Yes and I will take care of that later (outside of this Kata with an ``ng-include``).**
+Hmm, I am seeing duplication between the your course catalog and their schedule. **Yes, I will take care of that later with a ``ng-include``.**
 
 OK. Where do you want to start? **In the course catalog controller of course.**
 
@@ -269,11 +270,9 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 
 ...
 
-describe('CatalogController', function () {
-
     var mockCatalogRepository,
+
         mockRegistrationService,
-        ...
 
       ...
 
@@ -285,14 +284,11 @@ describe('CatalogController', function () {
             ...
 
             $controller("CatalogController", {
-                  $scope: scope,
-                  CatalogRepository: mockCatalogRepository,
-                  RegistrationService: mockRegistrationService});
-
-        ...
-    }
+                ... ,
+                RegistrationService: mockRegistrationService
+            });
 	
-	...
+	  ...
 	
     describe('when registering for a course', function() {
         var courseId = 'courseId';
@@ -305,12 +301,14 @@ describe('CatalogController', function () {
         });
 
     });
+
+});
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error about ``RegistrationService``**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error.**
 
-Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the register method so the mocking framework knows how to stub it.**
+Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``RegistrationService`` in the ``wizard`` dirictory so the mocking framework knows how to stub it.**
 
 ``app/wizard/registration-service.js``
 ```js
@@ -446,8 +444,9 @@ You have a test that clearly states your intent: registering leads to a new cour
 
 Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``CatalogRepository`` and then iterate over them until I find the one I want.**
 
-That would have the code smell: **Inappropriate intimacy**. Can you think of another way? **Oops, I just missed the method ``getCourse(courseId)`` on the ``CatalogRepository``. I will call that one instead.**
+That would have the code smell: _Inappropriate intimacy_. Can you think of another way? **Oops, I just missed the method ``getCourse(courseId)`` on the ``CatalogRepository``. I will call that one instead.**
 
+**Notice registration service tests are in the ``wizard`` directory.**
 
 ``test/wizard/registration-service-spec.js``
 ```js
@@ -535,8 +534,7 @@ A service should always return a response. **You mean something like this?**
 ``test/wizard/registration-service-spec.js``
 ```js
 
-describe('RegistrationService', function () {
-
+...
 
     describe('when registering for a course', function () {
 
@@ -637,7 +635,7 @@ Are we finished with this story? **It depends, do we have a story disallowing sc
 
 Yes that is another story. **Then, the software works as expected. The code is clean. Yes, I would say this story is done.**
 
-Congratulations, two points for Hufflepuff. Now, it is time to watch a Quidditch match.
+Congratulations, two points for Hufflepuff. Now, it is for a Quidditch match.
 
 Story: Hat Sorts Randomly
 -------------------------
@@ -660,7 +658,7 @@ You have tests, why not use them to help locate the bug? **I am not sure how.**
 
 Take a look in the directories, ``app/sorting/`` and ``test/sorting/``. **Oh, I see we have no corresponding test file for ``random-number-service.js`` that is probably the bug location.**
 
-Sometime, you might have a test file but the test is missing. Code coverage will tell you lines that are missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``**
+Sometime, you might have a test file but the test is missing. Code coverage can also help you find missing tests. **Good to know. Something is fishy with ``Math.floor(Math.random() * (max - max)) + max;``**
 
 You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).**
 
@@ -748,10 +746,6 @@ Putting code into wrong class
 
 can't mock something that doesn't exist
 
-fit everything (no sideways scrolling)
-
-Stuck at 3rd test
-
 putting test code in wrong file
 
 Test 5 test vs code feels icky
@@ -788,3 +782,11 @@ fix formating between tests
 Zhon's first time through after a week
 
 Took 1 1/2 hours to complete with many fixups
+
+---
+
+TODO
+
+sinon.assert.calledWith -> assert(stub.calledWith)
+
+Make code fit
