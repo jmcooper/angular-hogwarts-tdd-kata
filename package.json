@@ -1,21 +1,21 @@
 {
-  "name": "simple-express-static-server",
+  "name": "angular-hogwarts-tdd-kata",
   "version": "0.0.1",
-  "description": "A very simple static file server.",
+  "description": "Server to support Kata for pratcing angular tdd.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/spadin/simple-express-static-server.git"
+    "url": "git://github.com/jmcooper/angular-hogwarts-tdd-kata.git"
   },
-  "author": "Sandro Padin",
-  "license": "ISC",
+  "author": "Zhon Johansen, Jim Cooper, Amy Dredge",
+  "license": "CC",
   "bugs": {
-    "url": "https://github.com/spadin/simple-express-static-server/issues"
+    "url": "https://github.com/jmcooper/angular-hogwarts-tdd-kata/issues"
   },
-  "homepage": "https://github.com/spadin/simple-express-static-server",
+  "homepage":"https://github.com/jmcooper/angular-hogwarts-tdd-kata/issues",
   "dependencies": {
     "express": "^4.1.2",
     "body-parser": "^1.1.2",

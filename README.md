@@ -708,6 +708,7 @@ Have you looked at the website? **Yes students are now being sorted into differe
 
 Execelent! Three points for Hufflepuff.
 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">angular-hogwarts-tdd-kata</span> by <span xmlns:cc="http://creativecommons.org/ns#" property="cc:attributionName">Zhon Johansen, Jim Cooper, Amy Dredge</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.<br />Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/jmcooper/angular-hogwarts-tdd-kata" rel="dct:source">https://github.com/jmcooper/angular-hogwarts-tdd-kata</a>.
 ---
 
 TODO
