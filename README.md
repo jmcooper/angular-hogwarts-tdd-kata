@@ -430,7 +430,9 @@ describe('RegistrationService', function () {
 
         it ('saves the course to the WizardRepository', function() {
             registrationService.register(course.id);
-            sinon.assert.calledWith(mockWizardRepository.save, {courses: {'Potions' : course}});
+            sinon.assert.calledWith(
+                mockWizardRepository.save, {courses: {'Potions' : course}}
+            );
         });
 
     });
