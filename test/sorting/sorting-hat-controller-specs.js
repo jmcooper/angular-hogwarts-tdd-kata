@@ -1,7 +1,8 @@
 "use strict";
 
 describe('SortingHatController', function () {
-    var scope, mockHouseAssignmentService;
+    var scope,
+        mockHouseAssignmentService;
 
     beforeEach(function () {
         module("hogwartsApp");
