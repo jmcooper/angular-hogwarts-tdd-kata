@@ -348,7 +348,7 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
 }]);
 ```
 
-### Test 2
+### Test 2: Failing
 
 Very good, you remembered to run the tests again. **Yes, it worked!**
 
@@ -418,7 +418,7 @@ Are your tests still passing? **Yes.**
 
 Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet! Of course, I will write a test for ``RegistrationService`` first.**
 
-### Test 3: RegistrationService.register
+### Test 3: Erroring
 
 ``test/wizard/registration-service-specs.js``
 ```js
@@ -480,7 +480,7 @@ describe('RegistrationService', function () {
         ...
 ```
 
-### Test 3: Pass
+### Test 3: Passing
 
 ``app/wizard/registration-service.js``
 ```js
@@ -529,7 +529,7 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 ...
 ```
 
-### Test 4: Red
+### Test 4: Failing
 
 A service should always return a response. **You mean something like this?**
 
@@ -552,7 +552,8 @@ A service should always return a response. **You mean something like this?**
 
 Exactly!
 
-### Test 4: Green
+### Test 4: Passing
+
 ``app/wizard/registration-service.js``
 ```js
 ...
@@ -573,7 +574,8 @@ Exactly!
 ...
 ```
 
-### Test 5
+### Test 5: Failing
+
 How will the student know if they are really registered? **They will see their courses on the schedule page.**
 
 How will they see their courses on the schedule page? **Hmm, let's see. The schedule.html is already written. It looks like it expects a wizard object on the scope. The ``wizard`` has ``courses``.**
@@ -615,7 +617,7 @@ describe('ScheduleController', function () {
 
 ```
 
-### Test 5: Green
+### Test 5: Passing
 
 You can make the tests pass? **Yes, this is less painful than drinking a Polyjuice Potion:**
 
