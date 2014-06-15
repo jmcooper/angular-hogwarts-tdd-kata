@@ -743,7 +743,7 @@ The Kata is officially over. If you are here with working code, you are awarded 
 
 Acceptance: Students attempting to register for multiple classes at the same time will be shown a message saying this is not allowed and the second class will not be added to their schedule.
 
-### Allow Registering for Multiple Simultaneous Classes with Time-Turner
+### Allow Multiple Simultaneous Classes with  a Time-Turner
 
 Acceptance: Students with a time-turner will be allowed to register for multiple classes at the same time.
 
