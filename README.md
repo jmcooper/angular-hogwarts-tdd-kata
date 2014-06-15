@@ -772,7 +772,7 @@ Add the use of the Todo list into this kata.
 
 When you favor mockist style TDD, you need automated Acceptance Tests.
 
-Write at least one ``Fitnesse`` test for each story you implement.
+Write at least one end to end [Protractor](https://github.com/angular/protractor) test for each story you implemented.
 
 ---
 
