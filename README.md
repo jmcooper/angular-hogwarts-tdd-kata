@@ -59,8 +59,7 @@ You will have two files loaded into Firefox:
 
 You will not edit either of these files.
 
-Story: Show Course Catalog
---------------------------
+## 1. Story: Show Course Catalog
 
 Acceptance: Students will be able to see a catalog of courses.
 
@@ -71,7 +70,7 @@ How will you start, my young wizard friend? **By making changes to catalog UI in
 How will you view it? **I will refresh ``app/index.html`` and click on the Catalog tab.**
 
 
-### UI For Course Catalog
+### 1.0. UI For Course Catalog
 
 ``app/catalog/catalog.html``
 ```html
@@ -92,7 +91,7 @@ I reloaded ``app/index.html`` and clicked on menu item catalog and I don't see a
 
 How will you hook it up? **By loading the ``scope`` with all the courses when the Controller is initialized.**
 
-### Test 1: Make it Error
+### 1.1. Make Test Error
 
 Can you show me what you mean? **Sure. Here is the core of the test.**
 
@@ -118,7 +117,7 @@ What happens if you run it? **It will generate errors. You can see them by reloa
 
 What is the meaning of: "mockCatalogRepository is not defined"? **It means my mockCatalogRepository is not setup -- I'm referencing it in my test before I even declare it.**
 
-### Test 1: Make it Fail
+### 1.1. Make Test Fail
 
 What's the first step? **Declare the mockCatalogRepository.**
 
@@ -162,7 +161,7 @@ You are on the path to enlightenment. It is wise to celebrate your failures, you
 
 What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
-### Test 1: Make it Pass
+### 1.1. Make Test Pass
 
 How do you make it pass? **The test says the CatalogController needs to call getCatalog on the repository when CatalogController is initialized.**
 
@@ -182,11 +181,11 @@ hogwartsApp
 
 Is it passing? **Yes!**
 
-### Test 1: Refactor it
+### 1.1. Refactor
 
 Whenever your tests are passing, you might consider refactoring. **I don't see anything that needs refactoring.**
 
-### Test 2: Failing
+### 1.2. Failing
 
 You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The ``catalog.html`` UI expects an property called ``catalog`` on the scope. I can do that!**
 
@@ -207,7 +206,7 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
         ...
 ```
 
-### Test 2: Passing
+### 1.2. Passing
 
 ``catalog/catalog-controller.js``
 ```js
@@ -228,14 +227,13 @@ You can see it by loading ``app/index.html`` into your browser and clicking on C
 
 Well done, young Wizard. You have finished your story. Another point for Hufflepuff. **Thank you, I like the write the test, see it fail, write code to make it pass, and then refactor rhythm. I also like seeing what the end user sees.**
 
-Story: Register for Courses
----------------------------
+## 2. Story: Register for Courses
 
 Acceptance: Students register in course catalog then view their courses in schedule.
 
 ---
 
-### UI for Registration
+### 2.0. UI for Registration
 
 You have shown us how to test getting from a repository and displaying the results. I would like to see some interaction. **Sure, how about a link called register on the catalog page.**
 
@@ -262,7 +260,7 @@ Hmm, I am seeing duplication between the your course catalog and their schedule.
 
 OK. Where do you want to start? **In the course catalog controller of course.**
 
-### Test 1: Failing
+### 2.1. Failing
 Don't you mean the course catalog controller spec. **Yes, Professor; this is a TDD Kata, after all.**
 
 ``test/catalog/catalog-controller-specs.js``
@@ -326,7 +324,7 @@ Very good, you're almost there. **My error now says "scope.register is not a fun
 
 Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Professor.**
 
-### Test 1: Passing
+### 2.1. Passing
 
 In order to do that you will need to? **Um... I need to inject the ``RegistrationService`` into the the ``CatalogController`` so that I can call it.**
 
@@ -348,7 +346,7 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
 }]);
 ```
 
-### Test 2: Failing
+### 2.2. Failing
 
 Very good, you remembered to run the tests again. **Yes, it worked!**
 
@@ -373,7 +371,7 @@ Next we need to show the student the result of their registration attempt. **I w
 
 ```
 
-### Test 2: Passing
+### 2.2. Passing
 
 And to get it passing... **That is as simple as adding ``$scope.response = ``**
 
@@ -386,7 +384,7 @@ And to get it passing... **That is as simple as adding ``$scope.response = ``**
             $scope.response = registrationService.register(courseId);
 ```
 
-### Test 2: Refactor
+### 2.2. Refactor
 I smell duplication in the test. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
 
 
@@ -418,7 +416,7 @@ Are your tests still passing? **Yes.**
 
 Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet! Of course, I will write a test for ``RegistrationService`` first.**
 
-### Test 3: Erroring
+### 2.3. Erroring
 
 ``test/wizard/registration-service-specs.js``
 ```js
@@ -442,7 +440,7 @@ describe('RegistrationService', function () {
 
 You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
 
-### Test 3: Failing
+### 2.3. Failing
 
 Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``CatalogRepository`` and then iterate over them until I find the one I want.**
 
@@ -480,7 +478,7 @@ describe('RegistrationService', function () {
         ...
 ```
 
-### Test 3: Passing
+### 2.3. Passing
 
 ``app/wizard/registration-service.js``
 ```js
@@ -502,7 +500,7 @@ hogwartsApp
 
 ```
 
-### Test 3: Refactor
+### 2.3. Refactor
 
 What does the last two lines register? **It registers the wizard for the course.**
 
@@ -529,7 +527,7 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 ...
 ```
 
-### Test 4: Failing
+### 2.4. Failing
 
 A service should always return a response. **You mean something like this?**
 
@@ -552,7 +550,7 @@ A service should always return a response. **You mean something like this?**
 
 Exactly!
 
-### Test 4: Passing
+### 2.4. Passing
 
 ``app/wizard/registration-service.js``
 ```js
@@ -574,7 +572,7 @@ Exactly!
 ...
 ```
 
-### Test 5: Failing
+### 2.5. Failing
 
 How will the student know if they are really registered? **They will see their courses on the schedule page.**
 
@@ -617,7 +615,7 @@ describe('ScheduleController', function () {
 
 ```
 
-### Test 5: Passing
+### 2.5. Passing
 
 You can make the tests pass? **Yes, this is less painful than drinking a Polyjuice Potion:**
 
@@ -631,7 +629,7 @@ hogwartsApp
 }]);
 ```
 
-### Test 5: End to End
+### 2. End to End
 
 How are we going to end to end test it? **I will click the register link and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
@@ -641,7 +639,7 @@ Yes that is another story. **Then, the software works as expected. The code is c
 
 Congratulations, two points for Hufflepuff. Now, it is for a Quidditch match.
 
-Story: Hat Sorts Randomly
+Story 3: Hat Sorts Randomly
 -------------------------
 
 Acceptance: Clicking multiple times will result in all houses being selected.
@@ -654,7 +652,7 @@ Everyone is being sorted into _Hufflepuff_! **Oh, no!, I could have been in Gryf
 
 We must change the Kata immediately to sort randomly.  **I am on it.**
 
-### Debugging
+### 3. Debugging
 
 How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a break point inside ``sorting-hat-controller.js`` on ``$scope.sort`` and follow it down until I find the bug.**
 
@@ -666,7 +664,7 @@ Sometime, you might have a test file but the test is missing. Code coverage can 
 
 You now have a choice, _write a test_ or open the _debugger_. **I choose test (this is a TDD Kata after all).**
 
-### Test Random
+### 3.1. Failing
 
 **I will create the file ``test/sorting/random-number-service-specs.js`` with the following tests in it.**
 
@@ -717,7 +715,7 @@ describe('RandomNumberService', function () {
 
 Nice work with the test coverage. **Thank you, Professor.**
 
-### Test Passing
+### 3.1. Passing
 
 **To get it to pass, I replace the ``return`` section with the correct algorithm (straight from Arithmancy class).**
 
@@ -730,7 +728,7 @@ Nice work with the test coverage. **Thank you, Professor.**
 ...
 ```
 
-### End to End Testing
+### 3. End to End
 
 Have you looked at the website? **Yes students are now being sorted into different houses.**
 
@@ -741,21 +739,21 @@ O.W.L.s and N.E.W.T.s
 
 The Kata is officially over. If you are here with working code, you are awarded an _Acceptable_ OWL. If you want a NEWT or a higher grade, complete some or all of the following stories/tasks.
 
-### Disallow Registering for Multiple Simultaneous Classes
+### 4. Disallow Registering for Multiple Simultaneous Classes
 
 Acceptance: Students attempting to register for multiple classes at the same time will be shown a message saying this is not allowed and the second class will not be added to their schedule.
 
-### Allow Multiple Simultaneous Classes with  a Time-Turner
+### 5. Allow Multiple Simultaneous Classes with  a Time-Turner
 
 Acceptance: Students with a time-turner will be allowed to register for multiple classes at the same time.
 
-### Refactor out the duplicated UI in Schedule and Catalog
+### 6. Refactor out the duplicated UI in Schedule and Catalog
 
 Using ``ng-include`` remove duplication between
 
 ``wizard/schedule.html`` and ``catalog/catalog.html``
 
-### Modify this Kata to Use a Todo List
+### 7. Modify this Kata to Use a Todo List
 
 TDD give you
  - a know starting point (what is the test for that?)
@@ -768,7 +766,7 @@ This is often in your journal in a Todo list.
 
 Add the use of the Todo list into this kata.
 
-### Add Automated Acceptance Tests
+### 8. Add Automated Acceptance Tests
 
 When you favor mockist style TDD, you need automated Acceptance Tests.
 
