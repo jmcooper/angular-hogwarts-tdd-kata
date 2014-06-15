@@ -22,7 +22,7 @@ Setup
 ``cd angular-hogwarts-tdd-kata``
 
 You have two ways of running through this kata:
-  1. Using the Express.js webserver and the Karma test runner inside ``Chrome``
+  1. Using the ``Express.js`` webserver and the Karma test runner inside Chrome.
   2. Using plain files inside Firefox.
 
 
@@ -34,7 +34,7 @@ You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``k
 
 (or just copy the ``node_modules`` directory and run ``npm rebuild``)
 
-To run the server call
+To run the server, call
 
 ``node server.js``
 
@@ -112,7 +112,7 @@ describe('CatalogController', function () {
 });
 ```
 
-Very nice, you wrote the description and the expectation first. Keeping the test simple helps your thinking.
+Very nice, you wrote the description and the expectation first. **Thank you. Keeping the test simple helps my thinking.**
 
 What happens if you run it? **It will generate errors. You can see them by reloading your tests (``test/HogwartsTests.hmtl`` in browser or looking at your CLI karma results).**
 
@@ -308,7 +308,7 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 You have done amazing work. You added a ``mockRegistrationService
 `` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error.**
 
-Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``RegistrationService`` in the ``wizard`` dirictory so the mocking framework knows how to stub it.**
+Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``RegistrationService`` in the ``wizard`` directory so the mocking framework knows how to stub it.**
 
 ``app/wizard/registration-service.js``
 ```js
@@ -387,7 +387,7 @@ And to get it passing... **That is as simple as adding ``$scope.response = ``**
 ```
 
 ### Test 2: Refactor
-I smell duplication. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
+I smell duplication in the test. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
 
 
 ``test/catalog/catalog-controller-specs.js``
@@ -666,7 +666,7 @@ You now have a choice, _write a test_ or open the _debugger_. **I choose test (t
 
 ### Test Random
 
-**I will create the file ``test/sorting/random-number-service-specs.js`` with the following test in it.**
+**I will create the file ``test/sorting/random-number-service-specs.js`` with the following tests in it.**
 
 ``test/sorting/random-number-service-specs.js``
 ```js
@@ -737,45 +737,40 @@ Execelent! Three points for Hufflepuff.
 O.W.L.s and N.E.W.T.s
 =====================
 
-The Kata is officially over. If you are here with working code, you will be awarded an _Acceptable_ OWL. If you want a NEWT or a higher grade, complete some or all of the following stories/tasks.
+The Kata is officially over. If you are here with working code, you are awarded an _Acceptable_ OWL. If you want a NEWT or a higher grade, complete some or all of the following stories/tasks.
 
-Disallow Registering for Multiple Simultaneous Classes
----------------------------------------------
+### Disallow Registering for Multiple Simultaneous Classes
 
 Acceptance: Students attempting to register for multiple classes at the same time will be shown a message saying this is not allowed and the second class will not be added to their schedule.
 
-Allow Registering for Multiple Simultaneous Classes with Time-Turner
----------------------------------------------
+### Allow Registering for Multiple Simultaneous Classes with Time-Turner
 
 Acceptance: Students with a time-turner will be allowed to register for multiple classes at the same time.
 
-Refactor out the duplicated UI in Schedule and Catalog
------------------------------------------------------
+### Refactor out the duplicated UI in Schedule and Catalog
 
 Using ``ng-include`` remove duplication between
 
 ``wizard/schedule.html`` and ``catalog/catalog.html``
 
-Modify this Kata to Use a Todo List
-----------------------------------
+### Modify this Kata to Use a Todo List
 
 TDD give you
  - a know starting point (what is the test for that?)
  - the ability to focus on a small piece of a bigger problem
  - feedback that your changes haven't broken something
 
-As you work confidently on you little solutions, you need a place to store your alternative solution, other problems and things you are going to do later to eliminate being distracted by them.
+As you work confidently on you little solution, you need a place to store your alternative solutions, other problems and things you are going to do later to eliminate being distracted by them.
 
-This is usually a journal with a Todo list.
+This is often in your journal in a Todo list.
 
-Add the use off the Todo list into this kata.
+Add the use of the Todo list into this kata.
 
-Add Automated Acceptance Tests
-------------------------------
+### Add Automated Acceptance Tests
 
-When you favor a mockist style of TDD, you need automated Acceptance Tests to make sure you don't have bugs between the interactions. We like ``Fitness`` as our ATs.
+When you favor mockist style TDD, you need automated Acceptance Tests.
 
-Write at lease on Fitness test for each story you implement.
+Write at least one ``Fitnesse`` test for each story you implement.
 
 ---
 
