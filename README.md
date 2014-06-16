@@ -639,7 +639,7 @@ Are we finished with this story? **It depends, do we have a story disallowing sc
 
 Yes that is another story. **Then, the software works as expected. The code is clean. Yes, I would say this story is done.**
 
-Congratulations, two points for Hufflepuff. Now, it is for a Quidditch match.
+Congratulations, two points for Hufflepuff. Now, it is time for a Quidditch match.
 
 Story 3: Hat Sorts Randomly
 -------------------------
@@ -778,5 +778,5 @@ Write at least one end to end [Protractor](https://github.com/angular/protractor
 
 Thank you!
 
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" />
+<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" ></a>
 
