@@ -450,7 +450,7 @@ That would have the code smell: _Inappropriate intimacy_. Can you think of anoth
 
 **Notice registration service tests are in the ``wizard`` directory.**
 
-``test/wizard/registration-service-spec.js``
+``test/wizard/registration-service-specs.js``
 ```js
 
 describe('RegistrationService', function () {
@@ -533,7 +533,7 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 
 A service should always return a response. **You mean something like this?**
 
-``test/wizard/registration-service-spec.js``
+``test/wizard/registration-service-specs.js``
 ```js
 
 ...
@@ -582,7 +582,7 @@ How will they see their courses on the schedule page? **Hmm, let's see. The sche
 
 You are indeed a very promising young wizard. **I will write tests for the schedule controller. I'm writing both tests because the code to pass them is one line.**
 
-``test/wizard/schedule-controller-spec.js``
+``test/wizard/schedule-controller-specs.js``
 ```js
 describe('ScheduleController', function () {
     var scope, mockWizardRepository;
