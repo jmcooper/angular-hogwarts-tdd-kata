@@ -1,0 +1,19 @@
+{
+    "undef": true,
+    "node": true,
+    "globals": {
+        "angular": true,
+        "hogwartsApp": true,
+
+        "describe": true,
+        "beforeEach": true,
+        "expect": true,
+        "it": true,
+
+        "module": true,
+        "inject": true,
+        "sinon": true,
+
+        "_": true
+    }
+}

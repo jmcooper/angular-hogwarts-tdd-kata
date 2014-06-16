@@ -40,7 +40,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/catalog/**/*.js': ['jshint'],
+        'app/sorting/**/*.js': ['jshint'],
+        'app/wizard/**/*.js': ['jshint'],
 
+        'test/**/*-specs.js': ['jshint']
     },
 
 
