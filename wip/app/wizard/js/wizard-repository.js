@@ -1,6 +1,6 @@
 'use strict';
 
-hogwartsApp.factory('WizardRepository', function() {
+hogwartsApp.factory('wizardRepository', function() {
     var wizard = {courses: {}, house: ""};
 
     return {

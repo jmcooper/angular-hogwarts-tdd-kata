@@ -1,7 +1,8 @@
 'use strict';
 
-hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardRepository', function(catalogRepository, wizardRepository) {
-    return {
+hogwartsApp
+    .factory('registrationService', function(catalogRepository, wizardRepository) {
+     return {
         register: function(courseId) {
             var course = catalogRepository.getCourse(courseId);
             var wizard = wizardRepository.get();
@@ -26,5 +27,5 @@ hogwartsApp.factory('RegistrationService', ['CatalogRepository', 'WizardReposito
           return course.startTime.getTime() === existingCourse.startTime.getTime();
         });
     }
-}]);
+});
 

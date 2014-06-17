@@ -1,5 +1,5 @@
 
-hogwartsApp.factory('CatalogRepository', function() {
+hogwartsApp.factory('catalogRepository', function() {
 
 var catalogDataDetails =
 [
