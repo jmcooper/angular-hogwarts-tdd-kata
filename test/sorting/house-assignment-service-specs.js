@@ -1,7 +1,7 @@
 "use strict";
 
 describe('HouseAssignmentService', function () {
-    var houseAssignmentService,
+    var houseAssignmentSvc,
         mockWizardRepository,
         mockHouseRepository,
         mockRandomNumberService;
@@ -9,11 +9,11 @@ describe('HouseAssignmentService', function () {
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function (HouseAssignmentService, WizardRepository, HouseRepository, RandomNumberService) {
-            houseAssignmentService = HouseAssignmentService;
-            mockWizardRepository = sinon.stub(WizardRepository);
-            mockHouseRepository = sinon.stub(HouseRepository);	
-            mockRandomNumberService = sinon.stub(RandomNumberService);
+        inject(function (houseAssignmentService, wizardRepository, houseRepository, randomNumberService) {
+            houseAssignmentSvc = houseAssignmentService;
+            mockWizardRepository = sinon.stub(wizardRepository);
+            mockHouseRepository = sinon.stub(houseRepository);
+            mockRandomNumberService = sinon.stub(randomNumberService);
         });
     });
 
@@ -29,7 +29,7 @@ describe('HouseAssignmentService', function () {
             mockHouseRepository.get.returns(houseOptions);
             mockRandomNumberService.getInRange.returns(houseNumber);
 
-            response = houseAssignmentService.assignWizard();
+            response = houseAssignmentSvc.assignWizard();
         });
 
         it('gets the wizard from the repository', function () {
