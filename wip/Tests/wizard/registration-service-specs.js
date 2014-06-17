@@ -1,6 +1,6 @@
 "use strict";
 
-describe('RegistrationService', function () {
+describe('registrationService', function () {
     var registrationService, mockCatalogRepository, mockWizardRepository;
 
     beforeEach(function () {
