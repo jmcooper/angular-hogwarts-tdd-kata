@@ -261,7 +261,7 @@ Hmm, I am seeing duplication between the your course catalog and their schedule.
 
 OK. Where do you want to start? **In the course catalog controller of course.**
 
-### 2.1. Failing
+### 2.1. Erroring
 Don't you mean the course catalog controller spec. **Yes, Professor; this is a TDD Kata, after all.**
 
 ``test/catalog/catalog-controller-specs.js``
@@ -305,7 +305,9 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``registrationService``. **Thank you. But when I run the tests, I get an error.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``registrationService``. **Thank you. But when I run the tests, They are all erroring!**
+
+### 2.1. Failing
 
 Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``registrationService`` in the ``wizard`` directory so the mocking framework knows how to stub it.**
 
@@ -321,7 +323,7 @@ hogwartsApp
 
 ```
 
-Very good, you're almost there. **My error now says "scope.register is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
+Very good, you have one test failing, you're almost there. **My error now says "scope.register is not a function". Oh, duh, I need to implement the function register() in the CatalogController.**
 
 Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Professor.**
 
