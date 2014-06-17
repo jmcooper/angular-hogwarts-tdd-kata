@@ -139,10 +139,10 @@ describe('CatalogController', function () {
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function ($rootScope, $controller, CatalogRepository) {
+        inject(function ($rootScope, $controller, catalogRepository) {
             scope = $rootScope.$new();
 
-            mockCatalogRepository = sinon.stub(CatalogRepository);
+            mockCatalogRepository = sinon.stub(catalogRepository);
             mockCatalogRepository.getCatalog.returns(catalog);
 
             $controller("CatalogController", {
@@ -274,11 +274,11 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 
       ...
 
-        inject(function ( ... , RegistrationService) {
+        inject(function ( ... , registrationService) {
 
             ...
 
-            mockRegistrationService = sinon.stub(RegistrationService);
+            mockRegistrationService = sinon.stub(registrationService);
 
             ...
 
@@ -447,17 +447,17 @@ That would have the code smell: _Inappropriate intimacy_. Can you think of anoth
 
 describe('RegistrationService', function () {
 
-    var registrationService,
+    var registrationSvc,
         mockCatalogRepository,
         mockWizardRepository;
 
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function (RegistrationService, CatalogRepository, WizardRepository) {
-            registrationService = RegistrationService;
-            mockCatalogRepository = sinon.stub(CatalogRepository);
-            mockWizardRepository = sinon.stub(WizardRepository);
+        inject(function (registrationService, catalogRepository, wizardRepository) {
+            registrationSvc = registrationService;
+            mockCatalogRepository = sinon.stub(catalogRepository);
+            mockWizardRepository = sinon.stub(wizardRepository);
         });
     });
 
@@ -582,10 +582,10 @@ describe('ScheduleController', function () {
     beforeEach(function () {
         module("hogwartsApp");
 
-        inject(function ($rootScope, $controller, WizardRepository) {
+        inject(function ($rootScope, $controller, wizardRepository) {
             scope = $rootScope.$new();
 
-            mockWizardRepository = sinon.stub(WizardRepository);
+            mockWizardRepository = sinon.stub(wizardRepository);
             mockWizardRepository.get.returns(wizard);
 
             $controller("ScheduleController", {
@@ -662,14 +662,14 @@ You now have a choice, _write a test_ or open the _debugger_. **I choose test (t
 ``test/sorting/random-number-service-specs.js``
 ```js
 describe('RandomNumberService', function () {
-    var randomNumberService;
+    var randomNumberSvc;
     var stubMath;
 
     beforeEach(function () {
         module("hogwartsApp");
         stubMath = sinon.stub(Math, 'random');
-        inject(function (RandomNumberService) {
-            randomNumberService = RandomNumberService;
+        inject(function (randomNumberService) {
+            randomNumberSvc = randomNumberService;
         });
     });
 
