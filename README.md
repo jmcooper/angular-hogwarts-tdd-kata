@@ -172,11 +172,9 @@ How do you make it pass? **The test says the CatalogController needs to call get
 'use strict';
 
 hogwartsApp
-.controller("CatalogController", [ '$scope',
-                                    'CatalogRepository',
-                                    function ($scope, catalogRepository) {
+.controller("CatalogController", function ($scope, catalogRepository) {
     catalogRepository.getCatalog();
-}]);
+});
 ```
 
 Is it passing? **Yes!**
@@ -212,11 +210,9 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 ```js
 
 ...
-.controller("CatalogController", ['$scope',
-                                  'CatalogRepository',
-                                  function ($scope, catalogRepository) {
+.controller("CatalogController", function ($scope, catalogRepository) {
     $scope.catalog = catalogRepository.getCatalog();
-}]);
+});
 ```
 
 Are we finished with the story? **No, Professor Longbottom. Before calling a story done, it must be tested and deployed.**
@@ -313,12 +309,12 @@ Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``regist
 ``app/wizard/registration-service.js``
 ```js
 hogwartsApp
-.factory('RegistrationService', [ function() {
+.factory('registrationService', function() {
     return {
         register: function(courseId) {
         }
     };
-}]);
+});
 
 ```
 
@@ -335,9 +331,7 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
 
 ...
 
-.controller("CatalogController", [ ...
-                                   'RegistrationService',
-                                   function ( ... , registrationService) {
+.controller("CatalogController", function ( ... , registrationService) {
 
     ...
 
@@ -345,7 +339,7 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
         registrationService.register(courseId);
     };
 
-}]);
+});
 ```
 
 ### 2.2. Failing
@@ -485,9 +479,7 @@ describe('RegistrationService', function () {
 ``app/wizard/registration-service.js``
 ```js
 hogwartsApp
-.factory('RegistrationService', [ 'CatalogRepository',
-                                  'WizardRepository',
-                                  function(catalogRepository, wizardRepository) {
+.factory('registrationService', function(catalogRepository, wizardRepository) {
     return {
         register: function(courseId) {
             var course = catalogRepository.getCourse(courseId),
@@ -498,7 +490,7 @@ hogwartsApp
         }
     };
 
-}]);
+});
 
 ```
 
@@ -624,11 +616,9 @@ You can make the tests pass? **Yes, this is less painful than drinking a Polyjui
 ``app/wizard/schedule-controller.js``
 ```js
 hogwartsApp
-.controller("ScheduleController", [ '$scope',
-                                    'WizardRepository',
-                                    function ($scope, wizardRepository) {
+.controller("ScheduleController", function ($scope, wizardRepository) {
     $scope.wizard = wizardRepository.get();
-}]);
+});
 ```
 
 ### 2. End to End

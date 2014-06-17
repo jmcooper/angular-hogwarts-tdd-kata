@@ -1,6 +1,6 @@
 'use strict';
 
-hogwartsApp.factory('HouseAssignmentService', ['WizardRepository', 'HouseRepository', 'RandomNumberService', function(wizardRepository, houseRepository, randomNumberService) {
+hogwartsApp.factory('HouseAssignmentService', function(wizardRepository, houseRepository, randomNumberService) {
     return {
         assignWizard: function() {
             var wizard = wizardRepository.get();
@@ -12,5 +12,5 @@ hogwartsApp.factory('HouseAssignmentService', ['WizardRepository', 'HouseReposit
             return selectedHouse;
         }
     };
-}]);
+});
 

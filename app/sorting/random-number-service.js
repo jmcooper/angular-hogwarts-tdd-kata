@@ -1,10 +1,10 @@
 'use strict';
 
-hogwartsApp.factory('RandomNumberService', [function() {
+hogwartsApp.factory('randomNumberService', function() {
     return {
         getInRange: function(min, max){
             return Math.floor(Math.random() * (max - max)) + max;
         }
     };
-}]);
+});
 

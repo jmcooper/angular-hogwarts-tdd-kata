@@ -1,6 +1,6 @@
 'use strict';
 
-hogwartsApp.factory('HouseRepository', function() {
+hogwartsApp.factory('houseRepository', function() {
     var houses = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"];
 
     return {
