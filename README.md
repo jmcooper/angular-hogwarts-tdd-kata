@@ -647,7 +647,7 @@ We must change the Kata immediately to sort randomly.  **I am on it.**
 
 ### 3. Debugging
 
-How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a break point inside ``sorting-hat-controller.js`` on ``$scope.sort`` and follow it down until I find the bug.**
+How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a break point inside ``sorting-hat-controller.js`` on ``$scope.sort``, click the sorting hat and then follow the code in the debugger down until I find the bug.**
 
 You have tests, why not use them to help locate the bug? **I am not sure how.**
 
