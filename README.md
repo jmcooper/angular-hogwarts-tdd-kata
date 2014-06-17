@@ -147,7 +147,7 @@ describe('CatalogController', function () {
 
             $controller("CatalogController", {
                 $scope: scope,
-                CatalogRepository: mockCatalogRepository
+                catalogRepository: mockCatalogRepository
             });
         });
     });
@@ -284,7 +284,7 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 
             $controller("CatalogController", {
                 ... ,
-                RegistrationService: mockRegistrationService
+                registrationService: mockRegistrationService
             });
 	
 	  ...
@@ -305,9 +305,9 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 ```
 
 You have done amazing work. You added a ``mockRegistrationService
-`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``RegistrationService``. **Thank you. But when I run the tests, I get an error.**
+`` and stubbed it at the top level. You have mocked it inside a new ``describe`` block and written a test that says we are delegating the add course to the ``registrationService``. **Thank you. But when I run the tests, I get an error.**
 
-Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``RegistrationService`` in the ``wizard`` directory so the mocking framework knows how to stub it.**
+Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``registrationService`` in the ``wizard`` directory so the mocking framework knows how to stub it.**
 
 ``app/wizard/registration-service.js``
 ```js
@@ -327,7 +327,7 @@ Professional Wizards do not normally say 'Duh.' **Yes, Professor. I mean, No, Pr
 
 ### 2.1. Passing
 
-In order to do that you will need to? **Um... I need to inject the ``RegistrationService`` into the the ``CatalogController`` so that I can call it.**
+In order to do that you will need to? **Um... I need to inject the ``registrationService`` into the the ``CatalogController`` so that I can call it.**
 
 ``app/catalog/catalog-controller.js``
 ```js
@@ -348,7 +348,7 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
 
 Very good, you remembered to run the tests again. **Yes, it worked!**
 
-Next we need to show the student the result of their registration attempt. **I will put the ``RegistrationService`` response on the scope so the UI can access it.**
+Next we need to show the student the result of their registration attempt. **I will put the ``registrationService`` response on the scope so the UI can access it.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -408,19 +408,19 @@ I smell duplication in the test. **Yes and I am willing to remove it, while all 
 
 Are your tests still passing? **Yes.**
 
-Are you finished with this story? **No. We are delegating to the ``RegistrationService`` which we haven't written yet! Of course, I will write a test for ``RegistrationService`` first.**
+Are you finished with this story? **No. We are delegating to the ``registrationService`` which we haven't written yet! Of course, I will write a test for ``registrationService`` first.**
 
 ### 2.3. Erroring
 
 ``test/wizard/registration-service-specs.js``
 ```js
 
-describe('RegistrationService', function () {
+describe('registrationService', function () {
 
     describe('when registering for a course', function () {
         var course = {id: 'Potions'};
 
-        it ('saves the course to the WizardRepository', function() {
+        it ('saves the course to the wizardRepository', function() {
             registrationService.register(course.id);
             sinon.assert.calledWith(
                 mockWizardRepository.save, {courses: {'Potions' : course}}
@@ -432,20 +432,20 @@ describe('RegistrationService', function () {
     ...
 ```
 
-You have a test that clearly states your intent: registering leads to a new course in the ``WizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
+You have a test that clearly states your intent: registering leads to a new course in the ``wizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
 
 ### 2.3. Failing
 
-Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``CatalogRepository`` and then iterate over them until I find the one I want.**
+Looking at your test, you obviously need a ``mockWizardRepository`` that has a ``save`` method. But how are you going to convert ``course.id`` into a ``course``?  **I am going to get all the courses from the ``catalogRepository`` and then iterate over them until I find the one I want.**
 
-That would have the code smell: _Inappropriate intimacy_. Can you think of another way? **Oops, I just missed the method ``getCourse(courseId)`` on the ``CatalogRepository``. I will call that one instead.**
+That would have the code smell: _Inappropriate intimacy_. Can you think of another way? **Oops, I just missed the method ``getCourse(courseId)`` on the ``catalogRepository``. I will call that one instead.**
 
 **Notice registration service tests are in the ``wizard`` directory.**
 
 ``test/wizard/registration-service-specs.js``
 ```js
 
-describe('RegistrationService', function () {
+describe('registrationService', function () {
 
     var registrationSvc,
         mockCatalogRepository,
@@ -532,7 +532,7 @@ A service should always return a response. **You mean something like this?**
         ...
 
         it('should return a success response', function () {
-            var response = registrationService.register(course.id);
+            var response = registrationSvc.register(course.id);
             expect(response.success).toBeTruthy();
         });
 
@@ -590,7 +590,7 @@ describe('ScheduleController', function () {
 
             $controller("ScheduleController", {
                 $scope: scope,
-                WizardRepository: mockWizardRepository
+                wizardRepository: mockWizardRepository
             });
         });
     });
@@ -661,7 +661,7 @@ You now have a choice, _write a test_ or open the _debugger_. **I choose test (t
 
 ``test/sorting/random-number-service-specs.js``
 ```js
-describe('RandomNumberService', function () {
+describe('randomNumberService', function () {
     var randomNumberSvc;
     var stubMath;
 
@@ -681,22 +681,22 @@ describe('RandomNumberService', function () {
 
         it ('returns 0 for random range 0.0 - 0.249', function() {
             stubMath.returns(0.249);
-            expect(randomNumberService.getInRange(0, 3)).toEqual(0);
+            expect(randomNumberSvc.getInRange(0, 3)).toEqual(0);
         });
 
         it ('returns 1 for random range 0.25 - 0.49', function() {
             stubMath.returns(0.49);
-            expect(randomNumberService.getInRange(0, 3)).toEqual(1);
+            expect(randomNumberSvc.getInRange(0, 3)).toEqual(1);
         });
 
         it ('returns 2 for random range 0.5 - 0.749', function() {
             stubMath.returns(0.749);
-            expect(randomNumberService.getInRange(0, 3)).toEqual(2);
+            expect(randomNumberSvc.getInRange(0, 3)).toEqual(2);
         });
 
         it ('returns 3 for random range 0.75 - 1', function() {
             stubMath.returns(0.99);
-            expect(randomNumberService.getInRange(0, 3)).toEqual(3);
+            expect(randomNumberSvc.getInRange(0, 3)).toEqual(3);
         });
 
     });
