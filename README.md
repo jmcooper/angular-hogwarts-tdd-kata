@@ -199,8 +199,8 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
         ...
 
-        it('should put the catalog on the scope', function() {
-            expect(scope.catalog).toEqual(catalog)
+        it('puts the catalog on the scope', function() {
+            expect(scope.catalog).toEqual(catalog);
         });
 
         ...
@@ -377,8 +377,8 @@ And to get it passing... **That is as simple as adding ``$scope.response = ``**
 ```js
 ...
 
-        $scope.register = function(courseId) {
-            $scope.response = registrationService.register(courseId);
+    $scope.register = function(courseId) {
+        $scope.response = registrationService.register(courseId);
 ```
 
 ### 2.2. Refactor
@@ -533,7 +533,7 @@ A service should always return a response. **You mean something like this?**
 
         ...
 
-        it('should return a success response', function () {
+        it('returns a success response', function () {
             var response = registrationSvc.register(course.id);
             expect(response.success).toBeTruthy();
         });
