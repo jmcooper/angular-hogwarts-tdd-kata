@@ -129,6 +129,7 @@ Do you remember how to cast the Dependency Injection spell? **I remember now.**
 ``test/catalog/catalog-controller-specs.js``
 ```js
 ...
+
 describe('CatalogController', function () {
 
     var mockCatalogRepository,
@@ -152,6 +153,7 @@ describe('CatalogController', function () {
     });
 
     describe('when the controller first loads', function () {
+
 ...
 ```
 
@@ -191,8 +193,8 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
-
 ...
+
     describe('when the controller first loads', function () {
 
         ...
@@ -208,8 +210,8 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
 ``catalog/catalog-controller.js``
 ```js
-
 ...
+
 .controller("CatalogController", function ($scope, catalogRepository) {
     $scope.catalog = catalogRepository.getCatalog();
 });
@@ -239,9 +241,10 @@ That works for now. **Here is the updated catalog.html**
 
 ``app/catalog/catalog.html``
 ```html
-
 ...
+
                 <tr ng-repeat="course in catalog">
+
                     ...
 
                     <td>
@@ -263,7 +266,6 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
-
 ...
 
     var mockCatalogRepository,
@@ -273,6 +275,7 @@ Don't you mean the course catalog controller spec. **Yes, Professor; this is a T
       ...
 
         inject(function ( ... , RegistrationService) {
+
             ...
 
             mockRegistrationService = sinon.stub(RegistrationService);
@@ -328,7 +331,6 @@ In order to do that you will need to? **Um... I need to inject the ``Registratio
 
 ``app/catalog/catalog-controller.js``
 ```js
-
 ...
 
 .controller("CatalogController", function ( ... , registrationService) {
@@ -350,7 +352,6 @@ Next we need to show the student the result of their registration attempt. **I w
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
-
 ...
 
     describe('when registering for a course', function() {
@@ -364,7 +365,6 @@ Next we need to show the student the result of their registration attempt. **I w
         });
 
     ...
-
 ```
 
 ### 2.2. Passing
@@ -373,7 +373,6 @@ And to get it passing... **That is as simple as adding ``$scope.response = ``**
 
 ``app/catalog/catalog-controller.js``
 ```js
-
 ...
 
         $scope.register = function(courseId) {
@@ -386,7 +385,6 @@ I smell duplication in the test. **Yes and I am willing to remove it, while all 
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
-
 ...
 
     describe('when registering for a course', function() {
@@ -464,6 +462,7 @@ describe('RegistrationService', function () {
     });
 
     describe('when registering for a course', function () {
+
         ...
 
         beforeEach(function() {
@@ -502,7 +501,6 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 
 ``app/wizard/registration-service.js``
 ```js
-
 ...
 
         register: function(courseId) {
@@ -527,7 +525,6 @@ A service should always return a response. **You mean something like this?**
 
 ``test/wizard/registration-service-specs.js``
 ```js
-
 ...
 
     describe('when registering for a course', function () {
@@ -551,6 +548,7 @@ Exactly!
 ...
 
         register: function(courseId) {
+
             ...
 
             return registerWizardForCourse(wizard, course);
@@ -558,6 +556,7 @@ Exactly!
     ...
 
     function registerWizardForCourse(wizard, course) {
+
         ...
 
         return {success: true};
