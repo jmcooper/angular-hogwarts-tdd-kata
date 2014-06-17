@@ -1,5 +1,5 @@
 "use strict";
 
-describe('RegistrationService', function () {
+describe('registrationService', function () {
 
 });
