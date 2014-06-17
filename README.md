@@ -423,7 +423,7 @@ describe('registrationService', function () {
         var course = {id: 'Potions'};
 
         it ('saves the course to the wizardRepository', function() {
-            registrationService.register(course.id);
+            service.register(course.id);
             sinon.assert.calledWith(
                 mockWizardRepository.save, {courses: {'Potions' : course}}
             );
@@ -449,7 +449,7 @@ That would have the code smell: _Inappropriate intimacy_. Can you think of anoth
 
 describe('registrationService', function () {
 
-    var registrationSvc,
+    var service,
         mockCatalogRepository,
         mockWizardRepository;
 
@@ -457,7 +457,7 @@ describe('registrationService', function () {
         module("hogwartsApp");
 
         inject(function (registrationService, catalogRepository, wizardRepository) {
-            registrationSvc = registrationService;
+            service = registrationService;
             mockCatalogRepository = sinon.stub(catalogRepository);
             mockWizardRepository = sinon.stub(wizardRepository);
         });
@@ -534,7 +534,7 @@ A service should always return a response. **You mean something like this?**
         ...
 
         it('returns a success response', function () {
-            var response = registrationSvc.register(course.id);
+            var response = service.register(course.id);
             expect(response.success).toBeTruthy();
         });
 
@@ -664,14 +664,14 @@ You now have a choice, _write a test_ or open the _debugger_. **I choose test (t
 ``test/sorting/random-number-service-specs.js``
 ```js
 describe('randomNumberService', function () {
-    var randomNumberSvc;
+    var service;
     var stubMath;
 
     beforeEach(function () {
         module("hogwartsApp");
         stubMath = sinon.stub(Math, 'random');
         inject(function (randomNumberService) {
-            randomNumberSvc = randomNumberService;
+            service = randomNumberService;
         });
     });
 
@@ -683,22 +683,22 @@ describe('randomNumberService', function () {
 
         it ('returns 0 for random range 0.0 - 0.249', function() {
             stubMath.returns(0.249);
-            expect(randomNumberSvc.getInRange(0, 3)).toEqual(0);
+            expect(service(0, 3)).toEqual(0);
         });
 
         it ('returns 1 for random range 0.25 - 0.49', function() {
             stubMath.returns(0.49);
-            expect(randomNumberSvc.getInRange(0, 3)).toEqual(1);
+            expect(service.getInRange(0, 3)).toEqual(1);
         });
 
         it ('returns 2 for random range 0.5 - 0.749', function() {
             stubMath.returns(0.749);
-            expect(randomNumberSvc.getInRange(0, 3)).toEqual(2);
+            expect(service.getInRange(0, 3)).toEqual(2);
         });
 
         it ('returns 3 for random range 0.75 - 1', function() {
             stubMath.returns(0.99);
-            expect(randomNumberSvc.getInRange(0, 3)).toEqual(3);
+            expect(service.getInRange(0, 3)).toEqual(3);
         });
 
     });
