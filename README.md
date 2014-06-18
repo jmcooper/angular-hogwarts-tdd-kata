@@ -30,7 +30,7 @@ You have two ways of running through this kata:
 
 ### Chrome, Express.js and Karma (preferred)
 
-You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line run
+You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line inside ``angular-hogwarts-tdd-kata`` run
 
 ``npm install`` (or just copy the ``node_modules`` directory and run ``npm rebuild``)
 
