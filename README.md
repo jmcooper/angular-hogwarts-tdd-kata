@@ -48,8 +48,9 @@ Finally, if you like your tests automatically running every time you make a chan
 
 ``./node_modules/karma/bin/karma start``
 
+The results will magically appear in the console.
 
-### Working with Plain Files in Firefox
+### Working with Plain Files in Firefox (option 2)
 
 You will have two files loaded into Firefox:
 
@@ -76,6 +77,7 @@ How will you view it? **I will refresh ``app/index.html`` and click on the Catal
 ```html
 ...
             <tbody>
+
                 <tr ng-repeat="course in catalog">
                     <td>{{course.name}}</td>
                     <td>{{course.startTime | date: 'h:mm a'}}</td>
@@ -221,7 +223,7 @@ Are we finished with the story? **No, Professor Longbottom. Before calling a sto
 
 But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).**
 
-### 1. End to End
+### 1.9. End to End
 
 You can see it by loading ``app/index.html`` into your browser and clicking on Catalog (at the top). **I am seeing the page now.**
 
@@ -622,7 +624,7 @@ hogwartsApp
 });
 ```
 
-### 2. End to End
+### 2.9. End to End
 
 How are we going to end to end test it? **I will click the register link and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
@@ -683,7 +685,7 @@ describe('randomNumberService', function () {
 
         it ('returns 0 for random range 0.0 - 0.249', function() {
             stubMath.returns(0.249);
-            expect(service(0, 3)).toEqual(0);
+            expect(service.getInRange(0, 3)).toEqual(0);
         });
 
         it ('returns 1 for random range 0.25 - 0.49', function() {
@@ -721,11 +723,11 @@ Nice work with the test coverage. **Thank you, Professor.**
 ...
 ```
 
-### 3. End to End
+### 3.9. End to End
 
 Have you looked at the website? **Yes students are now being sorted into different houses.**
 
-Execelent! Three points for Hufflepuff.
+Excellent! Three points for Hufflepuff.
 
 O.W.L.s and N.E.W.T.s
 =====================
