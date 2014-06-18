@@ -1,12 +1,14 @@
 Angular Hogwarts TDD Kata
 =========================
 
+“You are here to learn the subtle science and exact art of code-crafting. As there is little foolish wand-waving here, many of you will hardly believe this is magic." --Professor Snape
+
 Introduction
 ------------
 
 Hogwarts has embraced Muggle Technology!
 
-Professor Arthur Weasley has just invented the first steam powered computer and it works at Hogwarts.
+Professor Arthur Weasley has just invented the first magix-powered computer called, Hex, and it works at Hogwarts.
 
 ---
 
@@ -78,7 +80,8 @@ Acceptance: Students will be able to see a catalog of courses.
 
 It is time to start coding. Where will you start? **Making changes to catalog UI inside file ``app/catalog/catalog.html``.**
 
-How will you view it? **I will refresh ``app/index.html`` and click on the Catalog tab.**
+I seem to have forgotten how to view the catalog.
+**Oh, Professer, You just refresh ``app/index.html`` and click on the Catalog tab.**
 
 
 ### 1.0. UI For Course Catalog
@@ -195,7 +198,7 @@ Is it passing? **Yes!**
 
 ### 1.1. Refactor
 
-Whenever your tests are passing, you might consider refactoring. **I don't see anything that needs refactoring.**
+Put this into your Remembrall: Whenever tests are passing, time for refactoring. **I don't see anything that needs refactoring.**
 
 ### 1.2. Failing
 
@@ -323,6 +326,8 @@ You have done amazing work. You added a ``mockRegistrationService
 
 Yes, it's a tricky spell, isn't it? **Yes. I think I need to define the ``register`` method on the ``registrationService`` in the ``wizard`` directory so the mocking framework knows how to stub it.**
 
+**Mocus Definum Servitium**
+
 ``app/wizard/registration-service.js``
 ```js
 hogwartsApp
@@ -396,6 +401,7 @@ And to get it passing... **That is as simple as adding ``$scope.response = ``**
 ### 2.2. Refactor
 I smell duplication in the test. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
 
+**Facio Abdo Duplicatam"
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -447,6 +453,8 @@ describe('registrationService', function () {
 ```
 
 You have a test that clearly states your intent: registering leads to a new course in the ``wizardRepository``. **Yes but it won't run until I use the Dependency Injection spell again.**
+
+**Invertere Injicio Dependeo**
 
 ### 2.3. Failing
 
@@ -513,7 +521,9 @@ What does the last two lines register? **It registers the wizard for the course.
 
 Can you clarify it in code? **You mean extract the last 2 lines into a method.** Yes.
 
-``app/wizard/registration-service.js``
+**Accio Extractum Modious**
+
+``app/wizard/registratioioion-service.js``
 ```js
 ...
 
@@ -642,7 +652,7 @@ Are we finished with this story? **It depends, do we have a story disallowing sc
 
 Yes that is another story. **Then, the software works as expected. The code is clean. Yes, I would say this story is done.**
 
-Congratulations, two points for Hufflepuff. Now, it is time for a Quidditch match.
+Congratulations, two points for Hufflepuff. Now, as soon as I get this Leg-Locker Curse off, we can go to the Quidditch match.
 
 Story 3: Hat Sorts Randomly
 -------------------------
@@ -651,7 +661,7 @@ Acceptance: Clicking multiple times will result in all houses being selected.
 
 ---
 
-We have a disaster, a crisis of epic proportion! Sorting Hat is on an extended vacation with Nymphadora Tonks' ghost. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
+We have a disaster, a crisis of epic proportion! Sorting Hat is celebrating at Hogsmeade with Nymphadora Tonks' ghost and refuses to leave. The replacement, the old straw thing that sorted you, is sorting everything according to this Kata! **I am not sure I see the problem.**
 
 Everyone is being sorted into _Hufflepuff_! **Oh, no!, I could have been in Gryffindor! What can we do?**
 
@@ -742,7 +752,7 @@ Excellent! Three points for Hufflepuff.
 O.W.L.s and N.E.W.T.s
 =====================
 
-The Kata is officially over. If you are here with working code, you are awarded an _Acceptable_ OWL. If you want a NEWT or a higher grade, complete some or all of the following stories/tasks.
+The Kata is officially over and Stinksap's not poisonous. If you are here with working code, you are awarded an _Acceptable_ OWL. If you want a NEWT or a higher grade, complete some or all of the following stories/tasks.
 
 ### 4. Disallow Registering for Multiple Simultaneous Classes
 
