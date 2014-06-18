@@ -63,7 +63,7 @@ You will not edit either of these files.
 ## 0. Coming up to Speed
 
 How will you begin, my young wizard friend? **I will explore:**
-  1. **I will click the ``app`` and ``test`` tabs.**
+  1. **I will click the ``app`` and ``test`` pages.**
   2. **I will notice ``karma`` running tests in the ``console``.**
 
 Great, what house are you in? **I am in ___________________**
@@ -77,7 +77,7 @@ Acceptance: Students will be able to see a catalog of courses.
 It is time to start coding. Where will you start? **Making changes to catalog UI inside file ``app/catalog/catalog.html``.**
 
 I seem to have forgotten how to view the catalog.
-**Oh, Professer, you just refresh ``app/index.html`` and click on the Catalog tab.**
+**Oh, Professor, you just refresh ``app/index.html`` and click on the Catalog menu.**
 
 
 ### 1.0. UI For Course Catalog
@@ -649,7 +649,7 @@ hogwartsApp
 
 ### 2.9. End to End
 
-How are we going to end to end test it? **I will click the register link on the catalog tab and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
+How are we going to end to end test it? **I will click the register link on the catalog menu and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
 Are we finished with this story? **It depends, do we have a story disallowing scheduling mutiple course at the same time (with the exception of students using a Time-Turner)?**
 
