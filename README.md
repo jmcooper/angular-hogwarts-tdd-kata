@@ -24,13 +24,13 @@ Setup
 ``cd angular-hogwarts-tdd-kata``
 
 You have two ways of running through this kata:
-  1. Using the ``Express.js`` webserver and the Karma test runner inside Chrome.
+  1. Using Chrome,``Express.js`` webserver, and Karma test runner.
   2. Using plain files inside Firefox.
 
 
-### Karma, Express.js inside Chrome (preferred)
+### Chrome, Express.js and Karma (preferred)
 
-You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line run
+You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line inside ``angular-hogwarts-tdd-kata`` run
 
 ``npm install``
 
