@@ -8,7 +8,7 @@ Introduction
 
 Hogwarts has embraced Muggle Technology!
 
-Professor Arthur Weasley has just invented the first magix-powered computer called, Hex, and it works at Hogwarts.
+Professor Arthur Weasley has just invented the first magic-powered computer, Hex, and it works at Hogwarts.
 
 ---
 
@@ -65,10 +65,10 @@ You will not edit either of these files.
 ## 0. Coming up to Speed
 
 How will you begin, my young wizard friend? **I will explore:**
-1. **I will click the ``app`` and ``test`` tabs.**
-2. **I will notice ``karma`` running in the ``console``.**
-3. **I will notice the three menu items in the ``app``.**
-4. **I will sort myself into a house by clicking on the sorting hat.**
+  1. **I will click the ``app`` and ``test`` tabs.**
+  2. **I will notice ``karma`` running in the ``console``.**
+  3. **I will notice the three menu items in the ``app``.**
+  4. **I will sort myself into a house by clicking on the sorting hat.**
 
 Great, what house are you in? **Uh, I am in __________________**
 
@@ -81,7 +81,7 @@ Acceptance: Students will be able to see a catalog of courses.
 It is time to start coding. Where will you start? **Making changes to catalog UI inside file ``app/catalog/catalog.html``.**
 
 I seem to have forgotten how to view the catalog.
-**Oh, Professer, You just refresh ``app/index.html`` and click on the Catalog tab.**
+**Oh, Professer, you just refresh ``app/index.html`` and click on the Catalog tab.**
 
 
 ### 1.0. UI For Course Catalog
@@ -109,6 +109,8 @@ How will you hook it up? **By loading the ``scope`` with all the courses when th
 ### 1.1. Make Test Error
 
 Can you show me what you mean? **Sure. Here is the core of the test.**
+
+**Lorem Demonstratio Facilius**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -140,6 +142,7 @@ Yes, and then? **I'm not sure.**
 
 Do you remember how to cast the Dependency Injection spell? **I remember now.**
 
+**Accio Dependentiam Injecious**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -174,7 +177,7 @@ describe('CatalogController', function () {
 
 Does it pass now? **No, but it is not erroring. I think we are making progress? We are seeing a failing test (expected getCatalog to be called once but was called 0 times).**
 
-You are on the path to enlightenment. It is wise to celebrate your failures, young wizard. **Yeah!???**
+You are on the path to enlightenment. It is wise to celebrate any failure that doesn't kill you. **Yeah!???**
 
 What are you doing inside ``beforeEach``? **We are creating a mock repository and a temporary scope. We then inject the mocks into the ``CatalogController``.**
 
@@ -205,6 +208,8 @@ Put this into your Remembrall: Whenever tests are passing, time for refactoring.
 You have completed your first test. One point for Hufflepuff. Is the story complete? **No, the catalog does not show up on the web page. The ``catalog.html`` UI expects an property called ``catalog`` on the scope. I can do that!**
 
 Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
+
+**Etiam Dolor Scopus**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -546,6 +551,8 @@ Can you clarify it in code? **You mean extract the last 2 lines into a method.**
 ### 2.4. Failing
 
 A service should always return a response. **You mean something like this?**
+
+**Responsum Exspectant**
 
 ``test/wizard/registration-service-specs.js``
 ```js
