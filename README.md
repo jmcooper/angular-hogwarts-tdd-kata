@@ -34,8 +34,6 @@ You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``k
 
 ``npm install``
 
-(or just copy the ``node_modules`` directory and run ``npm rebuild``)
-
 To run the server, call
 
 ``node server.js``
@@ -66,11 +64,9 @@ You will not edit either of these files.
 
 How will you begin, my young wizard friend? **I will explore:**
   1. **I will click the ``app`` and ``test`` tabs.**
-  2. **I will notice ``karma`` running in the ``console``.**
-  3. **I will notice the three menu items in the ``app``.**
-  4. **I will sort myself into a house by clicking on the sorting hat.**
+  2. **I will notice ``karma`` running tests in the ``console``.**
 
-Great, what house are you in? **Uh, I am in __________________**
+Great, what house are you in? **I am in ___________________**
 
 ## 1. Story: Show Course Catalog
 
@@ -802,8 +798,3 @@ Thank you!
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" ></a>
 
-
-
-How do you start debugger in chrome & firefox
-
-Sort yourself into a house now split up by house
