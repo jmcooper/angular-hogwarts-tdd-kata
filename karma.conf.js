@@ -44,7 +44,9 @@ module.exports = function(config) {
         'app/sorting/**/*.js': ['jshint'],
         'app/wizard/**/*.js': ['jshint'],
 
-        'test/**/*.js': ['jshint']
+        'test/catalog/**/*.js': ['jshint'],
+        'test/sorting/**/*.js': ['jshint'],
+        'test/wizard/**/*.js': ['jshint']
     },
 
 
