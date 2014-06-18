@@ -65,6 +65,8 @@ You will not edit either of these files.
 How will you begin, my young wizard friend? **I will explore:**
   1. **I will click the ``app`` and ``test`` pages.**
   2. **I will notice ``karma`` running tests in the ``console``.**
+  3. **I will notice the three menu items in the app.**
+  4. **I will sort myself into a house by clicking on the sorting hat.**
 
 Great, what house are you in? **I am in ___________________**
 
@@ -762,7 +764,7 @@ Acceptance: Students attempting to register for multiple classes at the same tim
 
 ### 5. Allow Multiple Simultaneous Classes with  a Time-Turner
 
-Acceptance: Students with a time-turner will be allowed to register for multiple classes at the same time.
+Acceptance: Students with a time-turner are be allowed to register for multiple classes at the same time.
 
 ### 6. Refactor out the duplicated UI in Schedule and Catalog
 
