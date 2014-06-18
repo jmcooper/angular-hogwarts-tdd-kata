@@ -235,7 +235,7 @@ Ahem. You can write a test for that? **Oh, yes, that's what I meant.**
 
 Are we finished with the story? **No, Professor Longbottom. Before calling a story done, it must be tested and deployed.**
 
-But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated tests. But I must inspect my beautiful work (and make sure it is working).**
+But this is only a Kata, we will start on the real work next week when you have a pair. **Ok, I won't deploy it and I won't write automated acceptance tests. But I must inspect my beautiful work (and make sure it is working).**
 
 ### 1.9. End to End
 
@@ -363,10 +363,9 @@ In order to do that you will need to? **Um... I need to inject the ``registratio
 
 });
 ```
+Very good, you remembered to run the tests again. **Yes, it worked!**
 
 ### 2.2. Failing
-
-Very good, you remembered to run the tests again. **Yes, it worked!**
 
 Next we need to show the student the result of their registration attempt. **I will put the ``registrationService`` response on the scope so the UI can access it.**
 
@@ -402,7 +401,7 @@ And to get it passing... **That is as simple as adding ``$scope.response = ``**
 ### 2.2. Refactor
 I smell duplication in the test. **Yes and I am willing to remove it, while all my tests are passing. I am adding a ``beforeEach`` right now and removing the duplication.**
 
-**Facio Abdo Duplicatam"
+**Facio Abdo Duplicatam**
 
 ``test/catalog/catalog-controller-specs.js``
 ```js
@@ -518,7 +517,7 @@ hogwartsApp
 
 ### 2.3. Refactor
 
-What does the last two lines register? **It registers the wizard for the course.**
+What does the last two lines do? **It registers the wizard for the course.**
 
 Can you clarify it in code? **You mean extract the last 2 lines into a method.** Yes.
 
@@ -651,7 +650,7 @@ hogwartsApp
 
 How are we going to end to end test it? **I will click the register link on the catalog menu and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
-Are we finished with this story? **It depends, do we have a story disallowing scheduling mutiple course at the same time (with the exception of students using a Time-Turner)?**
+Are we finished with this story? **It depends, do we have a story disallowing scheduling more than one course at the same time (unless they have a Time-Turner)?**
 
 Yes that is another story. **Then, the software works as expected. The code is clean. Yes, I would say this story is done.**
 
@@ -773,8 +772,8 @@ Using ``ng-include`` remove duplication between
 
 ### 7. Modify this Kata to Use a Todo List
 
-TDD give you
- - a know starting point (what is the test for that?)
+TDD gives you
+ - a known starting point (what is the test for that?)
  - the ability to focus on a small piece of a bigger problem
  - feedback that your changes haven't broken something
 
@@ -782,7 +781,7 @@ As you work confidently on you little solution, you need a place to store your a
 
 This is often in your journal in a Todo list.
 
-Add the use of the Todo list into this kata.
+Change this ``README`` to use a Todo list.
 
 ### 8. Add Automated Acceptance Tests
 
