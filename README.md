@@ -60,13 +60,23 @@ You will have two files loaded into Firefox:
 
 You will not edit either of these files.
 
+## 0. Coming up to Speed
+
+How will you begin, my young wizard friend? **I will explore. I will click the ``app`` and ``test`` tabs. I will notice ``karma`` running in the ``console``.**
+
+**I will notice the three menu items.**
+
+**I will sort myself into a house by clicking on the sorting hat.**
+
+Great, what house are you in? **Uh, I am in __________________**
+
 ## 1. Story: Show Course Catalog
 
 Acceptance: Students will be able to see a catalog of courses.
 
 ---
 
-How will you start, my young wizard friend? **By making changes to catalog UI inside file ``app/catalog/catalog.html``.**
+It is time to start coding. Where will you start? **Making changes to catalog UI inside file ``app/catalog/catalog.html``.**
 
 How will you view it? **I will refresh ``app/index.html`` and click on the Catalog tab.**
 
@@ -626,7 +636,7 @@ hogwartsApp
 
 ### 2.9. End to End
 
-How are we going to end to end test it? **I will click the register link and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
+How are we going to end to end test it? **I will click the register link on the catalog tab and notice a message saying it was successful. Then I'll look at the schedule page and see the course I just registered for.**
 
 Are we finished with this story? **It depends, do we have a story disallowing scheduling mutiple course at the same time (with the exception of students using a Time-Turner)?**
 
@@ -649,7 +659,7 @@ We must change the Kata immediately to sort randomly.  **I am on it.**
 
 ### 3. Debugging
 
-How will you find the bug? **Open the debugger on ``index.html#/sorting``, set a break point inside ``sorting-hat-controller.js`` on ``$scope.sort``, click the sorting hat and then follow the code in the debugger down until I find the bug.**
+How will you find the bug? **I could open the debugger on ``index.html#/sorting``, set a break point inside ``sorting-hat-controller.js`` on ``$scope.sort``, click the sorting hat and then follow the code in the debugger down until I find the bug.**
 
 You have tests, why not use them to help locate the bug? **I am not sure how.**
 
@@ -771,5 +781,12 @@ Write at least one end to end [Protractor](https://github.com/angular/protractor
 
 Thank you!
 
+"Happiness can be found even in the darkest of times, when one only remembers to turn on the light" --Albus Dumbledore
+
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc/4.0/88x31.png" ></a>
 
+
+
+How do you start debugger in chrome & firefox
+
+Sort yourself into a house now split up by house
