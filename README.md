@@ -32,7 +32,7 @@ You have two ways of running through this kata:
 
 You have [node](http://nodejs.org/) installed. To install ``express.js`` and ``karma`` from the command line inside ``angular-hogwarts-tdd-kata`` run
 
-``npm install`` (or just copy the ``node_modules`` directory and run ``npm rebuild``)
+``npm install``
 
 To run the server, call
 
