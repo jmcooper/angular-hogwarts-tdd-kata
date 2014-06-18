@@ -62,11 +62,11 @@ You will not edit either of these files.
 
 ## 0. Coming up to Speed
 
-How will you begin, my young wizard friend? **I will explore. I will click the ``app`` and ``test`` tabs. I will notice ``karma`` running in the ``console``.**
-
-**I will notice the three menu items.**
-
-**I will sort myself into a house by clicking on the sorting hat.**
+How will you begin, my young wizard friend? **I will explore:**
+1. **I will click the ``app`` and ``test`` tabs.**
+2. **I will notice ``karma`` running in the ``console``.**
+3. **I will notice the three menu items in the ``app``.**
+4. **I will sort myself into a house by clicking on the sorting hat.**
 
 Great, what house are you in? **Uh, I am in __________________**
 
